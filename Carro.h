@@ -12,9 +12,11 @@ class Carro
 	int velocidade;
 	int velMax;
 	int cronometro;		//tempo em segudos
-	bool estado;
+	//bool estado;
 	bool sinalEmerg;
 	bool avariado;
+
+	//ponteiro para piloto ( ??? )
 
 public:
 	Carro();
@@ -28,8 +30,9 @@ public:
 
 	//Energia
 	void gastaEnergia();
+	void carregaBat();
 	float getEnergia();
-
+	
 	//Botao Emergencia
 	void BotaoSOS();
 
