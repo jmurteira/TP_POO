@@ -7,11 +7,13 @@ class Carro
 	string marca;
 	string modelo;
 	int ident;			//identificador do carro
+	int posicao;		// -1 (garagem), >0 (em corrida), 0 (nao interessa ou inicio corrida ?) 
+	int cronometro;		//tempo em segudos
+
 	float energia;
 	float energiaMax;
 	int velocidade;
 	int velMax;
-	int cronometro;		//tempo em segudos
 	bool ocupado;		//ver se tem piloto ou não
 	bool sinalEmerg;
 	bool avariado;
@@ -35,6 +37,8 @@ public:
 	
 	//Botao Emergencia
 	void BotaoSOS();
+
+	void atualizaCronometro(int t, int distPista);
 
 };
 

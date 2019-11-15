@@ -12,6 +12,12 @@ Autodromo::~Autodromo()
 {
 }
 
+void Autodromo::atualizaClassif() {
+	for (int i = 0; i < participantes; i++) {
+		//if(pista[i]) ???
+	}
+}
+
 string Autodromo::getAsString()const {
 	ostringstream os;
 	os << "Autodromo de: " << nome << endl << "Distancia: " << distancia << " metros";

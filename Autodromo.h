@@ -8,17 +8,20 @@ class Autodromo
 {
 	string nome;
 	int distancia;
+	const static int participantes = 5;
 	bool iniciada;						//a combinação dos bools "iniciada", "finalizada" permite saber quais as corridas que já foram feitas, as que ainda não foram feitas e a que está a decorrer
 	bool finalizada;
 	//const static int maxCarrosGaragem;
 	vector <Carro> garagem[20];
-	vector <Piloto> pista[5];
+	vector <Piloto> pista[participantes];
 
 	vector <Piloto> classificacao[5];	//(?)
 
 public:
 	Autodromo(string n, int dist);
 	~Autodromo();
+
+	void atualizaClassif();
 
 	string getAsString()const;
 };
