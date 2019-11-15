@@ -6,6 +6,7 @@
 
 class Autodromo
 {
+	string nome;
 	int distancia;
 	bool iniciada;						//a combinação dos bools "iniciada", "finalizada" permite saber quais as corridas que já foram feitas, as que ainda não foram feitas e a que está a decorrer
 	bool finalizada;
@@ -16,7 +17,9 @@ class Autodromo
 	vector <Piloto> classificacao[5];	//(?)
 
 public:
-	Autodromo();
+	Autodromo(string n, int dist);
 	~Autodromo();
+
+	string getAsString()const;
 };
 
