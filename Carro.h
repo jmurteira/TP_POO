@@ -12,7 +12,7 @@ class Carro
 	int velocidade;
 	int velMax;
 	int cronometro;		//tempo em segudos
-	//bool estado;
+	bool ocupado;		//ver se tem piloto ou não
 	bool sinalEmerg;
 	bool avariado;
 
@@ -35,10 +35,6 @@ public:
 	
 	//Botao Emergencia
 	void BotaoSOS();
-
-
-
-
 
 };
 
