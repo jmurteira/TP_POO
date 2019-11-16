@@ -18,6 +18,14 @@ void Autodromo::atualizaClassif() {
 	}
 }
 
+//vector <Piloto> Autodromo::getPista()const {
+//	//return pista;
+//}
+//
+//vector <Carro> Autodromo::getGaragem()const {
+//	//return garagem;
+//}
+
 string Autodromo::getAsString()const {
 	ostringstream os;
 	os << "Autodromo de: " << nome << endl << "Distancia: " << distancia << " metros";

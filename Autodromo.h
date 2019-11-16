@@ -24,5 +24,10 @@ public:
 	void atualizaClassif();
 
 	string getAsString()const;
+
+	////obter a pista (participantes) ???
+	//vector <Piloto> getPista()const;
+	////obter os carros que estao na garagem ???
+	//vector <Carro> getGaragem()const;
 };
 

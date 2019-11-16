@@ -21,7 +21,7 @@ class Carro
 	//ponteiro para piloto ( ??? )
 
 public:
-	Carro();
+	Carro(string marc, string mod, int id);
 	~Carro();
 	
 	//ideia das funções
@@ -39,6 +39,8 @@ public:
 	void BotaoSOS();
 
 	void atualizaCronometro(int t, int distPista);
+
+	string getAsString()const;
 
 };
 
