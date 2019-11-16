@@ -9,15 +9,17 @@ class Piloto
 	string nome;
 	int tipo;
 
-	Carro * carro;		//ponteiro para carro																			(ponteiro de carro para piloto e de piloto para carro ???)
+	Carro * carro;		//ponteiro para carro						(ponteiro de carro para piloto e de piloto para carro ???)
 
 
 public:
-	Piloto();
+	Piloto(string n, int t);
 	~Piloto();
 
-	void entrarCarro();
+	void entrarCarro(Carro * c);
 	void sairCarro();
+
+	string getAsString()const;
 
 };
 
