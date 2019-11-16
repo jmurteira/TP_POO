@@ -5,6 +5,7 @@
 
 Carro::Carro(string marc, string mod,int id) : marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(100), energia(75),velocidade(0), velMax(50), ocupado(false), sinalEmerg(false), avariado(false)
 {
+	//estao alguns valores inicializados por defeito
 }
 
 
@@ -24,7 +25,7 @@ void Carro::passaTempoCarro(int t, int distPista) {
 
 }
 
-string Carro::getAsString()const {
+string Carro::getAsString()const {		//tem coisas feitas para facilitar o teste das funções
 	ostringstream os;
 	os << "Carro com identificador: " << ident << endl << marca << modelo << endl;
 	if (avariado == false)
@@ -43,7 +44,7 @@ string Carro::getAsString()const {
 	return os.str();
 }
 
-void Carro::acelera() {
+void Carro::acelera() { //A funçao acelera só aumenta em 1m/s de cada vez que é chamada? ou recebe o valor para aumentar?
 	if(velocidade + 1 <= velMax)
 		velocidade = velocidade + 1;
 }
