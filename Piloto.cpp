@@ -23,6 +23,15 @@ void Piloto::sairCarro() {
 	carro = nullptr;
 }
 
+string Piloto::getNome() const {
+	return nome;
+}
+
+int Piloto::getCarro() const {
+	if (carro != nullptr)
+		return carro->getIdent();
+}
+
 
 string Piloto::getAsString()const {
 	ostringstream os;

@@ -19,6 +19,9 @@ public:
 	void entrarCarro(Carro * c);
 	void sairCarro();
 
+	string getNome() const;
+	int getCarro() const;
+
 	string getAsString()const;
 
 };

@@ -24,6 +24,8 @@ public:
 	Carro(string marc, string mod, int id);
 	~Carro();
 	
+	int getIdent()const;
+
 	//ideia das funções
 	//Velocidade
 	void acelera();

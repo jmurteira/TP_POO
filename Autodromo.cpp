@@ -14,12 +14,12 @@ Autodromo::~Autodromo()
 
 void Autodromo::atualizaClassif() {
 	for (int i = 0; i < participantes; i++) {
-		//if(pista[i]) ???
+		
 	}
 }
 
-//vector <Piloto> Autodromo::getPista()const {
-//	//return pista;
+//vector <Piloto *> Autodromo::getPista()const {
+//	return pista;
 //}
 //
 //vector <Carro> Autodromo::getGaragem()const {

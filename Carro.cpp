@@ -13,6 +13,11 @@ Carro::~Carro()
 {
 }
 
+int Carro::getIdent()const {
+	return ident;
+}
+
+
 void Carro::passaTempoCarro(int t, int distPista) {
 
 	for (int i = 1; i <= t; i++) {
