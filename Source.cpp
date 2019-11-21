@@ -13,6 +13,7 @@ int main() {
 
 
 	Carro c1 = Carro("Alfa", "Romeu");
+	//c1.carregaBat();
 	c1.acelera();
 	/*c1.acelera();
 	c1.acelera();
@@ -36,11 +37,15 @@ int main() {
 	cout << endl << p1.getAsString();
 	cout << endl << c1.CarroOcupado();
 
+
+
 	p2.entrarCarro(&c1);
 	cout << endl << p2.getAsString();
 
 	p1.sairCarro();
 	cout << endl << p1.getAsString();
+	cout << endl << c1.CarroOcupado();
+
 
 	p2.entrarCarro(&c1);
 	cout << endl << p2.getAsString();

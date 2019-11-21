@@ -1,7 +1,9 @@
-﻿  Carro.cpp
+﻿  Autodromo.cpp
+  Campeonato.cpp
+  Carro.cpp
   Piloto.cpp
   Source.cpp
   Generating Code...
 C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Carro.cpp(9,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Piloto.cpp(43): warning C4715: 'Piloto::getCarro': not all control paths return a value
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Piloto.cpp(44): warning C4715: 'Piloto::getCarro': not all control paths return a value
   TP_POO.vcxproj -> C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Debug\TP_POO.exe

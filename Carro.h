@@ -2,6 +2,8 @@
 #include <string>
 using namespace std;
 
+//todas as funcionalidades do carro: acelerar, travar, etc que são controladas pelo piloto têm de ficar privadas, pois só o piloto é que as controla
+
 class Carro
 {
 	string marca;
@@ -12,6 +14,7 @@ class Carro
 
 	float energia;
 	float energiaMax;
+	float n_energia; // utiliza uma vez a manivela de carregamento de energia no carro identificado por letraCarro fornecendo Q mAh. é um dos comandos, para a meta 2, mas para já fica om default igual 5
 	int velocidade;
 	int velMax;
 	bool ocupado;		//ver se tem piloto ou não

@@ -19,6 +19,7 @@ public:
 	void entrarCarro(Carro * c);
 	void sairCarro();
 
+
 	string getNome() const;
 	char getCarro() const;
 

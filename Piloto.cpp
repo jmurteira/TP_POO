@@ -33,6 +33,7 @@ void Piloto::sairCarro() {
 	
 }
 
+
 string Piloto::getNome() const {
 	return nome;
 }

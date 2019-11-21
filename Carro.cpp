@@ -1,10 +1,10 @@
 #include "Carro.h"
 #include <sstream>
 #include <time.h>
+#include <iostream>
 
 
-
-Carro::Carro(string marc, string mod) : marca(marc), modelo(mod), posicao(0), cronometro(0), energiaMax(100), energia(75),velocidade(0), velMax(50), ocupado(false), sinalEmerg(false), avariado(false)
+Carro::Carro(string marc, string mod) : marca(marc), modelo(mod), posicao(0), cronometro(0), energiaMax(100), energia(75),velocidade(0), velMax(50), ocupado(false), sinalEmerg(false), avariado(false), n_energia(5)
 {
 	srand(time(0));
 	ident = 'a' + rand() % 26;
@@ -95,4 +95,24 @@ void Carro::trava() {
 
 int Carro::getVelocidade() {
 	return velocidade;
+}
+
+void Carro::carregaBat() {
+
+	cout << "Carro: " << getIdent() << endl;
+
+	if (velocidade == 0) {
+
+		energia += n_energia;
+		if (energia >= 100) {
+			energia = 100;
+			cout << "Bateria já atingiu " << energia << " mAh. Carregada ao máximo, nao necessita de mais carga" << endl;
+		}
+		else
+			cout << "Carregou bateria com " << n_energia << " mAh." << endl;
+		cout << "Bateria atingiu " << energia << " mAh. Falta " << energiaMax - energia << " para atingir o total." << endl;
+	}
+	else
+		cout << "Carro ainda continua em andamento. Parar completamente o carro para efectuar carga." << endl;
+	
 }
