@@ -22,6 +22,8 @@ class Carro
 	bool avariado;
 
 	//ponteiro para piloto ( ??? )
+	void acelera();
+	void trava();
 
 public:
 	Carro(string marc, string mod);
@@ -37,8 +39,8 @@ public:
 
 	//ideia das funções
 	//Velocidade
-	void acelera();
-	void trava();
+	
+	
 	int getVelocidade();
 
 	//Energia

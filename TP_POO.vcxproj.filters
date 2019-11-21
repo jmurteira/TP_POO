@@ -39,6 +39,12 @@
     <ClCompile Include="Campeonato.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Dgv.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Consola.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Carro.h">
@@ -60,6 +66,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Campeonato.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dgv.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Consola.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

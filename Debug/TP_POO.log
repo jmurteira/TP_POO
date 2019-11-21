@@ -1,7 +1,12 @@
 ﻿  Autodromo.cpp
   Campeonato.cpp
   Carro.cpp
+  Consola.cpp
+  Corrida.cpp
+  Dgv.cpp
+  Garagem.cpp
   Piloto.cpp
+  Pista.cpp
   Source.cpp
   Generating Code...
 C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Carro.cpp(9,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
