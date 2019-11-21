@@ -20,9 +20,10 @@ public:
 	void sairCarro();
 
 	string getNome() const;
-	int getCarro() const;
+	char getCarro() const;
 
 	string getAsString()const;
 
+	
 };
 

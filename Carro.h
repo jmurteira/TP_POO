@@ -6,7 +6,7 @@ class Carro
 {
 	string marca;
 	string modelo;
-	int ident;			//identificador do carro
+	char ident;			//identificador do carro, verificar que nunca têm o mesmo ident. dgv?
 	int posicao;		//---> ESQUECE ISTO (ERA APENAS UMA IDEIA) -1 (garagem), >0 (em corrida), 0 (nao interessa ou inicio corrida ?) 
 	int cronometro;		//tempo em segudos
 
@@ -21,10 +21,16 @@ class Carro
 	//ponteiro para piloto ( ??? )
 
 public:
-	Carro(string marc, string mod, int id);
+	Carro(string marc, string mod);
 	~Carro();
 	
-	int getIdent()const;
+	char getIdent()const;
+
+	//carro ocupado ou desocupado
+	bool getOcupado()const;
+	
+	bool setOcupado();
+	bool setDesocupado();
 
 	//ideia das funções
 	//Velocidade
@@ -43,6 +49,6 @@ public:
 	void passaTempoCarro(int t, int distPista);
 
 	string getAsString()const;
-
+	string CarroOcupado()const;
 };
 
