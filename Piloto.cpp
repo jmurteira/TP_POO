@@ -9,6 +9,7 @@ Piloto::Piloto(string n, int t):tipo(t),carro(nullptr)
 	//verificar o nome do piloto de forma a ser único. ir ao vector da dgv?
 	//if()
 	nome = n;
+	
 }
 
 

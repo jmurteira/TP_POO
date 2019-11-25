@@ -118,6 +118,7 @@
     <ClCompile Include="Autodromo.cpp" />
     <ClCompile Include="Campeonato.cpp" />
     <ClCompile Include="Carro.cpp" />
+    <ClCompile Include="Comandos.cpp" />
     <ClCompile Include="Consola.cpp" />
     <ClCompile Include="Corrida.cpp" />
     <ClCompile Include="Dgv.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="Autodromo.h" />
     <ClInclude Include="Campeonato.h" />
     <ClInclude Include="Carro.h" />
+    <ClInclude Include="Comandos.h" />
     <ClInclude Include="Consola.h" />
     <ClInclude Include="Corrida.h" />
     <ClInclude Include="Dgv.h" />

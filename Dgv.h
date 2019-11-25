@@ -2,8 +2,8 @@
 #include <vector>
 #include <string>
 
-#include "Piloto.h"
-#include "Carro.h"
+class Piloto;
+class Carro;
 
 using namespace std;
 
@@ -16,10 +16,11 @@ public:
 
 
 	Dgv(string id);
-	//Carro* novoCarro(string marc, string mod);
-	//Piloto* novoPiloto(string n, int t);
+	Carro* novoCarro(string marc, string mod, char ident);
+	Piloto* novoPiloto(string n, int t);
 
-
+	Carro* procuraCarro(char ident) const;
+	Piloto* procuraPiloto(string nome) const;
 
 
 };

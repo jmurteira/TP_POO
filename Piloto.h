@@ -24,6 +24,7 @@ public:
 	char getCarro() const;
 
 	string getAsString()const;
+	string ListaPilotos()const;
 
 	
 };

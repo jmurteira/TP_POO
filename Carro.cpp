@@ -1,14 +1,18 @@
 #include "Carro.h"
+#include "Dgv.h"
 #include <sstream>
 #include <time.h>
 #include <iostream>
 
 
-Carro::Carro(string marc, string mod) : marca(marc), modelo(mod), posicao(0), cronometro(0), energiaMax(100), energia(75),velocidade(0), velMax(50), ocupado(false), sinalEmerg(false), avariado(false), n_energia(5)
+Carro::Carro(string marc, string mod, char id) : marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(100), energia(75),velocidade(0), velMax(50), ocupado(false), sinalEmerg(false), avariado(false), n_energia(5)
 {
-	srand(time(0));
-	ident = 'a' + rand() % 26;
+	
+		srand(time(0));
+		ident = ident + rand() % 26;
 
+		//verificar com o vector dos carros do arquivo que não repetem os ids
+	
 	//estao alguns valores inicializados por defeito
 }
 
@@ -81,6 +85,17 @@ string Carro::CarroOcupado()const {
 	return os.str();
 
 }
+
+//string Carro::ListaCarros()const {
+//	ostringstream os;
+//	//os << "Carro: " << getIdent() << endl;
+//	//for (auto i = path.begin(); i != path.end(); ++i)  imprimir
+//		//os << *i << ' ';
+//
+//
+//	//return os.str();
+//
+//}
 
 
 void Carro::acelera() { //A funçao acelera só aumenta em 1m/s de cada vez que é chamada? ou recebe o valor para aumentar?

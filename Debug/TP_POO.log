@@ -1,14 +1,10 @@
 ﻿  Autodromo.cpp
   Campeonato.cpp
   Carro.cpp
-  Consola.cpp
-  Corrida.cpp
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Carro.cpp(11,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Dgv.cpp
-  Garagem.cpp
   Piloto.cpp
-  Pista.cpp
   Source.cpp
   Generating Code...
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Carro.cpp(9,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Piloto.cpp(44): warning C4715: 'Piloto::getCarro': not all control paths return a value
-  TP_POO.vcxproj -> C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Debug\TP_POO.exe
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Carro.cpp(13,9): error C2059: syntax error: ')'
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Piloto.cpp(45): warning C4715: 'Piloto::getCarro': not all control paths return a value
