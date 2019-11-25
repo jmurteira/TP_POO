@@ -36,14 +36,16 @@ public:
 	//carro ocupado ou desocupado
 	bool getOcupado()const;
 	
-	bool setOcupado();
-	bool setDesocupado();
+	void setOcupado();
+	void setDesocupado();
 
 	//ideia das funções
 	//Velocidade
+
 	
 	
 	int getVelocidade();
+	int getVelocidadeMax();
 
 	//Energia
 	void gastaEnergia();
@@ -56,7 +58,7 @@ public:
 	void passaTempoCarro(int t, int distPista);
 
 	string getAsString()const;
-	string CarroOcupado()const;
-	string ListaCarros()const;
+	string getStringOcupado()const;
+	//string ListaCarros()const;
 };
 

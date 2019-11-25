@@ -36,7 +36,7 @@ int main() {
 	p1.entrarCarro(&c1);
 	cout << endl << "------------------------------------------"<<endl << "O piloto " << p1.getNome() << " entrou no carro com id: " << p1.getCarro() << endl;
 	cout << endl << p1.getAsString();
-	cout << endl << c1.CarroOcupado();
+	cout << endl << c1.getStringOcupado();
 
 
 
@@ -45,7 +45,7 @@ int main() {
 
 	p1.sairCarro();
 	cout << endl << p1.getAsString();
-	cout << endl << c1.CarroOcupado();
+	cout << endl << c1.getStringOcupado();
 
 
 	p2.entrarCarro(&c1);

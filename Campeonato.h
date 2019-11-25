@@ -15,5 +15,6 @@ class Campeonato
 public:
 	Campeonato();
 	~Campeonato();
+
 };
 

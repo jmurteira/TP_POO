@@ -30,14 +30,12 @@ bool Carro::getOcupado()const {
 	return ocupado;
 }
 
-bool Carro::setOcupado() {
-
-	return ocupado = true;
+void Carro::setOcupado() {
+	ocupado = true;
 }
 
-bool Carro::setDesocupado() {
-
-	return ocupado = false;
+void Carro::setDesocupado() {
+	ocupado = false;
 }
 
 
@@ -73,7 +71,7 @@ string Carro::getAsString()const {		//tem coisas feitas para facilitar o teste d
 }
 
 
-string Carro::CarroOcupado()const {
+string Carro::getStringOcupado()const {
 	ostringstream os;
 	os << "Carro: " << getIdent() << endl;
 	if (getOcupado() == false)
@@ -86,30 +84,15 @@ string Carro::CarroOcupado()const {
 
 }
 
-//string Carro::ListaCarros()const {
-//	ostringstream os;
-//	//os << "Carro: " << getIdent() << endl;
-//	//for (auto i = path.begin(); i != path.end(); ++i)  imprimir
-//		//os << *i << ' ';
-//
-//
-//	//return os.str();
-//
-//}
 
 
-void Carro::acelera() { //A funçao acelera só aumenta em 1m/s de cada vez que é chamada? ou recebe o valor para aumentar?
-	if(velocidade + 1 <= velMax)
-		velocidade = velocidade + 1;
-}
-
-void Carro::trava() {
-	if (velocidade - 1 >= 0)
-		velocidade = velocidade - 1;
-}
 
 int Carro::getVelocidade() {
 	return velocidade;
+}
+
+int Carro::getVelocidadeMax() {
+	return velMax;
 }
 
 void Carro::carregaBat() {

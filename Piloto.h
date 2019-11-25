@@ -19,6 +19,8 @@ public:
 	void entrarCarro(Carro * c);
 	void sairCarro();
 
+	void acelera();
+	void trava();
 
 	string getNome() const;
 	char getCarro() const;
