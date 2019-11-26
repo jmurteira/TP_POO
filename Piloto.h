@@ -22,6 +22,8 @@ public:
 	void acelera();
 	void trava();
 
+	void passaTempoPiloto(int t, int dist);
+
 	string getNome() const;
 	char getCarro() const;
 

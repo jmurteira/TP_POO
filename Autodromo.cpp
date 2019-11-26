@@ -12,6 +12,19 @@ Autodromo::~Autodromo()
 {
 }
 
+//void Autodromo::addParticipante(string n) {
+//	pista->push_back(...);
+//}
+
+void Autodromo::passatempo(int t) {
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();
+		it++) {
+		
+		(*it)->passaTempoPiloto(t, distancia);
+	}
+}
+
 void Autodromo::atualizaClassif() {
 	for (int i = 0; i < participantes; i++) {
 		
