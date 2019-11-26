@@ -18,6 +18,5 @@ Autodromo* Dga::procuraAutodromo(string nome) const {
 		it++)
 		if ((*it)->getNome() == nome)
 			return *it;
-	return nullptr
-
+	return nullptr;
 }
