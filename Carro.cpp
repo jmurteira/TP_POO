@@ -38,6 +38,10 @@ void Carro::setDesocupado() {
 	ocupado = false;
 }
 
+void Carro::setVelocidade(int x) {
+	velocidade = x;
+}
+
 
 void Carro::passaTempoCarro(int t, int distPista) {
 

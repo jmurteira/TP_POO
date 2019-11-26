@@ -20,6 +20,8 @@ public:
 	Autodromo(string n, int dist);
 	~Autodromo();
 
+	string getNome() const;
+
 	//void addParticipante(string n);
 
 	void atualizaClassif();

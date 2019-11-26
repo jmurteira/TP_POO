@@ -45,6 +45,7 @@ public:
 	
 	
 	int getVelocidade();
+	void setVelocidade(int x);
 	int getVelocidadeMax();
 
 	//Energia

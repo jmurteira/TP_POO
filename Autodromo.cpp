@@ -12,6 +12,10 @@ Autodromo::~Autodromo()
 {
 }
 
+string Autodromo::getNome() const{
+	return nome;
+}
+
 //void Autodromo::addParticipante(string n) {
 //	pista->push_back(...);
 //}
