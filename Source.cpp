@@ -18,6 +18,7 @@ int main() {
 	Dgv dgv("Portugal");
 	//Autodromo aut1 = Autodromo("Vienna", 4268);
 	dga.novoAutodromo("Estoril",1000);
+	dga.novoAutodromo("Estoril", 10);
 	
 	dgv.novoCarro("A", "Romeu");
 	dgv.novoCarro("B", "Corsa");

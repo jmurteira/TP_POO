@@ -1,5 +1,7 @@
 #include "Dga.h"
 #include "Autodromo.h"
+#include <sstream>
+#include <iostream>
 
 Dga::Dga(string id) :DgaID(id) {}
 
@@ -17,6 +19,9 @@ Autodromo* Dga::procuraAutodromo(string nome) const {
 		it != autodromos.cend();
 		it++)
 		if ((*it)->getNome() == nome)
+		{
+			cout << endl << "Nome de Autodromo já existente. " << endl;
 			return *it;
+		}
 	return nullptr;
 }
