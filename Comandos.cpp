@@ -21,16 +21,25 @@ int Comandos::lerComando() {
 	
 
 	if (is >> op1) {
-		if (comando == "carregaP")
+		if (op1 == "carregaP")
 			return 1;
-		else if (comando == "carregaC")
+		else if (op1 == "carregaC")
 			return 2;
-		else if (comando == "carregaA")
+		else if (op1 == "carregaA")
 			return 3;
-		else if (comando == "cria")
+		else if (op1 == "cria")
 			return 4;
-		else if (comando == "apaga")
+		else if (op1 == "apaga") {
+			if (op2 == "c")
+				cout << "apaga carro";
+			else if (op2 == "p")
+				cout << "apaga piloto";
+			else if(op2 == "a")
+				cout << "apaga autodromo";
+
 			return 5;
+		}
+			
 		else if (op1 == "entranocarro")
 			return 6;
 		else if (op1 == "saidocarro") {
@@ -47,6 +56,8 @@ int Comandos::lerComando() {
 
 			return 0;
 		}
+		else
+			cout << "comando inexistente" << endl;
 	}
 
 
