@@ -29,5 +29,7 @@ public:
 	string descricaoCarro() const;
 	string descricaoPiloto() const;
 
+	void apagaCarro(char ident);
+	void apagaPiloto(string nome);
 };
 

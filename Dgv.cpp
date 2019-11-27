@@ -95,3 +95,22 @@ string Dgv::descricaoPiloto() const {
 
 
 }
+
+void Dgv::apagaCarro(char ident) {
+	if (procuraCarro(ident) != nullptr) {
+		cout << "entrou";
+		for(size_t i = 0; i < carros.size(); i++){
+			if (carros[i]->getIdent() == ident)
+				carros.erase(carros.begin() + i);
+		}
+		delete procuraCarro(ident);
+	}
+	else
+		cout << "carro com id: " << ident << "inexistente" << endl;
+}
+
+void Dgv::apagaPiloto(string nome) {
+	if (procuraPiloto(nome) != nullptr) {
+		delete procuraPiloto(nome);
+	}
+}

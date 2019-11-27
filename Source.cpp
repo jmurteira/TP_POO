@@ -20,7 +20,7 @@ int main() {
 	dga.novoAutodromo("Estoril",1000);
 	dga.novoAutodromo("Estoril", 10);
 	
-	dgv.novoCarro("A", "Romeu");
+	/*dgv.novoCarro("A", "Romeu");
 	dgv.novoCarro("B", "Corsa");
 	dgv.novoCarro("C", "Romeu");
 	dgv.novoCarro("D", "Corsa");
@@ -43,14 +43,14 @@ int main() {
 	dgv.novoCarro("U", "Corsa");
 	dgv.novoCarro("V", "Corsa");
 	dgv.novoCarro("W", "Corsa");
-	dgv.novoCarro("X", "Corsa");
+	dgv.novoCarro("X", "Corsa");*/
 	dgv.novoCarro("Y", "Corsa");
 	dgv.novoCarro("Z", "Corsa");
 	dgv.novoCarro("asdfsd", "Corsa");
 	dgv.novoCarro("asdafsdffsd", "Corsa");
 
 
-	//cout << dgv.descricaoCarro() << endl;
+	cout << dgv.descricaoCarro() << endl;
 
 	//cout << aut1.getAsString();
 

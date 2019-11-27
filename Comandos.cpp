@@ -12,54 +12,60 @@ int Comandos::lerComando() {
 	string op1;
 	string op2;
 	string op3;
-
-	cout << "\nIntroduza comando: ";
-
-	getline(cin, comando);
-	istringstream is(comando);
+	char op4;
+	char op5;
 
 	
 
-	if (is >> op1) {
-		if (op1 == "carregaP")
-			return 1;
-		else if (op1 == "carregaC")
-			return 2;
-		else if (op1 == "carregaA")
-			return 3;
-		else if (op1 == "cria")
-			return 4;
-		else if (op1 == "apaga") {
-			if (op2 == "c")
-				cout << "apaga carro";
-			else if (op2 == "p")
-				cout << "apaga piloto";
-			else if(op2 == "a")
-				cout << "apaga autodromo";
+	
+	do {
+		cout << "\nIntroduza comando: ";
+		getline(cin, comando);
+		istringstream is(comando);
+		if (is >> op1) {
+			if (op1 == "carregaP")
+				return 1;
+			else if (op1 == "carregaC")
+				return 2;
+			else if (op1 == "carregaA")
+				return 3;
+			else if (op1 == "cria")
+				return 4;
+			else if (op1 == "apaga") {
+				if (is >> op4) {
+					if (op4 == 'c') {
+						if (is >> op5)
+							getDgv()->apagaCarro(op5);
+					}
+					else if (op4 == 'p')
+						cout << "apaga piloto";
+					else if (op4 == 'a')
+						cout << "apaga autodromo";
+					else
+						cout << "parametro errado. apaga <letraTipo> identificador (c - carro, p - piloto, a - autodromo)" << endl;
+				}
+			}
 
-			return 5;
-		}
-			
-		else if (op1 == "entranocarro")
-			return 6;
-		else if (op1 == "saidocarro") {
-			if (is >> op2)
-				return 7;
-			//m.getdgv->saidocarro(op2);
+			else if (op1 == "entranocarro")
+				return 6;
+			else if (op1 == "saidocarro") {
+				if (is >> op2)
+					return 7;
+				//m.getdgv->saidocarro(op2);
+				else
+					return 8;
+				//cout << "parametro inexistente" << endl;
+			}
+			else if (op1 == "lista") {
+				cout << getDgv()->descricaoCarro();
+				cout << getDgv()->descricaoPiloto();
+			}
+			else if (op1 == "sair")
+				cout << "\nsair" << endl;
 			else
-				return 8;
-			//cout << "parametro inexistente" << endl;
+				cout << "comando inexistente" << endl;
 		}
-		else if (op1 == "lista") {
-			cout << getDgv()->descricaoCarro();
-			cout << getDgv()->descricaoPiloto();
-
-			return 0;
-		}
-		else
-			cout << "comando inexistente" << endl;
-	}
-
+	} while (op1 != "sair");
 
 }
 
