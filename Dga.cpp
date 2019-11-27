@@ -20,7 +20,7 @@ Autodromo* Dga::procuraAutodromo(string nome) const {
 		it++)
 		if ((*it)->getNome() == nome)
 		{
-			cout << endl << "Nome de Autodromo já existente. " << endl;
+			cout << endl << "Nome de Autodromo ja existente. " << endl;
 			return *it;
 		}
 	return nullptr;

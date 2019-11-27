@@ -61,7 +61,7 @@ void Piloto::passaTempoPiloto(int t, int dist) {
 	carro->passaTempoCarro(t, dist);
 }
 
-string Piloto::getAsString()const {
+string Piloto::getStringDescricao()const {
 	ostringstream os;
 	os << "Piloto: " << nome << endl;
 	if (carro == nullptr)

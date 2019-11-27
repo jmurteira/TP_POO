@@ -77,7 +77,7 @@ bool Dgv::verificaIdent(char ident) {
 
 
 string Dgv::descricaoCarro() const {
-	string res = "DGV\n---------------";
+	string res = "DGV - Carros Registados: \n---------------";
 	for (vector<Carro*>::const_iterator it = carros.cbegin();
 		it != carros.cend();
 		it++)
@@ -85,4 +85,13 @@ string Dgv::descricaoCarro() const {
 	return res;
 }
 
+string Dgv::descricaoPiloto() const {
+	string res = "DGV - Pilotos Registados: \n---------------";
+	for (vector<Piloto*>::const_iterator it = pilotos.cbegin();
+		it != pilotos.cend();
+		it++)
+		res += "\n" + (*it)->getStringDescricao();
+	return res;
 
+
+}

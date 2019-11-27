@@ -13,7 +13,7 @@ int Comandos::lerComando() {
 	string op2;
 	string op3;
 
-	cout << "Introduza comando: ";
+	cout << "\nIntroduza comando: ";
 
 	getline(cin, comando);
 	istringstream is(comando);

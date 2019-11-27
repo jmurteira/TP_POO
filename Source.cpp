@@ -72,28 +72,31 @@ int main() {
 	
 
 
-	Piloto p1 = Piloto("Vettel", 1);
-	Piloto p2 = Piloto("Michael", 2);
-	cout << endl << p1.getAsString();
-	cout << endl << p2.getAsString();
+	//Piloto p1 = Piloto("Vettel", 1);
+	//Piloto p2 = Piloto("Michael", 2);
+	dgv.novoPiloto("Vettel", 1);
+	dgv.novoPiloto("Michael", 2);
+	//cout << endl << p1.getStringDescricao();
+	//cout << endl << p2.getStringDescricao();
 
-	p1.entrarCarro(&c1);
-	cout << endl << "------------------------------------------"<<endl << "O piloto " << p1.getNome() << " entrou no carro com id: " << p1.getCarro() << endl;
-	cout << endl << p1.getAsString();
-	cout << endl << c1.getStringOcupado();
+	//p1.entrarCarro(&c1);
+	//cout << endl << "------------------------------------------"<<endl << "O piloto " << p1.getNome() << " entrou no carro com id: " << p1.getCarro() << endl;
+	//cout << endl << p1.getStringDescricao();
+	//cout << endl << c1.getStringOcupado();
+
+	cout << 
+		dgv.descricaoPiloto();
+
+	//p2.entrarCarro(&c1);
+	//cout << endl << p2.getStringDescricao();
+
+	//p1.sairCarro();
+	//cout << endl << p1.getStringDescricao();
+	//cout << endl << c1.getStringOcupado();
 
 
-
-	p2.entrarCarro(&c1);
-	cout << endl << p2.getAsString();
-
-	p1.sairCarro();
-	cout << endl << p1.getAsString();
-	cout << endl << c1.getStringOcupado();
-
-
-	p2.entrarCarro(&c1);
-	cout << endl << p2.getAsString();
+	//p2.entrarCarro(&c1);
+	//cout << endl << p2.getStringDescricao();
 
 	//APENAS ESTÁ AQUI PARA TESTAR
 	Comandos c = Comandos();

@@ -27,6 +27,7 @@ public:
 	bool verificaIdent(char ident);
 
 	string descricaoCarro() const;
+	string descricaoPiloto() const;
 
 };
 

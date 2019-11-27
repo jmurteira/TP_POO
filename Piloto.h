@@ -29,8 +29,8 @@ public:
 	string getNome() const;
 	char getCarro() const;
 
-	string getAsString()const;
-	string ListaPilotos()const;
+	string getStringDescricao()const;
+	
 
 	
 };
