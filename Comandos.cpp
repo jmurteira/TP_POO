@@ -42,10 +42,9 @@ int Comandos::lerComando() {
 			//cout << "parametro inexistente" << endl;
 		}
 		else if (op1 == "lista") {
-			//cout << Comandos().dgv->getDgv().descricaoCarro();
 			cout << getDgv()->descricaoCarro();
 			cout << getDgv()->descricaoPiloto();
-			//return 9;
+
 			return 0;
 		}
 	}
