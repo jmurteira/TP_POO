@@ -121,6 +121,7 @@
     <ClCompile Include="Comandos.cpp" />
     <ClCompile Include="Consola.cpp" />
     <ClCompile Include="Corrida.cpp" />
+    <ClCompile Include="Dga.cpp" />
     <ClCompile Include="Dgv.cpp" />
     <ClCompile Include="Garagem.cpp" />
     <ClCompile Include="Piloto.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="Comandos.h" />
     <ClInclude Include="Consola.h" />
     <ClInclude Include="Corrida.h" />
+    <ClInclude Include="Dga.h" />
     <ClInclude Include="Dgv.h" />
     <ClInclude Include="Garagem.h" />
     <ClInclude Include="Piloto.h" />

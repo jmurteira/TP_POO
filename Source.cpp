@@ -1,5 +1,6 @@
 #include "Autodromo.h"
 #include "Carro.h"
+#include "Comandos.h"
 #include <string>
 #include <vector>
 #include <iostream>
@@ -12,7 +13,7 @@ int main() {
 	Autodromo aut1 = Autodromo("Vienna", 4268);
 	cout << aut1.getAsString();
 
-
+	int teste;
 	Carro c1 = Carro("Alfa", "Romeu");
 	//c1.carregaBat();
 	//c1.acelera();
@@ -50,6 +51,15 @@ int main() {
 
 	p2.entrarCarro(&c1);
 	cout << endl << p2.getAsString();
+
+	//APENAS ESTÁ AQUI PARA TESTAR
+	Comandos c = Comandos();
+	teste = c.lerComando();
+
+	if (teste == 1)
+	{
+		cout << endl << endl << endl << "UM CRLH";
+	}
 
 	cin.get();
 }

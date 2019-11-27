@@ -8,35 +8,42 @@
 Comandos::Comandos(){}
 
 
-void Comandos::lerComando() {
+int Comandos::lerComando() {
 	string op1;
 	string op2;
 	string op3;
+
+	cout << "Introduza comando: ";
+
 	getline(cin, comando);
 	istringstream is(comando);
+
+	
+
 	if (is >> op1) {
 		if (comando == "carregaP")
-			return;
+			return 1;
 		else if (comando == "carregaC")
-			return;
+			return 2;
 		else if (comando == "carregaA")
-			return;
+			return 3;
 		else if (comando == "cria")
-			return;
+			return 4;
 		else if (comando == "apaga")
-			return;
+			return 5;
 		else if (op1 == "entranocarro")
-			return;
+			return 6;
 		else if (op1 ==  "saidocarro") {
 			if (is >> op2)
-
+				return 7;
 				//m.getdgv->saidocarro(op2);
 			else
-				cout << "parametro inexistente" << endl;
+				return 8;
+				//cout << "parametro inexistente" << endl;
 		}
 		else if (comando == "lista")
 
-		return;
+		return 0;
 	}
 
 
