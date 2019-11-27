@@ -43,7 +43,7 @@ int Comandos::lerComando() {
 		}
 		else if (op1 == "lista") {
 			//cout << Comandos().dgv->getDgv().descricaoCarro();
-			cout << Comandos().dgv->descricaoCarro();
+			cout << getDgv()->descricaoCarro();
 			//return 9;
 			return 0;
 		}
@@ -52,7 +52,12 @@ int Comandos::lerComando() {
 
 }
 
-void Comandos::getDgv(Dgv* d) {
+Dgv* Comandos::getDgv() {
 
+	return dgv;
+}
+
+
+void Comandos::atribuiDgv(Dgv* d) {
 	dgv = d;
 }

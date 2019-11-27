@@ -100,6 +100,7 @@ int main() {
 
 	//APENAS ESTÁ AQUI PARA TESTAR
 	Comandos c = Comandos();
+	c.atribuiDgv(&dgv);
 	teste = c.lerComando();
 
 	if (teste == 1)

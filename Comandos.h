@@ -8,7 +8,7 @@ class Dgv;
 using namespace std;
 class Comandos
 {
-	Dgv* dgv;
+	Dgv * dgv;
 	string comando;
 public:
 
@@ -16,6 +16,7 @@ public:
 
 	
 	int lerComando();
-	void getDgv(Dgv* d);
+	Dgv* getDgv();
+	void atribuiDgv(Dgv * d);
 };
 
