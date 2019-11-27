@@ -5,3 +5,7 @@
 *.idb
 *.obj
 *.xml
+*.tlog
+*.obj
+*.idb
+*.pdb
