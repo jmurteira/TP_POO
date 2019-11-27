@@ -38,11 +38,9 @@ int Comandos::lerComando() {
 							getDgv()->apagaCarro(op5);
 					}
 					else if (op4 == 'p') {
-						if (is >> op2) {
-							
-								getDgv()->apagaPiloto(op2);
-						}
-						
+						if (is >> op2)
+							getDgv()->apagaPiloto(op2);
+					}
 					else if (op4 == 'a')
 						cout << "apaga autodromo";
 					else
