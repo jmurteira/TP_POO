@@ -50,7 +50,7 @@ int main() {
 	dgv.novoCarro("asdafsdffsd", "Corsa");
 
 
-	cout << dgv.descricaoCarro() << endl;
+	//cout << dgv.descricaoCarro() << endl;
 
 	//cout << aut1.getAsString();
 
@@ -84,8 +84,7 @@ int main() {
 	//cout << endl << p1.getStringDescricao();
 	//cout << endl << c1.getStringOcupado();
 
-	cout << 
-		dgv.descricaoPiloto();
+	//cout <<  dgv.descricaoPiloto();
 
 	//p2.entrarCarro(&c1);
 	//cout << endl << p2.getStringDescricao();
