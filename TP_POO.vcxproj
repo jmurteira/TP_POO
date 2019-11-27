@@ -120,12 +120,10 @@
     <ClCompile Include="Carro.cpp" />
     <ClCompile Include="Comandos.cpp" />
     <ClCompile Include="Consola.cpp" />
-    <ClCompile Include="Corrida.cpp" />
     <ClCompile Include="Dga.cpp" />
     <ClCompile Include="Dgv.cpp" />
-    <ClCompile Include="Garagem.cpp" />
+    <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Piloto.cpp" />
-    <ClCompile Include="Pista.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -134,12 +132,10 @@
     <ClInclude Include="Carro.h" />
     <ClInclude Include="Comandos.h" />
     <ClInclude Include="Consola.h" />
-    <ClInclude Include="Corrida.h" />
     <ClInclude Include="Dga.h" />
     <ClInclude Include="Dgv.h" />
-    <ClInclude Include="Garagem.h" />
+    <ClInclude Include="Interface.h" />
     <ClInclude Include="Piloto.h" />
-    <ClInclude Include="Pista.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
