@@ -33,19 +33,26 @@ int Comandos::lerComando() {
 			return 5;
 		else if (op1 == "entranocarro")
 			return 6;
-		else if (op1 ==  "saidocarro") {
+		else if (op1 == "saidocarro") {
 			if (is >> op2)
 				return 7;
-				//m.getdgv->saidocarro(op2);
+			//m.getdgv->saidocarro(op2);
 			else
 				return 8;
-				//cout << "parametro inexistente" << endl;
+			//cout << "parametro inexistente" << endl;
 		}
-		else if (comando == "lista")
-
-		return 0;
+		else if (op1 == "lista") {
+			//cout << Comandos().dgv->getDgv().descricaoCarro();
+			cout << Comandos().dgv->descricaoCarro();
+			//return 9;
+			return 0;
+		}
 	}
 
 
 }
 
+void Comandos::getDgv(Dgv* d) {
+
+	dgv = d;
+}

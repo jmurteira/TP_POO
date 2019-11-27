@@ -14,8 +14,8 @@ public:
 
 	Comandos();
 
-	void getDgv()const;
+	
 	int lerComando();
-
+	void getDgv(Dgv* d);
 };
 

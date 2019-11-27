@@ -1,4 +1,5 @@
 #include "Piloto.h"
+#include "Carro.h"
 #include <sstream>
 #include <iostream>
 

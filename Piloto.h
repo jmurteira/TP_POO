@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
-#include "Carro.h"
+
+
+class Carro;
 
 using namespace std;
 

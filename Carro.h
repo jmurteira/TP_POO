@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-class Dgv;
+
 using namespace std;
 
 //todas as funcionalidades do carro: acelerar, travar, etc que são controladas pelo piloto têm de ficar privadas, pois só o piloto é que as controla
@@ -24,11 +24,9 @@ class Carro
 	bool avariado;
 
 	//ponteiro para piloto ( ??? )
-	void acelera();
-	void trava();
 
 public:
-	Carro(string marc, string mod, char id = 'a');
+	Carro(string marc, string mod, char id = '.');
 	~Carro();
 	
 	char getIdent()const;
@@ -60,6 +58,7 @@ public:
 
 	string getAsString()const;
 	string getStringOcupado()const;
-	//string ListaCarros()const;
+	string getStringDescricao()const;
+	
 };
 
