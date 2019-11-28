@@ -2,7 +2,7 @@
 #include "Carro.h"
 #include "Piloto.h"
 #include <fstream>
-
+#include <sstream>
 
 Dgv::Dgv(string id):DgvID(id) {}
 
@@ -43,11 +43,23 @@ Piloto* Dgv::novoPiloto(string n, int t) {
 
 void Dgv::carregaP(string fich) {
 	string linha;
+	string tipo;
 	ifstream file(fich);
 	if (file.is_open())
 	{
 		while (getline(file, linha))
 		{
+			int t;
+			string nome;
+			istringstream is(linha);
+			is >> tipo;
+			if (tipo == "classico") {
+				t = 1;
+				cout << "\n\n\nPILOTO CLASSICO\n\n\n";
+				is >> nome;
+				novoPiloto(nome,t);
+			}
+			
 			cout << linha << '\n';
 		}
 		file.close();

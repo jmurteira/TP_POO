@@ -15,7 +15,7 @@ public:
 	Comandos();
 
 	
-	int lerComando();
+	void lerComando();
 	Dgv* getDgv();
 	void atribuiDgv(Dgv * d);
 };

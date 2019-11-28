@@ -100,12 +100,7 @@ int main() {
 	//APENAS ESTÁ AQUI PARA TESTAR
 	Comandos c = Comandos();
 	c.atribuiDgv(&dgv);
-	teste = c.lerComando();
-
-	if (teste == 1)
-	{
-		cout << endl << endl << endl << "UM CRLH";
-	}
+	c.lerComando();
 
 	/*cout << endl << endl << endl;
 	dgv.carregaP("pilotos.txt");

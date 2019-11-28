@@ -8,7 +8,7 @@
 Comandos::Comandos(){}
 
 
-int Comandos::lerComando() {
+void Comandos::lerComando() {
 	string op1;
 	string op2;
 	string op3;
@@ -24,14 +24,15 @@ int Comandos::lerComando() {
 		istringstream is(comando);
 		if (is >> op1) {
 			if (op1 == "carregaP")
-				if (is >> op2)
-					getDgv()->carregaP(op2);
-			else if (op1 == "carregaC")
-				return 2;
+				return;
+				/*if (is >> op2)
+					getDgv()->carregaP(op2);*/
+				else if (op1 == "carregaC")
+					return;
 			else if (op1 == "carregaA")
-				return 3;
+				return;
 			else if (op1 == "cria")
-				return 4;
+				return;
 			else if (op1 == "apaga") {
 				if (is >> op4) {
 					if (op4 == 'c') {
@@ -50,16 +51,17 @@ int Comandos::lerComando() {
 			}
 
 			else if (op1 == "entranocarro")
-				return 6;
+				return;
 			else if (op1 == "saidocarro") {
 				if (is >> op2)
-					return 7;
+					return;
 				//m.getdgv->saidocarro(op2);
 				else
-					return 8;
+					return;
 				//cout << "parametro inexistente" << endl;
 			}
 			else if (op1 == "lista") {
+					cout << "\n\n\nLISTA\n\n\n";
 				cout << getDgv()->descricaoCarro();
 				cout << getDgv()->descricaoPiloto();
 			}
