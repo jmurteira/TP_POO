@@ -17,7 +17,7 @@ public:
 
 
 	Dgv(string id);
-	Carro* novoCarro(string marc, string mod, int capAtual, int capMax, char ident = '.');
+	Carro* novoCarro(string marc, string mod, int capAtual, int capMax, char ident = ' ');
 	Piloto* novoPiloto(string n, int t);
 
 	Carro* procuraCarro(char ident) const;

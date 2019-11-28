@@ -26,7 +26,7 @@ class Carro
 	//ponteiro para piloto ( ??? )
 
 public:
-	Carro(string marc, string mod, int capAtual, int capMax, char id = '.');
+	Carro(string marc, string mod, int capAtual, int capMax, char id = ' ');
 	~Carro();
 	
 	char getIdent()const;

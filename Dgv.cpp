@@ -11,7 +11,7 @@ Carro* Dgv::novoCarro(string marc, string mod, int capAtual, int capMax, char id
 	if(procuraCarro(ident) == nullptr && carros.size() < 26){
 		ident = 'a' + rand() % 26;
 		//cout << "teste1: " << ident << endl;
-		while (verificaIdent(ident) == false) {
+		while (!verificaIdent(ident)) {
 			ident = 'a' + rand() % 26;
 			//cout << "teste2: " << ident << endl;
 			
@@ -202,13 +202,13 @@ void Dgv::entraNoCarro(char ident, string nome) {
 	Carro* c = procuraCarro(ident);
 	Piloto* p = procuraPiloto(nome);
 
-	if (c != nullptr && p != nullptr && c->getOcupado() == false){
+	if (c != nullptr && p->getCarro() == nullptr && c->getOcupado() == false){
 		p->entrarCarro(c);
 	}
 	else if (c != nullptr && c->getOcupado() == true)
 		cout << "carro com id: " << ident << " ja se encontra ocupado" << endl;
-	else if (c != nullptr)
-		cout << "Piloto: " << nome << " ainda nao tem carro" << endl;
+	else if (p!= nullptr && p->getCarro() != nullptr)
+		cout << "Piloto: " << nome << " ja tem carro" << endl;
 }
 
 void Dgv::saiDoCarro(char ident) {
