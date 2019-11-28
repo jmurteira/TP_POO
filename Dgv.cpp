@@ -170,6 +170,10 @@ string Dgv::descricaoPiloto() const {
 void Dgv::apagaCarro(char ident) {
 	if (procuraCarro(ident) != nullptr) {
 		cout << "entrou";
+		for (size_t i = 0; i < pilotos.size(); i++) {
+			if (pilotos[i]->getIdCarro() == ident)
+				pilotos[i]->sairCarro();
+		}
 		for(size_t i = 0; i < carros.size(); i++){
 			if (carros[i]->getIdent() == ident)
 				carros.erase(carros.begin() + i);
@@ -185,6 +189,7 @@ void Dgv::apagaPiloto(string nome) {
 		cout << "entrou";
 		for (size_t i = 0; i < pilotos.size(); i++) {
 			if (pilotos[i]->getNome() == nome)
+				pilotos[i]->getCarro()->setDesocupado();
 				pilotos.erase(pilotos.begin() + i);
 		}
 		delete procuraPiloto(nome);
