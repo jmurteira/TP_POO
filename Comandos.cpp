@@ -23,12 +23,12 @@ void Comandos::lerComando() {
 		getline(cin, comando);
 		istringstream is(comando);
 		if (is >> op1) {
-			if (op1 == "carregaP")
+			if (op1 == "carregaP") {
+				if (is >> op2)
+					getDgv()->carregaP(op2);
+			}
+			else if (op1 == "carregaC")
 				return;
-				/*if (is >> op2)
-					getDgv()->carregaP(op2);*/
-				else if (op1 == "carregaC")
-					return;
 			else if (op1 == "carregaA")
 				return;
 			else if (op1 == "cria")

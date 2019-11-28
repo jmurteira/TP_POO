@@ -1,2 +1,2 @@
 classico Joao
-Classico Jorge
+classico Jorge

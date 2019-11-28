@@ -53,14 +53,11 @@ void Dgv::carregaP(string fich) {
 			string nome;
 			istringstream is(linha);
 			is >> tipo;
-			if (tipo == "classico") {
+			if (tipo == "classico" /*|| tipo == "Classico"*/) {
 				t = 1;
-				cout << "\n\n\nPILOTO CLASSICO\n\n\n";
 				is >> nome;
 				novoPiloto(nome,t);
 			}
-			
-			cout << linha << '\n';
 		}
 		file.close();
 	}
