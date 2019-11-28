@@ -202,19 +202,24 @@ void Dgv::entraNoCarro(char ident, string nome) {
 	Carro* c = procuraCarro(ident);
 	Piloto* p = procuraPiloto(nome);
 
-	if (c != nullptr && p != nullptr){
+	if (c != nullptr && p != nullptr && c->getOcupado() == false){
 		p->entrarCarro(c);
 	}
-
+	else if (c != nullptr && c->getOcupado() == true)
+		cout << "carro com id: " << ident << " ja se encontra ocupado" << endl;
+	else if (c != nullptr)
+		cout << "Piloto: " << nome << " ainda nao tem carro" << endl;
 }
 
 void Dgv::saiDoCarro(char ident) {
 	Carro* c = procuraCarro(ident);
-	if (c != nullptr) {
+	if (c != nullptr && c->getOcupado() == false)
+		cout << "carro com id: " << ident << " ja se encontra livre" << endl;
+	else if (c != nullptr) {
 		for (vector<Piloto*>::const_iterator it = pilotos.cbegin();
 			it != pilotos.cend();
 			it++) {
-			if (c == (*it)->getCarro())
+			if (c == (*it)->getCarro() && c->getOcupado() == true)
 				(*it)->sairCarro();
 		}
 	}
