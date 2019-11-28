@@ -6,7 +6,7 @@
 
 Dgv::Dgv(string id):DgvID(id) {}
 
-Carro* Dgv::novoCarro(string marc, string mod, char ident) {
+Carro* Dgv::novoCarro(string marc, string mod, int capAtual, int capMax, char ident) {
 	
 	if(procuraCarro(ident) == nullptr && carros.size() < 26){
 		ident = 'a' + rand() % 26;
@@ -17,12 +17,12 @@ Carro* Dgv::novoCarro(string marc, string mod, char ident) {
 			
 		}
 		//cout << "teste3: " << ident << endl;
-			Carro* p = new Carro(marc, mod, ident);
+			Carro* p = new Carro(marc, mod, capAtual, capMax, ident);
 			carros.push_back(p);
 			return p;
 	}
 	else if (procuraCarro(ident) == nullptr && carros.size() >= 26) {
-		Carro* p = new Carro(marc, mod, ident = '?');
+		Carro* p = new Carro(marc, mod, capAtual, capMax, ident = '?');
 		carros.push_back(p);
 		return p;
 	}
@@ -63,6 +63,53 @@ void Dgv::carregaP(string fich) {
 	}
 	else cout << endl << "Erro ao abrir o ficheiro";
 }
+
+void Dgv::carregaC(string fich) {
+	string linha;
+	ifstream file(fich);
+	if (file.is_open())
+	{
+		while (getline(file, linha))
+		{
+			int atual, max;
+			string marca, modelo;
+			istringstream is(linha);
+			is >> atual;
+			is >> max;
+			is >> marca;
+			is >> modelo;
+			if (atual <= max) {
+				novoCarro(marca,modelo,atual,max);
+			}
+		}
+		file.close();
+	}
+	else cout << endl << "Erro ao abrir o ficheiro";
+}
+
+void Dgv::carregaA(string fich) {
+	string linha;
+	string tipo;
+	ifstream file(fich);
+	if (file.is_open())
+	{
+		while (getline(file, linha))
+		{
+			int t;
+			string nome;
+			istringstream is(linha);
+			is >> tipo;
+			if (tipo == "classico" /*|| tipo == "Classico"*/) {
+				t = 1;
+				is >> nome;
+				novoPiloto(nome, t);
+			}
+		}
+		file.close();
+	}
+	else cout << endl << "Erro ao abrir o ficheiro";
+}
+
 
 
 Carro* Dgv::procuraCarro(char ident) const {

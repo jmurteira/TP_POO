@@ -44,10 +44,10 @@ int main() {
 	dgv.novoCarro("V", "Corsa");
 	dgv.novoCarro("W", "Corsa");
 	dgv.novoCarro("X", "Corsa");*/
-	dgv.novoCarro("Y", "Corsa");
-	dgv.novoCarro("Z", "Corsa");
-	dgv.novoCarro("asdfsd", "Corsa");
-	dgv.novoCarro("asdafsdffsd", "Corsa");
+	dgv.novoCarro("Y", "Corsa",10,50);
+	dgv.novoCarro("Z", "Corsa",10, 50);
+	dgv.novoCarro("asdfsd", "Corsa", 10, 50);
+	dgv.novoCarro("asdafsdffsd", "Corsa", 10, 50);
 
 
 	cout << dgv.descricaoCarro() << endl;
@@ -55,7 +55,7 @@ int main() {
 	//cout << aut1.getAsString();
 
 	int teste;
-	Carro c1 = Carro("Alfa", "Romeu");
+	Carro c1 = Carro("Alfa", "Romeu", 10, 50);
 	//c1.carregaBat();
 	//c1.acelera();
 	/*c1.acelera();

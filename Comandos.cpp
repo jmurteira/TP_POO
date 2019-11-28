@@ -27,8 +27,10 @@ void Comandos::lerComando() {
 				if (is >> op2)
 					getDgv()->carregaP(op2);
 			}
-			else if (op1 == "carregaC")
-				return;
+			else if (op1 == "carregaC") {
+				if (is >> op2)
+					getDgv()->carregaC(op2);
+			}
 			else if (op1 == "carregaA")
 				return;
 			else if (op1 == "cria")

@@ -4,7 +4,8 @@
 #include <iostream>
 
 
-Carro::Carro(string marc, string mod, char id) : marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(100), energia(75),velocidade(0), velMax(50), ocupado(false), sinalEmerg(false), avariado(false), n_energia(5)
+Carro::Carro(string marc, string mod, int capAtual, int capMax, char id) : 
+marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual),velocidade(0), velMax(50), ocupado(false), sinalEmerg(false), avariado(false), n_energia(5)
 {
 		
 		
