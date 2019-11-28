@@ -74,12 +74,13 @@ void Dgv::carregaC(string fich) {
 			int atual, max;
 			string marca, modelo;
 			istringstream is(linha);
-			is >> atual;
-			is >> max;
-			is >> marca;
-			is >> modelo;
-			if (atual <= max) {
-				novoCarro(marca,modelo,atual,max);
+			if (is >> atual) {
+				if (is >> max)
+					if (is >> marca)
+						if (is >> modelo)
+							if (atual <= max) {
+								novoCarro(marca, modelo, atual, max);
+							}
 			}
 		}
 		file.close();
