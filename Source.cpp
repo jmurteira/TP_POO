@@ -56,6 +56,7 @@ int main() {
 
 	int teste;
 	Carro c1 = Carro("Alfa", "Romeu", 10, 50);
+	
 	//c1.carregaBat();
 	//c1.acelera();
 	/*c1.acelera();
@@ -67,8 +68,9 @@ int main() {
 	c1.acelera();
 	c1.acelera();
 	c1.acelera();*/
+	
 	c1.passaTempoCarro(548,5000);
-	cout << endl << endl << c1.getAsString();
+	//cout << endl << endl << c1.getAsString();
 	
 
 

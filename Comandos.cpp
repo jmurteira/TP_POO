@@ -52,12 +52,14 @@ void Comandos::lerComando() {
 				}
 			}
 
-			else if (op1 == "entranocarro")
-				return;
+			else if (op1 == "entranocarro") {
+				if (is >> op4)
+					if (is >> op2)
+						getDgv()->entraNoCarro(op4, op2);
+			}
 			else if (op1 == "saidocarro") {
-				if (is >> op2)
-					return;
-				//m.getdgv->saidocarro(op2);
+				if (is >> op4)
+					getDgv()->saiDoCarro(op4);
 				else
 					return;
 				//cout << "parametro inexistente" << endl;

@@ -24,7 +24,6 @@ Carro::~Carro()
 }
 
 char Carro::getIdent()const {
-	
 	return ident;
 }
 

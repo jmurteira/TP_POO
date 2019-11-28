@@ -33,6 +33,9 @@ public:
 	string descricaoCarro() const;
 	string descricaoPiloto() const;
 
+	void entraNoCarro(char ident, string nome);
+	void saiDoCarro(char ident);
+
 	void apagaCarro(char ident);
 	void apagaPiloto(string nome);
 };

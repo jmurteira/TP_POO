@@ -27,7 +27,9 @@ public:
 	void passaTempoPiloto(int t, int dist);
 
 	string getNome() const;
-	char getCarro() const;
+	char getIdCarro() const;
+
+	Carro* getCarro() const;
 
 	string getStringDescricao()const;
 	

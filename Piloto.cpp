@@ -44,7 +44,6 @@ void Piloto::entrarCarro(Carro* c) {
 void Piloto::sairCarro() {
 	carro->setDesocupado();
 	carro = nullptr;
-	
 }
 
 
@@ -52,7 +51,7 @@ string Piloto::getNome() const {
 	return nome;
 }
 
-char Piloto::getCarro() const {
+char Piloto::getIdCarro() const {
 	if (carro != nullptr)
 		return carro->getIdent();
 }
@@ -70,5 +69,9 @@ string Piloto::getStringDescricao()const {
 		os << "Com Carro atribuido" << endl;
 	return os.str();
 
+}
+
+Carro* Piloto::getCarro()  const {
+	return carro;
 }
 

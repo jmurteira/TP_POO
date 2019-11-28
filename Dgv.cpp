@@ -192,3 +192,27 @@ void Dgv::apagaPiloto(string nome) {
 	else
 		cout << "piloto com nome: " << nome << " inexistente" << endl;
 }
+
+void Dgv::entraNoCarro(char ident, string nome) {
+	Carro* c = procuraCarro(ident);
+	Piloto* p = procuraPiloto(nome);
+
+	if (c != nullptr && p != nullptr){
+		p->entrarCarro(c);
+	}
+
+}
+
+void Dgv::saiDoCarro(char ident) {
+	Carro* c = procuraCarro(ident);
+	if (c != nullptr) {
+		for (vector<Piloto*>::const_iterator it = pilotos.cbegin();
+			it != pilotos.cend();
+			it++) {
+			if (c == (*it)->getCarro())
+				(*it)->sairCarro();
+		}
+	}
+	else
+		cout << "carro com id: " << ident << " inexistente" << endl;
+}
