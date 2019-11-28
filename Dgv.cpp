@@ -1,7 +1,7 @@
 #include "Dgv.h"
 #include "Carro.h"
 #include "Piloto.h"
-
+#include <fstream>
 
 
 Dgv::Dgv(string id):DgvID(id) {}
@@ -39,6 +39,20 @@ Piloto* Dgv::novoPiloto(string n, int t) {
 	}
 	return nullptr;
 
+}
+
+void Dgv::carregaP(string fich) {
+	string linha;
+	ifstream file(fich);
+	if (file.is_open())
+	{
+		while (getline(file, linha))
+		{
+			cout << linha << '\n';
+		}
+		file.close();
+	}
+	else cout << endl << "Erro ao abrir o ficheiro";
 }
 
 

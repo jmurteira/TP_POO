@@ -24,7 +24,8 @@ int Comandos::lerComando() {
 		istringstream is(comando);
 		if (is >> op1) {
 			if (op1 == "carregaP")
-				return 1;
+				if (is >> op2)
+					getDgv()->carregaP(op2);
 			else if (op1 == "carregaC")
 				return 2;
 			else if (op1 == "carregaA")

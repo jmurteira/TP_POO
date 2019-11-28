@@ -107,6 +107,10 @@ int main() {
 		cout << endl << endl << endl << "UM CRLH";
 	}
 
+	/*cout << endl << endl << endl;
+	dgv.carregaP("pilotos.txt");
+	cout << endl << endl;*/
+
 	cin.get();
 }
 

@@ -23,6 +23,8 @@ public:
 	Carro* procuraCarro(char ident) const;
 	Piloto* procuraPiloto(string nome) const;
 
+	void carregaP(string fich);
+
 	
 	bool verificaIdent(char ident);
 
