@@ -15,7 +15,16 @@ using namespace std;
 int main() {
 	srand(time(0)); //nao sei se é a melhor cena mas se estiver no construtor carro repete sempre a mesma letra. supostamente só deve ser chamada uma vez
 	
-	//Consola::setBackgroundColor(Consola::BRANCO_CLARO);
+	Consola::setBackgroundColor(Consola::BRANCO_CLARO);
+	Consola::setTextColor(Consola::PRETO);
+	Consola::gotoxy(5, 10);
+
+	for (int i = 0; i < 40; i++) {
+		for (int j = 0; j < 40; j++) {
+			Consola::gotoxy(i+40, j);
+			cout << " ";
+		}
+	}
 
 	Dga dga("Portugal");
 	Dgv dgv("Portugal");
