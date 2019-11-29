@@ -18,9 +18,11 @@ public:
 
 	Dga(string id);
 
-	Autodromo* novoAutodromo(int cap, string n, int dist);
+	Autodromo* novoAutodromo(int cap, int dist, string n);
 
 	Autodromo* procuraAutodromo(string nome) const;
+
+	string descricaoAutodromo() const;
 
 	Carro* novoCarro(string marc, string mod, char ident);
 	Piloto* novoPiloto(string n, int t);
@@ -28,6 +30,8 @@ public:
 	Carro* procuraCarro(char ident) const;
 	Piloto* procuraPiloto(string nome) const;
 
+	//so para verificar que nesta meta só existe um autodromo
+	int getDgaSize()const;
 
 };
 

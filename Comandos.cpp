@@ -22,7 +22,6 @@ void Comandos::lerComando() {
 	int num2;
 
 	int contador = 0; //para verificar se o numero de parametros do comando está certo
-	
 	do {
 		cout << "\nIntroduza comando: ";
 		getline(cin, comando);
@@ -82,13 +81,15 @@ void Comandos::lerComando() {
 						if (is >> num1) {
 							contador += 1;
 						}
-						if (is >> op2)
-							contador += 1;
 						if (is >> num2)
 							contador += 1;
+						if (is >> op2)
+							contador += 1;
 						if (contador == 3) {
-							//getDgv()->novoPiloto(op2, op3);
-							getDga()->novoAutodromo(num1,op2,num2);
+							if (getDga()->getDgaSize() == 0)
+								getDga()->novoAutodromo(num1, num2, op2);
+							else
+								cout << "ja existe um autodromo." << endl;
 							contador = 0;
 						}
 						else if (contador != 3) {
@@ -136,6 +137,7 @@ void Comandos::lerComando() {
 					cout << "\n\n\nLISTA\n\n\n";
 				cout << getDgv()->descricaoCarro();
 				cout << getDgv()->descricaoPiloto();
+				cout << getDga()->descricaoAutodromo();
 			}
 			else if (op1 == "sair") {
 				return;
@@ -185,3 +187,8 @@ void Comandos::setCamp(Campeonato* c) {
 void Comandos::atribuiDgv(Dgv* d) {
 	dgv = d;
 }
+
+void Comandos::atribuiDga(Dga* da) {
+	dga = da;
+}
+

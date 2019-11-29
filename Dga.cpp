@@ -5,9 +5,9 @@
 
 Dga::Dga(string id) :DgaID(id) {}
 
-Autodromo* Dga::novoAutodromo(int cap, string n, int dist) {
+Autodromo* Dga::novoAutodromo(int cap, int dist, string n) {
 	if (procuraAutodromo(n) == nullptr) {
-		Autodromo* a = new Autodromo(cap, n, dist);
+		Autodromo* a = new Autodromo(cap, dist, n);
 		autodromos.push_back(a);
 		return a;
 	}
@@ -24,4 +24,19 @@ Autodromo* Dga::procuraAutodromo(string nome) const {
 			return *it;
 		}
 	return nullptr;
+}
+
+string Dga::descricaoAutodromo() const {
+	string res = "\nDGV - Autodromos Registados: \n---------------";
+	for (vector<Autodromo*>::const_iterator it = autodromos.cbegin();
+		it != autodromos.cend();
+		it++)
+		res += "\n" + (*it)->getStringDescricao();
+	return res;
+}
+
+int Dga::getDgaSize()const {
+
+	return autodromos.size();
+
 }

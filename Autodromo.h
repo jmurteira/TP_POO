@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <iostream>
 #include "Piloto.h"
 #include "Carro.h"
 
@@ -19,7 +20,7 @@ class Autodromo
 	vector <Piloto *> classificacao[5];	//(?)
 
 public:
-	Autodromo(int cap, string n, int dist);
+	Autodromo(int cap , int dist, string n);
 	~Autodromo();
 
 	string getNome() const;
@@ -28,7 +29,7 @@ public:
 
 	void atualizaClassif();
 
-	string getAsString()const;
+	string getStringDescricao()const;
 
 	void passatempo(int t);
 
