@@ -34,6 +34,10 @@ int Carro::getPosicao()const {
 	return posicao;
 }
 
+int Carro::getTempo()const {
+	return cronometro;
+}
+
 void Carro::setOcupado() {
 	ocupado = true;
 }

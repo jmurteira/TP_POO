@@ -17,7 +17,7 @@ class Campeonato
 	Autodromo* corrida[1];
 	//vector <Autodromo*> corrida;
 	vector <Piloto*> participantes[5];
-	vector <Classificacao*> classGeral[5];
+	vector <Classificacao*> classGeral;
 
 public:
 	Campeonato();
@@ -27,6 +27,6 @@ public:
 
 	int getTam() const;
 
-	void atualizaClass();
+	void atualizaClassif();
 };
 
