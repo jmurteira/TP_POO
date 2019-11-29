@@ -6,6 +6,7 @@
 
 #include "Autodromo.h"
 #include "Piloto.h"
+#include "Classificacao.h"
 
 
 
@@ -16,7 +17,7 @@ class Campeonato
 	Autodromo* corrida[1];
 	//vector <Autodromo*> corrida;
 	vector <Piloto*> participantes[5];
-	vector <Piloto*> classGeral[5];
+	vector <Classificacao*> classGeral[5];
 
 public:
 	Campeonato();

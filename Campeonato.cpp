@@ -38,7 +38,9 @@ void Campeonato::atualizaClass() {
 
 			if ((*it)->getCarro()->getPosicao() == -2) {
 				
-				int i = 0;
+				int i = 1;
+
+
 
 				//classGeral[i] = (*it);
 

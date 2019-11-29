@@ -16,6 +16,11 @@ public:
 	int getTempo() const;
 	int getPontos() const;
 
+	void setLugar(int l);
+	void setTempo(int t);
+	void setPontos(int pts);
+	void setPiloto(Piloto * p);
+
 	Piloto* getPiloto() const;
 };
 
