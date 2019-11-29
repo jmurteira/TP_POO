@@ -17,11 +17,20 @@ int main() {
 	
 	Consola::setBackgroundColor(Consola::BRANCO_CLARO);
 	Consola::setTextColor(Consola::PRETO);
-	Consola::gotoxy(5, 10);
 
-	for (int i = 0; i < 40; i++) {
-		for (int j = 0; j < 40; j++) {
-			Consola::gotoxy(i+40, j);
+	for (int i = 0; i < 30; i++) {
+		for (int j = 0; j < 10; j++) {
+			Consola::gotoxy(i+45, j);
+			cout << " ";
+		}
+	}
+
+	Consola::setBackgroundColor(Consola::PRETO);
+	Consola::setTextColor(Consola::BRANCO);
+
+	for (int i = 0; i < 16; i++) {
+		for (int j = 0; j < 6; j++) {
+			Consola::gotoxy(i + 52, j+2);
 			cout << " ";
 		}
 	}
