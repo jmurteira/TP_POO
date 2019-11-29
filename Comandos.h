@@ -22,6 +22,7 @@ public:
 	Dgv* getDgv();
 	Dga* getDga();
 	Campeonato* getCamp();
+	void setCamp(Campeonato * c);
 	void atribuiDgv(Dgv * d);
 };
 

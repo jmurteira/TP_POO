@@ -143,7 +143,11 @@ void Comandos::lerComando() {
 			else if (op1 == "campeonato") {
 				if (is >> op2) {
 					cout << "\n\nCOMECOU O CAMPEONATO\n" << endl;
-					getCamp();
+					Autodromo* aut1;
+					aut1 = getDga()->procuraAutodromo(op2);
+					setCamp(&(Campeonato()));
+					getCamp()->setCorrida(aut1);
+					getCamp()->iniciaCamp();
 				}
 			}
 			else if (op1 == "passatempo") {
@@ -171,6 +175,10 @@ Dga* Comandos::getDga() {
 Campeonato* Comandos::getCamp() {
 
 	return camp;
+}
+
+void Comandos::setCamp(Campeonato* c) {
+	camp = c;
 }
 
 

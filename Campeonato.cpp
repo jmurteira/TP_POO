@@ -5,8 +5,6 @@
 
 Campeonato::Campeonato()
 {
-	for (unsigned int i = 0; i < 1; i++)
-		corrida[i] = NULL;
 }
 
 
@@ -21,27 +19,37 @@ void Campeonato::passatempo(int t) {
 
 	}*/
 	//SÓ HÁ UMA CORRIDA
-	if (corrida[0]->getIniciada() == true && corrida[0]->getFinalizada() == false)
-		corrida[0]->passatempo(t);
+	if (corrida->getIniciada() == true && corrida->getFinalizada() == false)
+		corrida->passatempo(t);
+	else if (corrida->getIniciada() == false && corrida->getFinalizada() == false)
+		cout << "\nNenhuma corrida a decorrer\n\n";
 }
 
 int Campeonato::getTam() const {
 	return tam;
 }
 
+void Campeonato::setCorrida(Autodromo* aut) {
+	corrida = aut;
+}
+
 void Campeonato::iniciaCamp() {
-	if (corrida[0]->getIniciada() == false) {
-		corrida[0]->setIniciada(true);
+	if (corrida != nullptr) {
+		if (corrida->getIniciada() == false) {
+			corrida->setIniciada(true);
+		}
 	}
+	else
+		cout << " ";
 }
 
 
 //ATUALIZAR CLASSIF GERAL POIS TEMPOS CLASSIF ESPECIFICA DE CADA CORRIDA (NAO SEI SE É PRECISO NESTA META)
 void Campeonato::atualizaClassif() {
-	if (corrida[0]->getFinalizada() == true && corrida[0]->getClassifAtualizada() == false)
+	if (corrida->getFinalizada() == true && corrida->getClassifAtualizada() == false)
 	{
-		for (vector<Piloto*>::const_iterator it = corrida[0]->getPista().cbegin();
-			it != corrida[0]->getPista().cend();
+		for (vector<Piloto*>::const_iterator it = corrida->getPista().cbegin();
+			it != corrida->getPista().cend();
 			it++) {
 
 			if ((*it)->getCarro()->getPosicao() == -2 && (*it)->getAtualizado() == false) {
