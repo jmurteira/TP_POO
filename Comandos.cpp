@@ -2,6 +2,7 @@
 #include "Piloto.h"
 #include "Carro.h"
 #include "Dgv.h"
+#include "Dga.h"
 #include <sstream>
 #include <iostream>
 
@@ -14,7 +15,8 @@ void Comandos::lerComando() {
 	string op3;
 	char op4;
 	char op5;
-
+	string op6;
+	string op7;
 	
 
 	
@@ -33,8 +35,22 @@ void Comandos::lerComando() {
 			}
 			else if (op1 == "carregaA")
 				return;
-			else if (op1 == "cria")
-				return;
+			else if (op1 == "cria") {
+				if (is >> op4) {
+					if (op4 == 'c') {
+						is >> op6 >> op7 >> op2 >> op3;
+						getDgv()->novoCarro(stoi(op6), stoi(op7), op2, op3);
+					}
+					else if (op4 == 'p'){
+						is >> op2 >> op3;
+						getDgv()->novoPiloto(op2,op3);
+					}
+					else if (op4 == 'a') {
+						is >> op2 >> op3;
+						
+					}
+				}
+			}
 			else if (op1 == "apaga") {
 				if (is >> op4) {
 					if (op4 == 'c') {

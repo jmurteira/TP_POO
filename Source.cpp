@@ -3,6 +3,7 @@
 #include "Comandos.h"
 #include "Dga.h"
 #include "Dgv.h"
+#include "Consola.h"
 #include <string>
 #include <vector>
 #include <iostream>
@@ -14,6 +15,8 @@ using namespace std;
 int main() {
 	srand(time(0)); //nao sei se é a melhor cena mas se estiver no construtor carro repete sempre a mesma letra. supostamente só deve ser chamada uma vez
 	
+	Consola::setBackgroundColor(Consola::BRANCO_CLARO);
+
 	Dga dga("Portugal");
 	Dgv dgv("Portugal");
 	//Autodromo aut1 = Autodromo("Vienna", 4268);
@@ -44,10 +47,10 @@ int main() {
 	dgv.novoCarro("V", "Corsa", 10, 50);
 	dgv.novoCarro("W", "Corsa", 10, 50);
 	dgv.novoCarro("X", "Corsa",10, 50);*/
-	dgv.novoCarro("Y", "Corsa",10,50);
-	dgv.novoCarro("Z", "Corsa",10, 50);
-	dgv.novoCarro("asdfsd", "Corsa", 10, 50);
-	dgv.novoCarro("asdafsdffsd", "Corsa", 10, 50);
+	dgv.novoCarro(10, 50,"Y", "Corsa");
+	dgv.novoCarro(10, 50,"Z", "Corsa");
+	dgv.novoCarro(10, 50, "asdfsd", "Corsa");
+	dgv.novoCarro (10, 50,"asdafsdffsd", "Corsa");
 
 
 	cout << dgv.descricaoCarro() << endl;
@@ -76,8 +79,8 @@ int main() {
 
 	//Piloto p1 = Piloto("Vettel", 1);
 	//Piloto p2 = Piloto("Michael", 2);
-	dgv.novoPiloto("Vettel", 1);
-	dgv.novoPiloto("Michael", 2);
+	dgv.novoPiloto("classico","Vettel");
+	dgv.novoPiloto("classico","Michael");
 	//cout << endl << p1.getStringDescricao();
 	//cout << endl << p2.getStringDescricao();
 

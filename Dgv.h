@@ -17,8 +17,8 @@ public:
 
 
 	Dgv(string id);
-	Carro* novoCarro(string marc, string mod, int capAtual, int capMax, char ident = ' ');
-	Piloto* novoPiloto(string n, int t);
+	Carro* novoCarro(int capAtual, int capMax, string marc, string mod,  char ident = ' ');
+	Piloto* novoPiloto(string t, string n);
 
 	Carro* procuraCarro(char ident) const;
 	Piloto* procuraPiloto(string nome) const;
@@ -38,5 +38,9 @@ public:
 
 	void apagaCarro(char ident);
 	void apagaPiloto(string nome);
+
+	//void criaCarro(int capAtual, int capMax, string marc, string mod);
+	//void criaPiloto(int t, string nome);
+	//void criaAutodromo()
 };
 

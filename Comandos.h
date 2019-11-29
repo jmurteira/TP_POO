@@ -4,6 +4,7 @@
 class Carro;
 class Piloto;
 class Dgv;
+class Dga;
 
 using namespace std;
 class Comandos

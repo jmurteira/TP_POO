@@ -6,7 +6,7 @@
 
 Dgv::Dgv(string id):DgvID(id) {}
 
-Carro* Dgv::novoCarro(string marc, string mod, int capAtual, int capMax, char ident) {
+Carro* Dgv::novoCarro(int capAtual, int capMax, string marc, string mod, char ident) {
 	
 	if(procuraCarro(ident) == nullptr && carros.size() < 26){
 		ident = 'a' + rand() % 26;
@@ -31,9 +31,9 @@ Carro* Dgv::novoCarro(string marc, string mod, int capAtual, int capMax, char id
 
 
 
-Piloto* Dgv::novoPiloto(string n, int t) {
+Piloto* Dgv::novoPiloto(string t, string n) {
 	if (procuraPiloto(n) == nullptr) {
-		Piloto* p = new Piloto(n, t);
+		Piloto* p = new Piloto(t, n);
 		pilotos.push_back(p);
 		return p;
 	}
@@ -49,14 +49,14 @@ void Dgv::carregaP(string fich) {
 	{
 		while (getline(file, linha))
 		{
-			int t;
+			string t;
 			string nome;
 			istringstream is(linha);
 			is >> tipo;
 			if (tipo == "classico" /*|| tipo == "Classico"*/) {
 				t = 1;
 				is >> nome;
-				novoPiloto(nome,t);
+				novoPiloto(t,nome);
 			}
 		}
 		file.close();
@@ -79,7 +79,7 @@ void Dgv::carregaC(string fich) {
 					if (is >> marca)
 						if (is >> modelo)
 							if (atual <= max) {
-								novoCarro(marca, modelo, atual, max);
+								novoCarro(atual, max, marca, modelo );
 							}
 			}
 		}
@@ -96,14 +96,14 @@ void Dgv::carregaA(string fich) {
 	{
 		while (getline(file, linha))
 		{
-			int t;
+			string t;
 			string nome;
 			istringstream is(linha);
 			is >> tipo;
 			if (tipo == "classico" /*|| tipo == "Classico"*/) {
 				t = 1;
 				is >> nome;
-				novoPiloto(nome, t);
+				novoPiloto(t, nome);
 			}
 		}
 		file.close();
