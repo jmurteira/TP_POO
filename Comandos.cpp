@@ -110,6 +110,12 @@ void Comandos::lerComando() {
 			else if (op1 == "sair") {
 				return;
 			}
+			else if (op1 == "campeonato") {
+				if (is >> op2) {
+					cout << "\n\nCOMECOU O CAMPEONATO\n" << endl;
+					getCamp();
+				}
+			}
 			else if (op1 == "passatempo") {
 				if (is >> op2)
 				{

@@ -33,6 +33,8 @@ public:
 	void passatempo(int t);
 
 	bool getIniciada() const;
+	void setIniciada(bool inic);
+
 	bool getFinalizada() const;
 	bool getClassifAtualizada() const;
 

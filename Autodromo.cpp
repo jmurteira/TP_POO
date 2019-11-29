@@ -39,6 +39,17 @@ bool Autodromo::getIniciada() const {
 	return iniciada;
 }
 
+void Autodromo::setIniciada(bool inic) {
+	iniciada = inic;
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();
+		it++) {
+
+		(*it)->setAtualizado(false);
+		(*it)->getCarro()->setPosicao(0);
+	}
+}
+
 bool Autodromo::getFinalizada() const {
 	return finalizada;
 }

@@ -34,8 +34,16 @@ int Carro::getPosicao()const {
 	return posicao;
 }
 
+void Carro::setPosicao(int pos) {
+	posicao = pos;
+}
+
 int Carro::getTempo()const {
 	return cronometro;
+}
+
+void Carro::setTempo(int t) {
+	cronometro = t;
 }
 
 void Carro::setOcupado() {

@@ -29,8 +29,14 @@ int Campeonato::getTam() const {
 	return tam;
 }
 
+void Campeonato::iniciaCamp() {
+	if (corrida[0]->getIniciada() == false) {
+		corrida[0]->setIniciada(true);
+	}
+}
 
 
+//ATUALIZAR CLASSIF GERAL POIS TEMPOS CLASSIF ESPECIFICA DE CADA CORRIDA (NAO SEI SE É PRECISO NESTA META)
 void Campeonato::atualizaClassif() {
 	if (corrida[0]->getFinalizada() == true && corrida[0]->getClassifAtualizada() == false)
 	{
