@@ -7,12 +7,14 @@ Carro::Carro(string marc, string mod, int capAtual, int capMax, char id) :
 marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual),velocidade(0), velMax(50), ocupado(false), sinalEmerg(false), avariado(false), n_energia(5)
 {
 		
-		
-		//srand(time(0));
-		
-		//ident = ident + rand() % 26;
 
-		//verificar com o vector dos carros do arquivo que não repetem os ids
+	if (capAtual < 0)
+		energia = 0;
+	else if (capAtual > capMax)
+		energia = energiaMax;
+	else if (capMax > 100)
+		energiaMax = 100;
+		
 	
 	//estao alguns valores inicializados por defeito
 }

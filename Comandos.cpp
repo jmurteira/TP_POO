@@ -18,8 +18,10 @@ void Comandos::lerComando() {
 	char op5;
 	string op6;
 	string op7;
-	
+	int num1;
+	int num2;
 
+	int contador = 0; //para verificar se o numero de parametros do comando está certo
 	
 	do {
 		cout << "\nIntroduza comando: ";
@@ -39,39 +41,67 @@ void Comandos::lerComando() {
 			else if (op1 == "cria") {
 				if (is >> op4) {
 					if (op4 == "c") {
-						is >> op6 >> op7 >> op2 >> op3;
-						if (op6 == "")
-							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
-						else if (op7 == "")
-							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
-						else if (op2 == "")
-							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
-						else if (op3 == "")
-							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
-						else
-							getDgv()->novoCarro(stoi(op6), stoi(op7), op2, op3);
-					}
-					else if (op4 == "p"){
-						is >> op2 >> op3;
-						if (op2 != "classico")
-							cout << "introduzir tipo de piloto. ainda so existe do tipo classico." << endl;
-						else if (op3 == "")
-							cout << "introduzir nome do piloto" << endl;
-						else if (is >> op6){
-							op3.append(" ");
-							op3.append(op6);
-							getDgv()->novoPiloto(op2,op3);
+						if (is >> num1)
+							contador += 1;
+						if (is >> num2)
+							contador += 1;
+						if (is >> op2)
+							contador += 1;
+						if (is >> op3) {
+							contador += 1;
 						}
-						else
+						if (contador == 4) {
+							getDgv()->novoCarro(num1, num2, op2, op3);
+							contador = 0;
+						}
+						else if (contador != 4) {
+							cout << "numero de parametros errado. cria <c> <dados do objeto> (energia energiaMax Marca Modelo)" << endl;
+							contador = 0;
+						}
+					}
+					else if (op4 == "p") {
+						if (is >> op2){
+							if (op2 != "classico"){
+								cout << "introduzir tipo de piloto. ainda so existe do tipo classico." << endl;
+							}
+							else
+								contador += 1;
+						}
+						if (is >> op3)
+							contador += 1;
+						if (contador == 2) {
 							getDgv()->novoPiloto(op2, op3);
+							contador = 0;
+						}
+						else if (contador != 2) {
+							cout << "numero de parametros errado. cria <p> <dados do objeto> (tipo nome)" << endl;
+							contador = 0;
+						}
 					}
 					else if (op4 == "a") {
-						is >> op2 >> op3;
-						
+						if (is >> num1) {
+							contador += 1;
+						}
+						if (is >> op1)
+							contador += 1;
+						if (is >> op2)
+							contador += 1;
+						if (contador == 3) {
+							//getDgv()->novoPiloto(op2, op3);
+							getDga()->novoAutodromo(num1, op1);
+							contador = 0;
+						}
+						else if (contador != 3) {
+							cout << "numero de parametros errado. cria <a> <dados do objeto> (N comprimento nome)" << endl;
+							contador = 0;
+						}
+
 					}
 					else
-						cout << "parametro errado. apaga <letraTipo> identificador (c - carro, p - piloto, a - autodromo)" << endl;
+						cout << "parametro errado. cria <letraTipo> (c - carro, p - piloto, a - autodromo) <dados do objeto>" << endl;
 				}
+				else
+					cout << "numero de parametros errado. cria <letraTipo> (c - carro, p - piloto, a - autodromo) <dados do objeto>" << endl;
 			}
 			else if (op1 == "apaga") {
 				if (is >> op4) {
@@ -132,6 +162,10 @@ void Comandos::lerComando() {
 Dgv* Comandos::getDgv() {
 
 	return dgv;
+}
+
+Dga* Comandos::getDga() {
+	return dga;
 }
 
 Campeonato* Comandos::getCamp() {

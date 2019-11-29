@@ -11,6 +11,7 @@ using namespace std;
 class Comandos
 {
 	Dgv * dgv;
+	Dga* dga;
 	Campeonato * camp;
 	string comando;
 public:
@@ -19,6 +20,7 @@ public:
 
 	void lerComando();
 	Dgv* getDgv();
+	Dga* getDga();
 	Campeonato* getCamp();
 	void atribuiDgv(Dgv * d);
 };
