@@ -18,8 +18,10 @@ void Comandos::lerComando() {
 	char op5;
 	string op6;
 	string op7;
-	
+	int num1;
+	int num2;
 
+	int contador; //para verificar se o numero de parametros do comando está certo
 	
 	do {
 		cout << "\nIntroduza comando: ";
@@ -39,17 +41,17 @@ void Comandos::lerComando() {
 			else if (op1 == "cria") {
 				if (is >> op4) {
 					if (op4 == "c") {
-						is >> op6 >> op7 >> op2 >> op3;
-						if (op6 == "")
+						is >> num1>> num2>> op2 >> op3;
+						if (num1 == ' ' )
 							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
-						else if (op7 == "")
+						else if (num2 == ' ')
 							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
 						else if (op2 == "")
 							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
 						else if (op3 == "")
 							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
 						else
-							getDgv()->novoCarro(stoi(op6), stoi(op7), op2, op3);
+							getDgv()->novoCarro(num1, num2, op2, op3);
 					}
 					else if (op4 == "p"){
 						is >> op2 >> op3;
