@@ -26,6 +26,6 @@ public:
 
 	int getTam() const;
 
-	//void atualizaClass();
+	void atualizaClass();
 };
 
