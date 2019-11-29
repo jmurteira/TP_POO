@@ -1,4 +1,5 @@
 #include "Comandos.h"
+#include "Campeonato.h"
 #include "Piloto.h"
 #include "Carro.h"
 #include "Dgv.h"
@@ -85,8 +86,13 @@ void Comandos::lerComando() {
 				cout << getDgv()->descricaoCarro();
 				cout << getDgv()->descricaoPiloto();
 			}
-			else if (op1 == "sair")
-				cout << "\nsair" << endl;
+			else if (op1 == "passatempo") {
+				if (is >> op2)
+				{
+					getCamp()->passatempo(stoi(op2));
+				}
+					
+			}
 			else
 				cout << "comando inexistente" << endl;
 		}
@@ -97,6 +103,11 @@ void Comandos::lerComando() {
 Dgv* Comandos::getDgv() {
 
 	return dgv;
+}
+
+Campeonato* Comandos::getCamp() {
+
+	return camp;
 }
 
 

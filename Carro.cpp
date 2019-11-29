@@ -44,7 +44,7 @@ void Carro::setVelocidade(int x) {
 }
 
 
-void Carro::passaTempoCarro(int t, int distPista) {
+void Carro::passaTempoCarro(int t, int distPista) {	//PASSATEMPO NO CARRO?
 
 	for (int i = 1; i <= t; i++) {
 		if (posicao < distPista)
@@ -53,7 +53,6 @@ void Carro::passaTempoCarro(int t, int distPista) {
 			cronometro++;
 		}
 	}
-
 }
 
 string Carro::getAsString()const {		//tem coisas feitas para facilitar o teste das funções

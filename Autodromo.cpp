@@ -21,18 +21,38 @@ string Autodromo::getNome() const{
 //}
 
 void Autodromo::passatempo(int t) {
-	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		for (vector<Piloto*>::const_iterator it = pista.cbegin();
 		it != pista.cend();
 		it++) {
 		
-		(*it)->passaTempoPiloto(t, distancia);
-	}
+			(*it)->passaTempoPiloto(t, distancia);
+		}
 }
 
 void Autodromo::atualizaClassif() {
 	for (int i = 0; i < participantes; i++) {
 		
 	}
+}
+
+bool Autodromo::getIniciada() const {
+	return iniciada;
+}
+
+bool Autodromo::getFinalizada() const {
+	return finalizada;
+}
+
+bool Autodromo::getClassifAtualizada() const {
+	return classifAtualizada;
+}
+
+vector <Piloto*> Autodromo::getPista() const {
+	return pista;
+}
+
+vector <Carro*> Autodromo::getGaragem() const {
+	return garagem;
 }
 
 //vector <Piloto *> Autodromo::getPista()const {

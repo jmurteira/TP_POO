@@ -9,12 +9,13 @@ class Autodromo
 	string nome;
 	int distancia;
 	const static int participantes = 5;
-	bool iniciada;						//a combinação dos bools "iniciada", "finalizada" permite saber quais as corridas que já foram feitas, as que ainda não foram feitas e a que está a decorrer
+	bool iniciada;		//a combinação dos bools "iniciada", "finalizada" permite saber quais as corridas que já foram feitas, as que ainda não foram feitas e a que está a decorrer
 	bool finalizada;
-	vector <Carro> garagem[20];
+	bool classifAtualizada;
+	vector <Carro *> garagem;
 	vector <Piloto *> pista;
 
-	vector <Piloto> classificacao[5];	//(?)
+	vector <Piloto *> classificacao[5];	//(?)
 
 public:
 	Autodromo(string n, int dist);
@@ -29,6 +30,14 @@ public:
 	string getAsString()const;
 
 	void passatempo(int t);
+
+	bool getIniciada() const;
+	bool getFinalizada() const;
+	bool getClassifAtualizada() const;
+
+
+	vector <Piloto*> getPista() const;
+	vector <Carro*> getGaragem() const;
 
 	////obter a pista (participantes) ???
 	//vector <Piloto> getPista()const;
