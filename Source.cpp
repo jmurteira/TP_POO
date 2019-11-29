@@ -38,8 +38,8 @@ int main() {
 	Dga dga("Portugal");
 	Dgv dgv("Portugal");
 	//Autodromo aut1 = Autodromo("Vienna", 4268);
-	dga.novoAutodromo(2,"Estoril",1000);
-	dga.novoAutodromo(2,"Estoril", 10);
+	//dga.novoAutodromo(2,1000, "Estoril");
+	//dga.novoAutodromo(2, 10, "Estoril");
 	
 	/*dgv.novoCarro("A", "Romeu",10, 50);
 	dgv.novoCarro("B", "Corsa", 10, 50);
@@ -123,6 +123,7 @@ int main() {
 	//APENAS ESTÁ AQUI PARA TESTAR
 	Comandos c = Comandos();
 	c.atribuiDgv(&dgv);
+	c.atribuiDga(&dga);
 	c.lerComando();
 
 	/*cout << endl << endl << endl;
