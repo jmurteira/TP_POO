@@ -37,6 +37,9 @@ Piloto* Dgv::novoPiloto(string t, string n) {
 		pilotos.push_back(p);
 		return p;
 	}
+	else if (procuraPiloto(n) != nullptr) {
+		cout << "piloto: " << n << " ja existe" << endl;
+	}
 	return nullptr;
 
 }

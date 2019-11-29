@@ -44,7 +44,17 @@ void Comandos::lerComando() {
 					}
 					else if (op4 == 'p'){
 						is >> op2 >> op3;
-						getDgv()->novoPiloto(op2,op3);
+						if (op2 != "classico")
+							cout << "introduzir tipo de piloto primeiro. ainda so existe do tipo classico." << endl;
+						else if (op3 == "")
+							cout << "introduzir nome do piloto" << endl;
+						else if (is >> op6){
+							op3.append(" ");
+							op3.append(op6);
+							getDgv()->novoPiloto(op2,op3);
+						}
+						else
+							getDgv()->novoPiloto(op2, op3);
 					}
 					else if (op4 == 'a') {
 						is >> op2 >> op3;
