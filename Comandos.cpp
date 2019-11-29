@@ -86,12 +86,14 @@ void Comandos::lerComando() {
 				cout << getDgv()->descricaoCarro();
 				cout << getDgv()->descricaoPiloto();
 			}
+			else if (op1 == "sair") {
+				return;
+			}
 			else if (op1 == "passatempo") {
 				if (is >> op2)
 				{
 					getCamp()->passatempo(stoi(op2));
-				}
-					
+				}	
 			}
 			else
 				cout << "comando inexistente" << endl;
