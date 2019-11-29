@@ -14,7 +14,7 @@ void Comandos::lerComando() {
 	string op1;
 	string op2;
 	string op3;
-	char op4;
+	string op4;
 	char op5;
 	string op6;
 	string op7;
@@ -38,14 +38,23 @@ void Comandos::lerComando() {
 				return;
 			else if (op1 == "cria") {
 				if (is >> op4) {
-					if (op4 == 'c') {
+					if (op4 == "c") {
 						is >> op6 >> op7 >> op2 >> op3;
-						getDgv()->novoCarro(stoi(op6), stoi(op7), op2, op3);
+						if (op6 == "")
+							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
+						else if (op7 == "")
+							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
+						else if (op2 == "")
+							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
+						else if (op3 == "")
+							cout << "introduzir <dados do carro>: eneriga capmaxima marca modelo" << endl;
+						else
+							getDgv()->novoCarro(stoi(op6), stoi(op7), op2, op3);
 					}
-					else if (op4 == 'p'){
+					else if (op4 == "p"){
 						is >> op2 >> op3;
 						if (op2 != "classico")
-							cout << "introduzir tipo de piloto primeiro. ainda so existe do tipo classico." << endl;
+							cout << "introduzir tipo de piloto. ainda so existe do tipo classico." << endl;
 						else if (op3 == "")
 							cout << "introduzir nome do piloto" << endl;
 						else if (is >> op6){
@@ -56,23 +65,25 @@ void Comandos::lerComando() {
 						else
 							getDgv()->novoPiloto(op2, op3);
 					}
-					else if (op4 == 'a') {
+					else if (op4 == "a") {
 						is >> op2 >> op3;
 						
 					}
+					else
+						cout << "parametro errado. apaga <letraTipo> identificador (c - carro, p - piloto, a - autodromo)" << endl;
 				}
 			}
 			else if (op1 == "apaga") {
 				if (is >> op4) {
-					if (op4 == 'c') {
+					if (op4 == "c") {
 						if (is >> op5)
 							getDgv()->apagaCarro(op5);
 					}
-					else if (op4 == 'p') {
+					else if (op4 == "p") {
 						if (is >> op2)
 							getDgv()->apagaPiloto(op2);
 					}
-					else if (op4 == 'a')
+					else if (op4 == "a")
 						cout << "apaga autodromo";
 					else
 						cout << "parametro errado. apaga <letraTipo> identificador (c - carro, p - piloto, a - autodromo)" << endl;
@@ -80,13 +91,13 @@ void Comandos::lerComando() {
 			}
 
 			else if (op1 == "entranocarro") {
-				if (is >> op4)
+				if (is >> op5)
 					if (is >> op2)
-						getDgv()->entraNoCarro(op4, op2);
+						getDgv()->entraNoCarro(op5, op2);
 			}
 			else if (op1 == "saidocarro") {
-				if (is >> op4)
-					getDgv()->saiDoCarro(op4);
+				if (is >> op5)
+					getDgv()->saiDoCarro(op5);
 				else
 					return;
 				//cout << "parametro inexistente" << endl;
