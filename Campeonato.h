@@ -1,8 +1,13 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "Autodromo.h"
-#include "Piloto.h"
+#include <sstream>
+#include <iostream>
+
+
+class Autodromo;
+class Piloto;
+class Classificacao;
 
 class Campeonato
 {

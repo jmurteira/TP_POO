@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
 #include <vector>
-#include "Piloto.h"
-#include "Carro.h"
+
+
+class Piloto;
+class Carro;
 
 class Autodromo
 {

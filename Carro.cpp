@@ -1,6 +1,5 @@
 #include "Carro.h"
 #include <sstream>
-#include <time.h>
 #include <iostream>
 
 
@@ -31,6 +30,10 @@ bool Carro::getOcupado()const {
 	return ocupado;
 }
 
+int Carro::getPosicao()const {
+	return posicao;
+}
+
 void Carro::setOcupado() {
 	ocupado = true;
 }
@@ -51,7 +54,11 @@ void Carro::passaTempoCarro(int t, int distPista) {	//PASSATEMPO NO CARRO?
 		{
 			posicao = posicao + velocidade;
 			cronometro++;
-		}
+			if (posicao >= distPista)
+			{
+				posicao = -2;
+			}
+		}		
 	}
 }
 

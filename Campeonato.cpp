@@ -1,6 +1,7 @@
 #include "Campeonato.h"
-#include <sstream>
-#include <iostream>
+#include "Autodromo.h"
+#include "Piloto.h"
+
 
 
 Campeonato::Campeonato()
@@ -32,6 +33,18 @@ int Campeonato::getTam() const {
 void Campeonato::atualizaClass() {
 	if (corrida[0]->getFinalizada == true && corrida[0]->getClassifAtualizada() == false)
 	{
-		cout << "Implementar Atualiza";
+		for (vector<Piloto*>::const_iterator it = corrida[0]->getPista().cbegin();
+			it != corrida[0]->getPista().cend();
+			it++) {
+
+			if ((*it)->getCarro()->getPosicao == -2) {
+				
+				int i = 0;
+
+				classGeral[i] = (*it);
+
+				i++;
+			}
+		}
 	}
 }

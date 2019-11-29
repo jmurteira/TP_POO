@@ -11,7 +11,7 @@ class Carro
 	string marca;
 	string modelo;
 	char ident;			//identificador do carro, verificar que nunca têm o mesmo ident. dgv?
-	int posicao;		//---> ESQUECE ISTO (ERA APENAS UMA IDEIA) -1 (garagem), >0 (em corrida), 0 (nao interessa ou inicio corrida ?) 
+	int posicao;		//---> ESQUECE ISTO (ERA APENAS UMA IDEIA) -1 (garagem), >0 (em corrida), -2 (terminou a corrida) , 0 (nao interessa ou inicio corrida ?) 
 	int cronometro;		//tempo em segudos
 
 	float energia;
@@ -33,6 +33,8 @@ public:
 
 	//carro ocupado ou desocupado
 	bool getOcupado()const;
+
+	int getPosicao()const;
 	
 	void setOcupado();
 	void setDesocupado();
