@@ -1,7 +1,7 @@
 #include "Classificacao.h"
 
 
-Classificacao::Classificacao() {
+Classificacao::Classificacao(int l, int t, int pts, Piloto* p) : lugar(l), tempo(t), pontos(pts), piloto(p) {
 
 }
 

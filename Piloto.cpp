@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Piloto::Piloto(string t, string n):tipo(t),carro(nullptr)
+Piloto::Piloto(string t, string n):tipo(t),carro(nullptr),atualizado(false)
 {
 	//verificar o nome do piloto de forma a ser único. ir ao vector da dgv?
 	//if()
@@ -29,6 +29,13 @@ void Piloto::acelera() { //A funçao acelera só aumenta em 1m/s de cada vez que é
 void Piloto::trava() {
 	if (carro->getVelocidade() - 1 >= 0)
 		carro->setVelocidade(carro->getVelocidade() - 1);
+}
+
+bool Piloto::getAtualizado()const {
+	return atualizado;
+}
+void Piloto::setAtualizado(bool a) {
+	atualizado = a;
 }
 
 void Piloto::entrarCarro(Carro* c) {

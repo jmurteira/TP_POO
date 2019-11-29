@@ -10,7 +10,7 @@ class Classificacao
 	int pontos;
 public:
 
-	Classificacao();
+	Classificacao(int l, int t, int pts, Piloto * p);
 
 	int getLugar() const;
 	int getTempo() const;

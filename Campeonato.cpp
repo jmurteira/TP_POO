@@ -29,20 +29,23 @@ int Campeonato::getTam() const {
 	return tam;
 }
 
-void Campeonato::atualizaClass() {
+
+
+void Campeonato::atualizaClassif() {
 	if (corrida[0]->getFinalizada() == true && corrida[0]->getClassifAtualizada() == false)
 	{
 		for (vector<Piloto*>::const_iterator it = corrida[0]->getPista().cbegin();
 			it != corrida[0]->getPista().cend();
 			it++) {
 
-			if ((*it)->getCarro()->getPosicao() == -2) {
+			if ((*it)->getCarro()->getPosicao() == -2 && (*it)->getAtualizado() == false) {
 				
-				int i = 1;
+				int i = 0;
 
+				Classificacao* c = new Classificacao(i + 1, (*it)->getCarro()->getTempo(), 10/*Como ficam todos empatados, 10pts para todos*/, (*it));
+				classGeral.push_back(c);
 
-
-				//classGeral[i] = (*it);
+				(*it)->setAtualizado(true);
 
 				i++;
 			}

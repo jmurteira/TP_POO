@@ -10,7 +10,7 @@ class Piloto
 {
 	string nome;
 	string tipo;
-
+	bool atualizado;
 	Carro * carro;		//ponteiro para carro						(ponteiro de carro para piloto e de piloto para carro ???)
 
 
@@ -24,6 +24,9 @@ public:
 	void acelera();
 	void trava();
 
+	bool getAtualizado()const;
+	void setAtualizado(bool a);
+
 	void passaTempoPiloto(int t, int dist);
 
 	string getNome() const;
@@ -32,8 +35,6 @@ public:
 	Carro* getCarro() const;
 
 	string getStringDescricao()const;
-	
 
-	
 };
 

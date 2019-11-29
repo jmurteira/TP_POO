@@ -35,7 +35,8 @@ public:
 	bool getOcupado()const;
 
 	int getPosicao()const;
-	
+	int getTempo()const;
+
 	void setOcupado();
 	void setDesocupado();
 
