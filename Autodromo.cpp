@@ -1,6 +1,4 @@
 #include "Autodromo.h"
-#include "Piloto.h"
-#include "Carro.h"
 #include <sstream>
 
 

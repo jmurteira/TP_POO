@@ -4,10 +4,10 @@
 #include <sstream>
 #include <iostream>
 
+#include "Autodromo.h"
+#include "Piloto.h"
 
-class Autodromo;
-class Piloto;
-class Classificacao;
+
 
 class Campeonato
 {
@@ -26,6 +26,6 @@ public:
 
 	int getTam() const;
 
-	void atualizaClass();
+	//void atualizaClass();
 };
 

@@ -1,6 +1,5 @@
 #include "Campeonato.h"
-#include "Autodromo.h"
-#include "Piloto.h"
+
 
 
 
@@ -30,21 +29,21 @@ int Campeonato::getTam() const {
 	return tam;
 }
 
-void Campeonato::atualizaClass() {
-	if (corrida[0]->getFinalizada == true && corrida[0]->getClassifAtualizada() == false)
-	{
-		for (vector<Piloto*>::const_iterator it = corrida[0]->getPista().cbegin();
-			it != corrida[0]->getPista().cend();
-			it++) {
-
-			if ((*it)->getCarro()->getPosicao == -2) {
-				
-				int i = 0;
-
-				classGeral[i] = (*it);
-
-				i++;
-			}
-		}
-	}
-}
+//void Campeonato::atualizaClass() {
+//	if (corrida[0]->getFinalizada == true && corrida[0]->getClassifAtualizada() == false)
+//	{
+//		for (vector<Piloto*>::const_iterator it = corrida[0]->getPista().cbegin();
+//			it != corrida[0]->getPista().cend();
+//			it++) {
+//
+//			if ((*it)->getCarro()->getPosicao == -2) {
+//				
+//				int i = 0;
+//
+//				classGeral[i] = (*it);
+//
+//				i++;
+//			}
+//		}
+//	}
+//}
