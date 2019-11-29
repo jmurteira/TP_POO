@@ -38,8 +38,8 @@ int main() {
 	Dga dga("Portugal");
 	Dgv dgv("Portugal");
 	//Autodromo aut1 = Autodromo("Vienna", 4268);
-	dga.novoAutodromo("Estoril",1000);
-	dga.novoAutodromo("Estoril", 10);
+	dga.novoAutodromo(2,"Estoril",1000);
+	dga.novoAutodromo(2,"Estoril", 10);
 	
 	/*dgv.novoCarro("A", "Romeu",10, 50);
 	dgv.novoCarro("B", "Corsa", 10, 50);

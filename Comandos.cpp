@@ -82,13 +82,13 @@ void Comandos::lerComando() {
 						if (is >> num1) {
 							contador += 1;
 						}
-						if (is >> op1)
-							contador += 1;
 						if (is >> op2)
+							contador += 1;
+						if (is >> num2)
 							contador += 1;
 						if (contador == 3) {
 							//getDgv()->novoPiloto(op2, op3);
-							getDga()->novoAutodromo(num1, op1);
+							getDga()->novoAutodromo(num1,op2,num2);
 							contador = 0;
 						}
 						else if (contador != 3) {

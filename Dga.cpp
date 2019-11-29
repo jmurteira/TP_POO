@@ -5,9 +5,9 @@
 
 Dga::Dga(string id) :DgaID(id) {}
 
-Autodromo* Dga::novoAutodromo(string n, int dist) {
+Autodromo* Dga::novoAutodromo(int cap, string n, int dist) {
 	if (procuraAutodromo(n) == nullptr) {
-		Autodromo* a = new Autodromo(n, dist);
+		Autodromo* a = new Autodromo(cap, n, dist);
 		autodromos.push_back(a);
 		return a;
 	}

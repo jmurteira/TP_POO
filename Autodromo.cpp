@@ -3,7 +3,7 @@
 
 
 
-Autodromo::Autodromo(string n, int dist):nome(n), distancia(dist), iniciada(false), finalizada(false)
+Autodromo::Autodromo(int cap, string n, int dist):capacidade(cap), nome(n), distancia(dist), iniciada(false), finalizada(false)
 {
 }
 
@@ -30,7 +30,7 @@ void Autodromo::passatempo(int t) {
 }
 
 void Autodromo::atualizaClassif() {
-	for (int i = 0; i < participantes; i++) {
+	for (int i = 0; i < capacidade; i++) {
 		
 	}
 }

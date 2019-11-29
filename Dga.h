@@ -18,7 +18,7 @@ public:
 
 	Dga(string id);
 
-	Autodromo* novoAutodromo(string n, int dist);
+	Autodromo* novoAutodromo(int cap, string n, int dist);
 
 	Autodromo* procuraAutodromo(string nome) const;
 
