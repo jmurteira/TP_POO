@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 
+
 class Piloto;
 class Carro;
 
@@ -33,6 +34,9 @@ public:
 
 	//verificador do nome do piloto, se já existe algum com o mesmo nome no vector
 	bool verificaNomePiloto(string nome);
+
+
+	int verificaNumParametrosFicheiroTexto(string fich);
 
 	string descricaoCarro() const;
 	string descricaoPiloto() const;

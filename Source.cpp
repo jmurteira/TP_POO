@@ -4,6 +4,7 @@
 #include "Dga.h"
 #include "Dgv.h"
 #include "Consola.h"
+#include "Interface.h"
 #include <string>
 #include <vector>
 #include <iostream>
@@ -15,7 +16,7 @@ using namespace std;
 int main() {
 	srand(time(0)); //nao sei se é a melhor cena mas se estiver no construtor carro repete sempre a mesma letra. supostamente só deve ser chamada uma vez
 	
-	Consola::setBackgroundColor(Consola::BRANCO_CLARO);
+	/*Consola::setBackgroundColor(Consola::BRANCO_CLARO);
 	Consola::setTextColor(Consola::PRETO);
 
 	for (int i = 0; i < 30; i++) {
@@ -33,7 +34,7 @@ int main() {
 			Consola::gotoxy(i + 52, j+2);
 			cout << " ";
 		}
-	}
+	}*/
 
 	Dga dga("Portugal");
 	Dgv dgv("Portugal");
@@ -65,18 +66,18 @@ int main() {
 	dgv.novoCarro("V", "Corsa", 10, 50);
 	dgv.novoCarro("W", "Corsa", 10, 50);
 	dgv.novoCarro("X", "Corsa",10, 50);*/
-	dgv.novoCarro(10, 50,"Y", "Corsa");
-	dgv.novoCarro(10, 50,"Z", "Corsa");
-	dgv.novoCarro(10, 50, "asdfsd", "Corsa");
-	dgv.novoCarro (10, 50,"asdafsdffsd", "Corsa");
+	//dgv.novoCarro(10, 50,"Y", "Corsa");
+	//dgv.novoCarro(10, 50,"Z", "Corsa");
+	//dgv.novoCarro(10, 50, "asdfsd", "Corsa");
+	//dgv.novoCarro (10, 50,"asdafsdffsd", "Corsa");
 
 
-	cout << dgv.descricaoCarro() << endl;
+	//cout << dgv.descricaoCarro() << endl;
 
 	//cout << aut1.getAsString();
 
-	int teste;
-	Carro c1 = Carro("Alfa", "Romeu", 10, 50);
+	//int teste;
+	//Carro c1 = Carro("Alfa", "Romeu", 10, 50);
 	
 	//c1.carregaBat();
 	//c1.acelera();
@@ -90,15 +91,15 @@ int main() {
 	c1.acelera();
 	c1.acelera();*/
 	
-	c1.passaTempoCarro(548,5000);
+	//c1.passaTempoCarro(548,5000);
 	//cout << endl << endl << c1.getAsString();
 	
 
 
 	//Piloto p1 = Piloto("Vettel", 1);
 	//Piloto p2 = Piloto("Michael", 2);
-	dgv.novoPiloto("classico","Vettel");
-	dgv.novoPiloto("classico","Michael");
+	//dgv.novoPiloto("classico","Vettel");
+	//dgv.novoPiloto("classico","Michael");
 	//cout << endl << p1.getStringDescricao();
 	//cout << endl << p2.getStringDescricao();
 
@@ -124,7 +125,11 @@ int main() {
 	Comandos c = Comandos();
 	c.atribuiDgv(&dgv);
 	c.atribuiDga(&dga);
-	c.lerComando();
+	//c.lerComando();
+
+
+	Interface i =Interface(&dgv, &dga, &c);
+	i.Simulador();
 
 	/*cout << endl << endl << endl;
 	dgv.carregaP("pilotos.txt");

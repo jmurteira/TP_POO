@@ -2,6 +2,7 @@
 #include "Autodromo.h"
 #include "Piloto.h"
 #include "Classificacao.h"
+#include "Dgv.h"
 
 Campeonato::Campeonato()
 {
@@ -32,6 +33,27 @@ int Campeonato::getTam() const {
 void Campeonato::setCorrida(Autodromo* aut) {
 	corrida = aut;
 }
+
+
+//melhorar a funcao depois
+void Campeonato::addParticipantes(int n_pista, int n_garagem) {
+	cout << "Indique o numero de carros a introduzir na pista: ";
+	cin >> n_pista;
+	if (n_pista < 2) {
+		n_pista = 2;
+		cout << "Capacidade minima dos autodromos e de: " << "2" << " carros. Adicionar 2 carros." << endl;
+	}
+	if (n_pista > 6) {
+		n_pista = 6;
+		cout << "Capacidade maxima dos autodromos e de: " << "6" << " carros. Adicionar 6 carros." << endl;
+	}
+	while (corrida->getPista().size() < n_pista) {
+		
+
+	}
+
+}
+
 
 void Campeonato::iniciaCamp() {
 	if (corrida != nullptr) {

@@ -10,7 +10,7 @@
 Comandos::Comandos(){}
 
 
-void Comandos::lerComando() {
+string Comandos::lerComando() {
 	string op1;
 	string op2;
 	string op3;
@@ -22,22 +22,34 @@ void Comandos::lerComando() {
 	int num2;
 
 	int contador = 0; //para verificar se o numero de parametros do comando está certo
-	do {
+	//do {
 		cout << "\nIntroduza comando: ";
 		getline(cin, comando);
 		istringstream is(comando);
 		if (is >> op1) {
 			if (op1 == "carregaP") {
-				if (is >> op2)
+				if (is >> op2){
 					getDgv()->carregaP(op2);
+					return op1;
+				}
+				else 
+					cout << "numero de parametros errado. carregaP <nomeFicheiro> " << endl;
 			}
 			else if (op1 == "carregaC") {
-				if (is >> op2)
+				if (is >> op2){
 					getDgv()->carregaC(op2);
+					return op1;
+				}
+				else
+					cout << "numero de parametros errado. carregaC <nomeFicheiro> " << endl;
 			}
 			else if (op1 == "carregaA") {
-				if (is >> op2)
+				if (is >> op2){
 					getDga()->carregaA(op2);
+					return op1;
+				}
+				else
+					cout << "numero de parametros errado. carregaA <nomeFicheiro> " << endl;
 			}
 			else if (op1 == "cria") {
 				if (is >> op4) {
@@ -54,6 +66,7 @@ void Comandos::lerComando() {
 						if (contador == 4) {
 							getDgv()->novoCarro(num1, num2, op2, op3);
 							contador = 0;
+							return "cria c";
 						}
 						else if (contador != 4) {
 							cout << "numero de parametros errado. cria <c> <dados do objeto> (energia energiaMax Marca Modelo)" << endl;
@@ -76,6 +89,7 @@ void Comandos::lerComando() {
 						}
 						if (contador == 2) {
 							getDgv()->novoPiloto(op2, op3);
+							return "cria p";
 							contador = 0;
 						}
 						else if (contador != 2) {
@@ -92,8 +106,10 @@ void Comandos::lerComando() {
 						if (is >> op2)
 							contador += 1;
 						if (contador == 3) {
-							if (getDga()->getDgaSize() == 0)
+							if (getDga()->getDgaSize() == 0){
 								getDga()->novoAutodromo(num1, num2, op2);
+								return "cria a";
+							}
 							else
 								cout << "ja existe um autodromo." << endl;
 							contador = 0;
@@ -113,31 +129,47 @@ void Comandos::lerComando() {
 			else if (op1 == "apaga") {
 				if (is >> op4) {
 					if (op4 == "c") {
-						if (is >> op5)
+						if (is >> op5){
 							getDgv()->apagaCarro(op5);
+							return "apaga c";
+						}
 					}
 					else if (op4 == "p") {
-						if (is >> op2)
+						if (is >> op2){
 							getDgv()->apagaPiloto(op2);
+							return "apaga p";
+						}
 					}
-					else if (op4 == "a")
-						cout << "apaga autodromo";
+					else if (op4 == "a") { //falta isto! ver se os carros também são destruidos
+						if (is >> op2) {
+							getDga()->apagaAutodromo(op2);
+							return "apaga a";
+						}
+					}
 					else
 						cout << "parametro errado. apaga <letraTipo> identificador (c - carro, p - piloto, a - autodromo)" << endl;
 				}
 			}
 
 			else if (op1 == "entranocarro") {
-				if (is >> op5)
-					if (is >> op2)
+				if (is >> op5){
+					if (is >> op2){
 						getDgv()->entraNoCarro(op5, op2);
+						return op1;
+					}
+					else
+						cout << "numero de parametros errado. entranocarro <letraCarro> <nomePiloto>" << endl;
+				}
+				else
+					cout << "numero de parametros errado. entranocarro <letraCarro> <nomePiloto>" << endl;
 			}
 			else if (op1 == "saidocarro") {
-				if (is >> op5)
+				if (is >> op5){
 					getDgv()->saiDoCarro(op5);
+					return op1;
+				}
 				else
-					return;
-				//cout << "parametro inexistente" << endl;
+					cout << "numero de parametros errado. saidocarro <letraCarro>" << endl;
 			}
 			else if (op1 == "lista") {
 					cout << "\n\n\nLISTA\n\n\n";
@@ -146,7 +178,7 @@ void Comandos::lerComando() {
 				cout << getDga()->descricaoAutodromo();
 			}
 			else if (op1 == "sair") {
-				return;
+				return op1;
 			}
 			else if (op1 == "campeonato") {
 				if (is >> op2) {
@@ -156,18 +188,21 @@ void Comandos::lerComando() {
 					setCamp(&(Campeonato()));
 					getCamp()->setCorrida(aut1);
 					getCamp()->iniciaCamp();
+					return op1;
 				}
 			}
 			else if (op1 == "passatempo") {
 				if (is >> op2)
 				{
 					getCamp()->passatempo(stoi(op2));
+					return op1;
 				}	
 			}
 			else
 				cout << "comando inexistente" << endl;
+				return "";
 		}
-	} while (op1 != "sair");
+	//} while (op1 != "sair");
 
 }
 

@@ -3,6 +3,7 @@
 #include <sstream>
 #include <iostream>
 
+
 Dga::Dga(string id) :DgaID(id) {}
 
 Autodromo* Dga::novoAutodromo(int cap, int dist, string n) {
@@ -30,7 +31,7 @@ Autodromo* Dga::procuraAutodromo(string nome) const {
 void Dga::carregaA(string fich) {
 	string linha;
 	ifstream file(fich);
-	if (file.is_open())
+	if (file.is_open() && verificaNumParametrosFicheiroTexto(fich) == 3)
 	{
 		while (getline(file, linha))
 		{
@@ -50,6 +51,42 @@ void Dga::carregaA(string fich) {
 	else cout << endl << "Erro ao abrir o ficheiro";
 }
 
+int Dga::verificaNumParametrosFicheiroTexto(string fich) {
+	int n_parametros = 0;
+	string linha;
+	ifstream file(fich);
+	if (file.is_open())
+	{
+		getline(file, linha);
+
+		int atual, max;
+		string marca, modelo;
+		istringstream is(linha);
+		while (is >> linha)
+		{
+			++n_parametros;
+			cout << n_parametros << endl;
+		}
+
+		file.close();
+	}
+	return n_parametros;
+}
+
+//ter cuidado com isto porque penso que todos os carros sao destruidos
+void Dga::apagaAutodromo(string nome) {
+	if (procuraAutodromo(nome) != nullptr) {
+		cout << "entrou";
+		for (size_t i = 0; i < autodromos.size(); i++) {
+			if (autodromos[i]->getNome() == nome)
+				//pilotos[i]->getCarro()->setDesocupado();
+			autodromos.erase(autodromos.begin() + i);
+		}
+		delete procuraPiloto(nome);
+	}
+	else
+		cout << "piloto com nome: " << nome << " inexistente" << endl;
+}
 
 string Dga::descricaoAutodromo() const {
 	string res = "\nDGV - Autodromos Registados: \n---------------";

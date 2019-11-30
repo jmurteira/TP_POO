@@ -1,2 +1,4 @@
-﻿  Comandos.cpp
+﻿  Dga.cpp
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Dga.cpp(62,14): warning C4101: 'max': unreferenced local variable
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Dga.cpp(62,7): warning C4101: 'atual': unreferenced local variable
   TP_POO.vcxproj -> C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Debug\TP_POO.exe

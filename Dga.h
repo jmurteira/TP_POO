@@ -24,6 +24,8 @@ public:
 	Autodromo* procuraAutodromo(string nome) const;
 
 	void carregaA(string fich);
+	void apagaAutodromo(string nome);
+	int verificaNumParametrosFicheiroTexto(string fich);
 
 	string descricaoAutodromo() const;
 

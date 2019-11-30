@@ -34,10 +34,6 @@ string Autodromo::getNome() const{
 	return nome;
 }
 
-//void Autodromo::addParticipante(string n) {
-//	pista->push_back(...);
-//}
-
 void Autodromo::passatempo(int t) {
 		for (vector<Piloto*>::const_iterator it = pista.cbegin();
 		it != pista.cend();
@@ -97,3 +93,4 @@ string Autodromo::getStringDescricao()const {
 	os << "Autodromo de: " << nome << endl << "Distancia: " << distancia << " metros" << endl << "Capacidade: " << capacidade << " carros" <<endl;
 	return os.str();
 }
+

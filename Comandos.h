@@ -18,7 +18,7 @@ public:
 
 	Comandos();
 
-	void lerComando();
+	string lerComando();
 	Dgv* getDgv();
 	Dga* getDga();
 	Campeonato* getCamp();

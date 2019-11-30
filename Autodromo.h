@@ -10,6 +10,7 @@ using namespace std;
 
 class Autodromo
 {
+
 	string nome;
 	int distancia;
 	int capacidade;
@@ -27,8 +28,6 @@ public:
 
 	string getNome() const;
 
-	//void addParticipante(string n);
-
 	void atualizaClassif();
 
 	string getStringDescricao()const;
@@ -41,9 +40,9 @@ public:
 	bool getFinalizada() const;
 	bool getClassifAtualizada() const;
 
-
 	vector <Piloto*> getPista() const;
 	vector <Carro*> getGaragem() const;
+
 
 	////obter a pista (participantes) ???
 	//vector <Piloto> getPista()const;

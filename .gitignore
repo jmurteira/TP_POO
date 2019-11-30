@@ -580,3 +580,5 @@ Debug/vc142.pdb
 *.ipch
 .vs/TP_POO/v16/.suo
 .vs/TP_POO/v16/.suo
+*.obj
+*.tlog

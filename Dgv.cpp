@@ -51,7 +51,7 @@ void Dgv::carregaP(string fich) {
 	string linha;
 	string tipo;
 	ifstream file(fich);
-	if (file.is_open())
+	if (file.is_open() && verificaNumParametrosFicheiroTexto(fich) == 2)
 	{
 		while (getline(file, linha))
 		{
@@ -73,7 +73,7 @@ void Dgv::carregaP(string fich) {
 void Dgv::carregaC(string fich) {
 	string linha;
 	ifstream file(fich);
-	if (file.is_open())
+	if (file.is_open() && verificaNumParametrosFicheiroTexto(fich) == 4)
 	{
 		while (getline(file, linha))
 		{
@@ -138,6 +138,29 @@ bool Dgv::verificaNomePiloto(string nome) {
 			return false;
 		}
 	return true;
+}
+
+
+int Dgv::verificaNumParametrosFicheiroTexto(string fich) {
+	int n_parametros = 0;
+	string linha;
+	ifstream file(fich);
+	if (file.is_open())
+	{
+		getline(file, linha);
+		
+			int atual, max;
+			string marca, modelo;
+			istringstream is(linha);
+			while (is >> linha)
+			{
+				++n_parametros;
+				//cout << n_parametros <<endl;
+			}
+		
+		file.close();
+	}
+	return n_parametros;
 }
 
 
