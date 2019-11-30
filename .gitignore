@@ -577,3 +577,5 @@ Debug/vc142.idb
 Debug/vc142.pdb
 *.log
 *.tlog
+*.ipch
+.vs/TP_POO/v16/.suo
