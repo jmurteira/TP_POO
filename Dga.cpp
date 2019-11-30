@@ -82,7 +82,7 @@ void Dga::apagaAutodromo(string nome) {
 				//pilotos[i]->getCarro()->setDesocupado();
 			autodromos.erase(autodromos.begin() + i);
 		}
-		delete procuraPiloto(nome);
+		delete procuraAutodromo(nome);
 	}
 	else
 		cout << "piloto com nome: " << nome << " inexistente" << endl;
