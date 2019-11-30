@@ -22,7 +22,7 @@ string Comandos::lerComando() {
 	int num2;
 
 	int contador = 0; //para verificar se o numero de parametros do comando está certo
-	//do {
+	do {
 		cout << "\nIntroduza comando: ";
 		getline(cin, comando);
 		istringstream is(comando);
@@ -202,7 +202,7 @@ string Comandos::lerComando() {
 				cout << "comando inexistente" << endl;
 				return "";
 		}
-	//} while (op1 != "sair");
+	} while (op1 != "sair");
 
 }
 

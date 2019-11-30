@@ -54,13 +54,13 @@ void Interface::Simulador() {
 	}
 
 	//nao percebo porque é que é preciso escrever 3x sair para sair
-	do{
+	//do{
 		comando->lerComando();
 
 	
-		if (comando->lerComando() == "carregaC")
-			cout << "chupamisto" << endl;
+		//if (comando->lerComando() == "carregaC")
+			//cout << "chupamisto" << endl;
 
-	} while (comando->lerComando()!="sair");
+	//} while (comando->lerComando()!="sair");
 
 }
