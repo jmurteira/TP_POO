@@ -575,3 +575,5 @@ Debug/TP_POO.tlog/CL.read.1.tlog
 Debug/TP_POO.tlog/CL.write.1.tlog
 Debug/vc142.idb
 Debug/vc142.pdb
+*.log
+*.tlog
