@@ -25,5 +25,6 @@ public:
 	void setCamp(Campeonato * c);
 	void atribuiDgv(Dgv * d);
 	void atribuiDga(Dga* da);
+	string getStringListaComandos()const;
 };
 

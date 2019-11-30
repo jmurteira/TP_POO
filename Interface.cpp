@@ -33,6 +33,7 @@ void Interface::Simulador() {
 	//e a corrida começa a partir do momento em que todos os carros da pista têm piloto
 	//acaba corrida, aparece classificacao final //maybe
 	//carregar qualquer tecla para voltar ao menu inicial
+	
 	Consola::setBackgroundColor(Consola::BRANCO_CLARO);
 	Consola::setTextColor(Consola::PRETO);
 
@@ -53,14 +54,18 @@ void Interface::Simulador() {
 		}
 	}
 
-	//nao percebo porque é que é preciso escrever 3x sair para sair
-	//do{
-		comando->lerComando();
+	cout << comando->getStringListaComandos();
+
+	while (comando->lerComando().compare("sair")) {
+
+		//comando->lerComando();
+
+		//if (comando->lerComando() == "campeonato") {
+			//cout << "ir para o campeonato" << endl;
+
+		//}
+
+	}
 
 	
-		//if (comando->lerComando() == "carregaC")
-			//cout << "chupamisto" << endl;
-
-	//} while (comando->lerComando()!="sair");
-
 }

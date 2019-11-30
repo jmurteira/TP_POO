@@ -21,8 +21,9 @@ string Comandos::lerComando() {
 	int num1;
 	int num2;
 
+
 	int contador = 0; //para verificar se o numero de parametros do comando está certo
-	do {
+	//do {
 		cout << "\nIntroduza comando: ";
 		getline(cin, comando);
 		istringstream is(comando);
@@ -183,11 +184,11 @@ string Comandos::lerComando() {
 			else if (op1 == "campeonato") {
 				if (is >> op2) {
 					cout << "\n\nCOMECOU O CAMPEONATO\n" << endl;
-					Autodromo* aut1;
-					aut1 = getDga()->procuraAutodromo(op2);
-					setCamp(&(Campeonato()));
-					getCamp()->setCorrida(aut1);
-					getCamp()->iniciaCamp();
+					//Autodromo* aut1;
+					//aut1 = getDga()->procuraAutodromo(op2);
+					//setCamp(&(Campeonato()));
+					//getCamp()->setCorrida(aut1);
+					//getCamp()->iniciaCamp();
 					return op1;
 				}
 			}
@@ -202,8 +203,8 @@ string Comandos::lerComando() {
 				cout << "comando inexistente" << endl;
 				return "";
 		}
-	} while (op1 != "sair");
-
+	//} while (op1 != "sair");
+		
 }
 
 Dgv* Comandos::getDgv() {
@@ -233,3 +234,21 @@ void Comandos::atribuiDga(Dga* da) {
 	dga = da;
 }
 
+string Comandos::getStringListaComandos()const {
+	ostringstream os;
+	os << "\nLista de Comandos: " << endl << endl;
+	os << "Modo 1: Definicoes" << endl;
+	os << "carregaP <nomeFicheiro>" << endl;
+	os << "carregaC <nomeFicheiro>" << endl;
+	os << "carregaA <nomeFicheiro>" << endl;
+	os << "cria <letraTipo> <dados do objeto>" << endl;
+	os << "apaga <letraTipo> identificador" << endl;
+	os << "entranocarro <letraCarro> <nomePiloto>" << endl;
+	os << "saidocarro <letraCarro>" << endl;
+	os << "lista" << endl << endl;
+	os << "Modo 2: Campeonato" << endl;
+	os << "campeonato <A1> <A2> ... <An>" << endl;
+	os << "passatempo <n>" << endl;
+
+	return os.str();
+}
