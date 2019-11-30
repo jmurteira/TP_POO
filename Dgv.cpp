@@ -1,8 +1,7 @@
+
 #include "Dgv.h"
 #include "Carro.h"
 #include "Piloto.h"
-#include <fstream>
-#include <sstream>
 
 Dgv::Dgv(string id):DgvID(id) {}
 
@@ -32,13 +31,17 @@ Carro* Dgv::novoCarro(int capAtual, int capMax, string marc, string mod, char id
 
 
 Piloto* Dgv::novoPiloto(string t, string n) {
+	while (verificaNomePiloto(n) == false) {
+		cout << "Nome: " << n << " ja existe. Ira ser adicionado um identificador ao nome para futura distincao." << endl;
+		int id = rand() % ((100 - 1) + 1) + 1;
+		string id_unico = to_string(id);
+		n.append(" ");
+		n.append(id_unico);
+	}
 	if (procuraPiloto(n) == nullptr) {
 		Piloto* p = new Piloto(t, n);
 		pilotos.push_back(p);
 		return p;
-	}
-	else if (procuraPiloto(n) != nullptr) {
-		cout << "piloto: " << n << " ja existe" << endl;
 	}
 	return nullptr;
 
@@ -91,29 +94,6 @@ void Dgv::carregaC(string fich) {
 	else cout << endl << "Erro ao abrir o ficheiro";
 }
 
-void Dgv::carregaA(string fich) {
-	string linha;
-	string tipo;
-	ifstream file(fich);
-	if (file.is_open())
-	{
-		while (getline(file, linha))
-		{
-			string t;
-			string nome;
-			istringstream is(linha);
-			is >> tipo;
-			if (tipo == "classico" /*|| tipo == "Classico"*/) {
-				t = 1;
-				is >> nome;
-				novoPiloto(t, nome);
-			}
-		}
-		file.close();
-	}
-	else cout << endl << "Erro ao abrir o ficheiro";
-}
-
 
 
 Carro* Dgv::procuraCarro(char ident) const {
@@ -147,6 +127,17 @@ bool Dgv::verificaIdent(char ident) {
 		}
 		return true;
 			
+}
+
+bool Dgv::verificaNomePiloto(string nome) {
+	for (vector<Piloto*>::const_iterator it = pilotos.cbegin();
+		it != pilotos.cend();
+		it++)
+		if ((*it)->getNome() == nome) {
+			//cout << "entrou" << endl;
+			return false;
+		}
+	return true;
 }
 
 

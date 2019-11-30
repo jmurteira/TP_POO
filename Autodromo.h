@@ -2,9 +2,11 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "Piloto.h"
-#include "Carro.h"
 
+class Piloto;
+class Carro;
+
+using namespace std;
 
 class Autodromo
 {

@@ -2,6 +2,8 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 class Piloto;
 class Carro;
@@ -25,10 +27,12 @@ public:
 
 	void carregaP(string fich);
 	void carregaC(string fich);
-	void carregaA(string fich);
 
-	
+	//verificador da identificacao do carro, se existe algum igual no vector
 	bool verificaIdent(char ident);
+
+	//verificador do nome do piloto, se já existe algum com o mesmo nome no vector
+	bool verificaNomePiloto(string nome);
 
 	string descricaoCarro() const;
 	string descricaoPiloto() const;

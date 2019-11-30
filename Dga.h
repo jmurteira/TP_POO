@@ -2,6 +2,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <fstream>
 
 class Piloto;
 class Carro;
@@ -21,6 +22,8 @@ public:
 	Autodromo* novoAutodromo(int cap, int dist, string n);
 
 	Autodromo* procuraAutodromo(string nome) const;
+
+	void carregaA(string fich);
 
 	string descricaoAutodromo() const;
 

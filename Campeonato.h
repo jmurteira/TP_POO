@@ -4,11 +4,12 @@
 #include <sstream>
 #include <iostream>
 
-#include "Autodromo.h"
-#include "Piloto.h"
-#include "Classificacao.h"
 
+class Autodromo;
+class Piloto;
+class Classificacao;
 
+using namespace std;
 
 class Campeonato
 {
@@ -17,7 +18,7 @@ class Campeonato
 	Autodromo* corrida;
 	//vector <Autodromo*> corrida;
 	//vector <Piloto*> participantes[5];
-	vector <Classificacao*> classGeral;
+	vector<Classificacao*> classGeral;
 
 public:
 	Campeonato();

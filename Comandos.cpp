@@ -35,8 +35,10 @@ void Comandos::lerComando() {
 				if (is >> op2)
 					getDgv()->carregaC(op2);
 			}
-			else if (op1 == "carregaA")
-				return;
+			else if (op1 == "carregaA") {
+				if (is >> op2)
+					getDga()->carregaA(op2);
+			}
 			else if (op1 == "cria") {
 				if (is >> op4) {
 					if (op4 == "c") {
@@ -68,6 +70,10 @@ void Comandos::lerComando() {
 						}
 						if (is >> op3)
 							contador += 1;
+						if (is >> op6){
+							op3.append(" ");
+							op3.append(op6);
+						}
 						if (contador == 2) {
 							getDgv()->novoPiloto(op2, op3);
 							contador = 0;
