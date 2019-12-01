@@ -13,6 +13,21 @@ Campeonato::~Campeonato()
 {
 }
 
+void Campeonato::iniciaCamp() {
+	if (corrida != nullptr) {
+		//cout << "DIF NULLPTR";
+		if (corrida->getIniciada() == false) {
+			//if(participantes.size() == 0)
+			//cout << "FALSE";
+			corrida->setIniciada(true);
+		}
+		//else
+			//cout << "TRUE";
+	}
+	else
+		cout << " ";
+}
+
 void Campeonato::passatempo(int t) {
 	/*for (vector<Autodromo*>::const_iterator it = corrida.cbegin();
 		it != corrida.cend();
@@ -20,6 +35,7 @@ void Campeonato::passatempo(int t) {
 
 	}*/
 	//SÓ HÁ UMA CORRIDA
+
 	if (corrida->getIniciada() == true && corrida->getFinalizada() == false)
 		corrida->passatempo(t);
 	else if (corrida->getIniciada() == false && corrida->getFinalizada() == false)
@@ -34,6 +50,9 @@ void Campeonato::setCorrida(Autodromo* aut) {
 	corrida = aut;
 }
 
+Autodromo* Campeonato::getCorrida() const {
+	return corrida;
+}
 
 //melhorar a funcao depois
 void Campeonato::addParticipantes(int n_pista, int n_garagem) {
@@ -55,15 +74,7 @@ void Campeonato::addParticipantes(int n_pista, int n_garagem) {
 }
 
 
-void Campeonato::iniciaCamp() {
-	if (corrida != nullptr) {
-		if (corrida->getIniciada() == false) {
-			corrida->setIniciada(true);
-		}
-	}
-	else
-		cout << " ";
-}
+
 
 
 //ATUALIZAR CLASSIF GERAL POIS TEMPOS CLASSIF ESPECIFICA DE CADA CORRIDA (NAO SEI SE É PRECISO NESTA META)

@@ -48,10 +48,5 @@ public:
 	Dgv* getDgv()const;
 	void setDgv(Dgv *d);
 
-	
-	////obter a pista (participantes) ???
-	//vector <Piloto> getPista()const;
-	////obter os carros que estao na garagem ???
-	//vector <Carro> getGaragem()const;
 };
 

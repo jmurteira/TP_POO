@@ -193,6 +193,7 @@ string Comandos::lerComandoModo1() {
 				aut1 = getDga()->procuraAutodromo(op2);
 				setCamp(&(Campeonato()));
 				getCamp()->setCorrida(aut1);
+				cout << getCamp()->getCorrida()->getStringDescricao();
 				getCamp()->iniciaCamp();
 				return op1;
 			}

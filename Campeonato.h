@@ -19,7 +19,7 @@ class Campeonato
 	int realizadas = 0;				//num de corridas concluidas
 	Autodromo* corrida;
 	//vector <Autodromo*> corrida;
-	//vector <Piloto*> participantes[5];
+	vector <Piloto*> participantes;
 	vector<Classificacao*> classGeral;
 
 public:
@@ -31,6 +31,7 @@ public:
 	int getTam() const;
 
 	void setCorrida(Autodromo * aut);
+	Autodromo* getCorrida() const;
 
 	void addParticipantes(int n_pista, int n_garagem); //funcao para adicionar carros no autodromo. perguntar quantos para a pista e quantos para a garagem
 
