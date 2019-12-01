@@ -230,6 +230,9 @@ string Comandos::lerComandoModo2() {
 			else
 				cout << "numero de parametros errado. passatempo <n>" << endl;
 		}
+		else if (op1 == "modo1") {
+			return op1;
+		}
 		else
 			cout << "comando inexistente" << endl;
 		return "";
@@ -286,5 +289,15 @@ string Comandos::getStringListaComandos()const {
 	os << "--------------------------" << endl;
 	os << "Nota: chamar comando campeonato para entrar no modo2" << endl;
 	os << "--------------------------" << endl;
+	return os.str();
+}
+
+string Comandos::getStringListaComandosModo2()const {
+	ostringstream os;
+	os << "\nLista de Comandos: " << endl << endl;
+	os << "Modo 2: Campeonato" << endl;
+	os << "campeonato <A1> <A2> ... <An>" << endl;
+	os << "passatempo <n>" << endl;
+	os << "modo1 (voltar ao Modo 1)" << endl;
 	return os.str();
 }
