@@ -6,6 +6,8 @@ class Comandos;
 class Consola;
 class Carro;
 class Piloto;
+class Campeonato;
+class Autodromo;
 
 using namespace std;
 

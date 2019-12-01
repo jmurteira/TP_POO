@@ -5,7 +5,8 @@
 #include "Carro.h"
 #include "Piloto.h"
 #include "Consola.h"
-
+#include "Campeonato.h"
+#include "Autodromo.h"
 
 
 Interface::Interface(Dgv* d, Dga* da, Comandos* com) {
@@ -37,27 +38,6 @@ void Interface::Simulador() {
 	//acaba corrida, aparece classificacao final //maybe
 	//carregar qualquer tecla para voltar ao menu inicial
 	
-	//Consola::setBackgroundColor(Consola::BRANCO_CLARO);
-	//Consola::setTextColor(Consola::VERDE_CLARO);
-	////Consola::setTextColor(Consola::PRETO);
-
-	//for (int i = 0; i < 30; i++) {
-	//	for (int j = 0; j < 10; j++) {
-	//		Consola::gotoxy(i + 45, j);
-	//		cout << " ";
-	//	}
-	//}
-
-	//Consola::setBackgroundColor(Consola::PRETO);
-	////Consola::setTextColor(Consola::BRANCO);
-
-	//for (int i = 0; i < 16; i++) {
-	//	for (int j = 0; j < 6; j++) {
-	//		Consola::gotoxy(i + 52, j + 2);
-	//		cout << " ";
-	//	}
-	//}
-
 
 	Consola::setBackgroundColor(Consola::PRETO);
 	//Consola::setTextColor(Consola::VERDE_CLARO);

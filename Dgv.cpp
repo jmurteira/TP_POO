@@ -221,6 +221,7 @@ void Dgv::entraNoCarro(char ident, string nome) {
 
 	if (c != nullptr && p->getCarro() == nullptr && c->getOcupado() == false){
 		p->entrarCarro(c);
+		
 	}
 	else if (c != nullptr && c->getOcupado() == true)
 		cout << "carro com id: " << ident << " ja se encontra ocupado" << endl;

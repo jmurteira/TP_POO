@@ -1,7 +1,7 @@
 #include "Autodromo.h"
 #include "Piloto.h"
 #include "Carro.h"
-#include "Dgv.h"
+//#include "Dgv.h"
 #include "Interface.h"
 #include <sstream>
 
@@ -57,12 +57,13 @@ bool Autodromo::getIniciada() const {
 
 void Autodromo::setIniciada(bool inic) {
 	iniciada = inic;
+	cout << "setiniciada" << endl;
 	for (vector<Piloto*>::const_iterator it = pista.cbegin();
 		it != pista.cend();
 		it++) {
-
+		cout << "sim" << endl;
 		(*it)->setAtualizado(false);
-		(*it)->getCarro()->setPosicao(0);
+		//(*it)->getCarro()->setPosicao(0);
 	}
 }
 
@@ -97,9 +98,19 @@ string Autodromo::getStringDescricao()const {
 }
 
 
-Dgv* Autodromo::getDgv()const{
-	return dgv;
+//Dgv* Autodromo::getDgv()const{
+//	return dgv;
+//}
+//void Autodromo::setDgv(Dgv* d) {
+//	dgv = d;
+//}
+
+
+void Autodromo::adicionaParticipante(Piloto* p) {
+	pista.push_back(p);
+
 }
-void Autodromo::setDgv(Dgv* d) {
-	dgv = d;
+
+void Autodromo::adicionaCarro(Carro* c) {
+	garagem.push_back(c);
 }

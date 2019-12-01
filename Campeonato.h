@@ -33,10 +33,15 @@ public:
 	void setCorrida(Autodromo * aut);
 	Autodromo* getCorrida() const;
 
-	void addParticipantes(int n_pista, int n_garagem); //funcao para adicionar carros no autodromo. perguntar quantos para a pista e quantos para a garagem
+	void addParticipantes(); //funcao para adicionar carros no autodromo. perguntar quantos para a pista e quantos para a garagem
 
 	void atualizaClassif();
 
 	void iniciaCamp();
-};
 
+	Dgv* getDgv()const;
+	void setDgv(Dgv* d);
+
+	bool getIniciada()const;
+	
+};

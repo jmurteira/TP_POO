@@ -111,7 +111,7 @@ string Comandos::lerComandoModo1() {
 						if (contador == 3) {
 							if (getDga()->getDgaSize() == 0){
 								getDga()->novoAutodromo(num1, num2, op2);
-								getDga()->procuraAutodromo(op2)->setDgv(getDgv());
+								//getDga()->procuraAutodromo(op2)->setDgv(getDgv());
 								return "cria a";
 							}
 							else
@@ -188,14 +188,18 @@ string Comandos::lerComandoModo1() {
 			else if (op1 == "campeonato") {
 			if (is >> op2)
 			{
-				cout << "\n\nCOMECOU O CAMPEONATO\n" << endl;
-				Autodromo* aut1;
-				aut1 = getDga()->procuraAutodromo(op2);
-				setCamp(&(Campeonato()));
-				getCamp()->setCorrida(aut1);
-				cout << getCamp()->getCorrida()->getStringDescricao();
-				getCamp()->iniciaCamp();
-				return op1;
+				if (getDga()->procuraAutodromo(op2) != nullptr) {
+					cout << "\n\nCOMECOU O CAMPEONATO\n" << endl;
+					setCamp(&(Campeonato()));
+					getCamp()->setDgv(dgv);
+					getCamp()->setCorrida(getDga()->procuraAutodromo(op2));
+					getCamp()->addParticipantes();
+					cout << getCamp()->getCorrida()->getStringDescricao();
+					getCamp()->iniciaCamp();
+					return op1;
+				}
+				else
+					cout << "o autodromo " << op2 << " nao existe" << endl;
 			}
 			else
 				cout << "numero de parametros errado. campeonato <A1> <A2> ... <An>" << endl;
@@ -212,14 +216,15 @@ string Comandos::lerComandoModo1() {
 
 string Comandos::lerComandoModo2() {
 	string op1;
-	string op2;
+	int op2;
 	cout << "\nIntroduza comando: ";
 	getline(cin, comando);
 	istringstream is(comando);
 	if (is >> op1) {
 		if (op1 == "passatempo") {
 			if (is >> op2) {
-				getCamp()->passatempo(stoi(op2));
+				cout << getCamp()->getCorrida()->getNome() << endl;
+				//getCamp()->passatempo(op2);
 				return op1;
 			}
 			else
@@ -249,7 +254,8 @@ Campeonato* Comandos::getCamp() {
 }
 
 void Comandos::setCamp(Campeonato* c) {
-	camp = c;
+	camp = new Campeonato();
+	//camp = c;
 }
 
 

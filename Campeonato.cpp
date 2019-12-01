@@ -4,7 +4,7 @@
 #include "Classificacao.h"
 #include "Dgv.h"
 
-Campeonato::Campeonato()
+Campeonato::Campeonato():corrida(nullptr), dgv(nullptr)
 {
 }
 
@@ -14,12 +14,14 @@ Campeonato::~Campeonato()
 }
 
 void Campeonato::iniciaCamp() {
-	if (corrida != nullptr) {
+	if (getCorrida() != nullptr) {
 		//cout << "DIF NULLPTR";
-		if (corrida->getIniciada() == false) {
+		if (getIniciada() == false) {
 			//if(participantes.size() == 0)
 			//cout << "FALSE";
-			corrida->setIniciada(true);
+			getCorrida()->setIniciada(true);
+			cout << getIniciada() << endl;
+			
 		}
 		//else
 			//cout << "TRUE";
@@ -35,11 +37,17 @@ void Campeonato::passatempo(int t) {
 
 	}*/
 	//SÓ HÁ UMA CORRIDA
+	//corrida->setIniciada(true);
+	
 
-	if (corrida->getIniciada() == true && corrida->getFinalizada() == false)
-		corrida->passatempo(t);
-	else if (corrida->getIniciada() == false && corrida->getFinalizada() == false)
+	if (getCorrida()->getIniciada() == true ){
+		if (getCorrida()->getFinalizada() == false)
+			getCorrida()->passatempo(t);
+	}
+	else if (getIniciada() == false && getCorrida()->getFinalizada() == false)
 		cout << "\nNenhuma corrida a decorrer\n\n";
+
+	
 }
 
 int Campeonato::getTam() const {
@@ -54,9 +62,14 @@ Autodromo* Campeonato::getCorrida() const {
 	return corrida;
 }
 
+
+
 //melhorar a funcao depois
-void Campeonato::addParticipantes(int n_pista, int n_garagem) {
-	cout << "Indique o numero de carros a introduzir na pista: ";
+void Campeonato::addParticipantes() {
+	int n_pista, n_garagem;
+	string nome_piloto;
+	char ident_carro;
+	cout << "Indique o numero de participantes a introduzir na pista: ";
 	cin >> n_pista;
 	if (n_pista < 2) {
 		n_pista = 2;
@@ -66,10 +79,25 @@ void Campeonato::addParticipantes(int n_pista, int n_garagem) {
 		n_pista = 6;
 		cout << "Capacidade maxima dos autodromos e de: " << "6" << " carros. Adicionar 6 carros." << endl;
 	}
-	while (corrida->getPista().size() < n_pista) {
-		
-
+	for (size_t i = 0; i < n_pista; i++) {
+		cout << "Inserir nome do piloto: " << endl;
+		cin >> nome_piloto;
+		if (getDgv()->procuraPiloto(nome_piloto) != nullptr) {
+			getCorrida()->adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
+			
+			cout << getCorrida()->getPista().size() << endl;
+		}
 	}
+	for (size_t i = 0; i < n_pista; i++) {
+		cout << "Inserir id do carro: " << endl;
+		cin >> ident_carro;
+		if (getDgv()->procuraCarro(ident_carro) != nullptr) {
+			getCorrida()->adicionaCarro(getDgv()->procuraCarro(ident_carro));
+
+			cout << getCorrida()->getGaragem().size() << endl;
+		}
+	}
+	
 
 }
 
@@ -100,3 +128,14 @@ void Campeonato::addParticipantes(int n_pista, int n_garagem) {
 //		}
 //	}
 //}
+
+Dgv* Campeonato::getDgv()const{
+	return dgv;
+}
+void Campeonato::setDgv(Dgv* d) {
+	dgv = d;
+}
+
+bool Campeonato::getIniciada()const {
+	return corrida->getIniciada();
+}
