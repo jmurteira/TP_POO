@@ -41,7 +41,7 @@ void Autodromo::passatempo(int t) {
 		it != pista.cend();
 		it++) {
 		
-			(*it)->passaTempoPiloto(t, get);
+			(*it)->passaTempoPiloto(t, getDistancia());
 		}
 }
 
@@ -65,6 +65,10 @@ void Autodromo::setIniciada(bool inic) {
 		(*it)->setAtualizado(false);
 		//(*it)->getCarro()->setPosicao(0);
 	}
+}
+
+int Autodromo::getDistancia() const {
+	return distancia;
 }
 
 bool Autodromo::getFinalizada() const {

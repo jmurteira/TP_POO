@@ -39,6 +39,8 @@ public:
 	bool getIniciada() const;
 	void setIniciada(bool inic);
 
+	int getDistancia() const;
+
 	bool getFinalizada() const;
 	bool getClassifAtualizada() const;
 
