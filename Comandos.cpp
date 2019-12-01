@@ -10,7 +10,7 @@
 Comandos::Comandos(){}
 
 
-string Comandos::lerComando() {
+string Comandos::lerComandoModo1() {
 	string op1;
 	string op2;
 	string op3;
@@ -90,8 +90,9 @@ string Comandos::lerComando() {
 						}
 						if (contador == 2) {
 							getDgv()->novoPiloto(op2, op3);
-							return "cria p";
 							contador = 0;
+							return "cria p";
+							
 						}
 						else if (contador != 2) {
 							cout << "numero de parametros errado. cria <p> <dados do objeto> (tipo nome)" << endl;
@@ -173,24 +174,28 @@ string Comandos::lerComando() {
 					cout << "numero de parametros errado. saidocarro <letraCarro>" << endl;
 			}
 			else if (op1 == "lista") {
-					cout << "\n\n\nLISTA\n\n\n";
+				cout << "\n\n\nLISTA\n\n\n";
 				cout << getDgv()->descricaoCarro();
 				cout << getDgv()->descricaoPiloto();
 				cout << getDga()->descricaoAutodromo();
+				return op1;
 			}
 			else if (op1 == "sair") {
 				return op1;
 			}
 			else if (op1 == "campeonato") {
-				if (is >> op2) {
-					cout << "\n\nCOMECOU O CAMPEONATO\n" << endl;
-					//Autodromo* aut1;
-					//aut1 = getDga()->procuraAutodromo(op2);
-					//setCamp(&(Campeonato()));
-					//getCamp()->setCorrida(aut1);
-					//getCamp()->iniciaCamp();
-					return op1;
-				}
+			if (is >> op2)
+			{
+				cout << "\n\nCOMECOU O CAMPEONATO\n" << endl;
+				//Autodromo* aut1;
+				//aut1 = getDga()->procuraAutodromo(op2);
+				//setCamp(&(Campeonato()));
+				//getCamp()->setCorrida(aut1);
+				//getCamp()->iniciaCamp();
+				return op1;
+			}
+			else
+				cout << "numero de parametros errado. campeonato <A1> <A2> ... <An>" << endl;
 			}
 			else if (op1 == "passatempo") {
 				if (is >> op2)
@@ -206,6 +211,12 @@ string Comandos::lerComando() {
 	//} while (op1 != "sair");
 		
 }
+
+string lerComandoModo2() {
+
+
+}
+
 
 Dgv* Comandos::getDgv() {
 

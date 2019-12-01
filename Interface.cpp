@@ -24,6 +24,9 @@ Dga* Interface::getDga() {
 }
 
 void Interface::Simulador() {
+	int flag_sair = 0;
+	int flag_campeonato = 0;
+	
 	//imprimir as merdas todas bonitas da consola bla bla
 	//talvez aparecer primeiro um "intro" a dizer Car Simulator e carregar qualquer tecla para entrar
 	//depois apareceria uma lista de comandos, com uma distincao dos modos
@@ -56,16 +59,25 @@ void Interface::Simulador() {
 
 	cout << comando->getStringListaComandos();
 
-	while (comando->lerComando().compare("sair")) {
 
-		//comando->lerComando();
 
-		//if (comando->lerComando() == "campeonato") {
-			//cout << "ir para o campeonato" << endl;
+	while (flag_sair == 0){
 
-		//}
+		string res = comando->lerComandoModo1();
+
+		if (res == "sair")
+			flag_sair = 1;
+
+		else if (res == "campeonato")
+			flag_campeonato = 1;
+
+		while (flag_campeonato == 1) {
+			//modo 2
+		}
 
 	}
+	
+	
 
 	
 }

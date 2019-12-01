@@ -1,3 +1,7 @@
 ﻿  Comandos.cpp
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Comandos.cpp(208): warning C4715: 'Comandos::lerComando': not all control paths return a value
+  Interface.cpp
+  Source.cpp
+  Generating Code...
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Source.cpp(17,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Comandos.cpp(213): warning C4715: 'Comandos::lerComandoModo1': not all control paths return a value
   TP_POO.vcxproj -> C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Debug\TP_POO.exe

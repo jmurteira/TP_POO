@@ -18,7 +18,8 @@ public:
 
 	Comandos();
 
-	string lerComando();
+	string lerComandoModo1(); //modo1
+	string lerComandoModo2(); //modo2
 	Dgv* getDgv();
 	Dga* getDga();
 	Campeonato* getCamp();
