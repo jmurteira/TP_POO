@@ -193,10 +193,11 @@ string Comandos::lerComandoModo1() {
 					setCamp(&(Campeonato()));
 					getCamp()->setDgv(dgv);
 					getCamp()->setCorrida(getDga()->procuraAutodromo(op2));
-					getCamp()->addParticipantes();
 					cout << getCamp()->getCorrida()->getStringDescricao();
-					getCamp()->iniciaCamp();
-					return op1;
+					if (getCamp()->addParticipantes() == true)
+						return op1;
+					else
+						return " ";
 				}
 				else
 					cout << "o autodromo " << op2 << " nao existe" << endl;

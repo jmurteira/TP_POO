@@ -14,7 +14,7 @@ Campeonato::~Campeonato()
 {
 }
 
-void Campeonato::iniciaCamp() {
+bool Campeonato::iniciaCamp() {
 	if (getCorrida() != nullptr) {
 		//cout << "DIF NULLPTR";
 		if (getIniciada() == false) {
@@ -22,13 +22,14 @@ void Campeonato::iniciaCamp() {
 			//cout << "FALSE";
 			getCorrida()->setIniciada(true);
 			cout << getIniciada() << endl;
-			
+
+			return true;
 		}
 		//else
 			//cout << "TRUE";
 	}
 	else
-		cout << " ";
+		return false;
 }
 
 void Campeonato::passatempo(int t) {
@@ -78,7 +79,7 @@ int Campeonato::getAutorizados() const {
 
 
 //melhorar a funcao depois
-void Campeonato::addParticipantes() {
+bool Campeonato::addParticipantes() {
 	int n_pista, n_garagem;
 	string nome_piloto;
 	char ident_carro;
@@ -97,8 +98,10 @@ void Campeonato::addParticipantes() {
 		n_pista = 6;
 		cout << "Capacidade maxima dos autodromos e de: " << "6" << " carros. Adicionar 6 carros." << endl;
 	}
-	if (autorizados < n_pista)
-		return;
+	if (autorizados < n_pista) {
+		cout << "Numero insuficiente de participantes validos" << endl << "Introduza <modo1> para voltar ao menu principal." << endl;
+		return false;
+	}
 	for (size_t i = 0; i < n_pista; i++) {
 		cout << "Inserir nome do piloto: " << endl;
 		cin >> nome_piloto;
@@ -122,6 +125,11 @@ void Campeonato::addParticipantes() {
 			cout << getCorrida()->getGaragem().size() << endl;
 		}
 	}
+
+	if (getCorrida()->getPista().size() >= 2 && getCorrida()->getGaragem().size() >= 2)
+		return iniciaCamp();
+	else
+		return false;
 	
 
 }

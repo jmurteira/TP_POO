@@ -36,11 +36,11 @@ public:
 
 	int getAutorizados() const;
 
-	void addParticipantes(); //funcao para adicionar carros no autodromo. perguntar quantos para a pista e quantos para a garagem
+	bool addParticipantes(); //funcao para adicionar carros no autodromo. perguntar quantos para a pista e quantos para a garagem
 
 	void atualizaClassif();
 
-	void iniciaCamp();
+	bool iniciaCamp();
 
 	Dgv* getDgv()const;
 	void setDgv(Dgv* d);
