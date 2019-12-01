@@ -582,3 +582,7 @@ Debug/vc142.pdb
 .vs/TP_POO/v16/.suo
 *.obj
 *.tlog
+*.ipch
+*.obj
+*.idb
+.vs/TP_POO/v16/ipch/AutoPCH/214463a5d43dc5a7/AUTODROMO.ipch

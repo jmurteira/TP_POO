@@ -1,5 +1,6 @@
 #include "Comandos.h"
 #include "Campeonato.h"
+#include "Autodromo.h"
 #include "Piloto.h"
 #include "Carro.h"
 #include "Dgv.h"
@@ -110,6 +111,7 @@ string Comandos::lerComandoModo1() {
 						if (contador == 3) {
 							if (getDga()->getDgaSize() == 0){
 								getDga()->novoAutodromo(num1, num2, op2);
+								getDga()->procuraAutodromo(op2)->setDgv(getDgv());
 								return "cria a";
 							}
 							else
@@ -174,7 +176,7 @@ string Comandos::lerComandoModo1() {
 					cout << "numero de parametros errado. saidocarro <letraCarro>" << endl;
 			}
 			else if (op1 == "lista") {
-				cout << "\n\n\nLISTA\n\n\n";
+				cout << "\n\nLista de objectos existentes\n";
 				cout << getDgv()->descricaoCarro();
 				cout << getDgv()->descricaoPiloto();
 				cout << getDga()->descricaoAutodromo();
@@ -187,34 +189,47 @@ string Comandos::lerComandoModo1() {
 			if (is >> op2)
 			{
 				cout << "\n\nCOMECOU O CAMPEONATO\n" << endl;
-				//Autodromo* aut1;
-				//aut1 = getDga()->procuraAutodromo(op2);
-				//setCamp(&(Campeonato()));
-				//getCamp()->setCorrida(aut1);
-				//getCamp()->iniciaCamp();
+				Autodromo* aut1;
+				aut1 = getDga()->procuraAutodromo(op2);
+				setCamp(&(Campeonato()));
+				getCamp()->setCorrida(aut1);
+				getCamp()->iniciaCamp();
 				return op1;
 			}
 			else
 				cout << "numero de parametros errado. campeonato <A1> <A2> ... <An>" << endl;
 			}
-			else if (op1 == "passatempo") {
-				if (is >> op2)
-				{
-					getCamp()->passatempo(stoi(op2));
-					return op1;
-				}	
-			}
 			else
 				cout << "comando inexistente" << endl;
 				return "";
 		}
+		else
+			return "";
 	//} while (op1 != "sair");
 		
 }
 
-string lerComandoModo2() {
-
-
+string Comandos::lerComandoModo2() {
+	string op1;
+	string op2;
+	cout << "\nIntroduza comando: ";
+	getline(cin, comando);
+	istringstream is(comando);
+	if (is >> op1) {
+		if (op1 == "passatempo") {
+			if (is >> op2) {
+				getCamp()->passatempo(stoi(op2));
+				return op1;
+			}
+			else
+				cout << "numero de parametros errado. passatempo <n>" << endl;
+		}
+		else
+			cout << "comando inexistente" << endl;
+		return "";
+	}
+	else
+		return "";
 }
 
 
@@ -256,10 +271,13 @@ string Comandos::getStringListaComandos()const {
 	os << "apaga <letraTipo> identificador" << endl;
 	os << "entranocarro <letraCarro> <nomePiloto>" << endl;
 	os << "saidocarro <letraCarro>" << endl;
-	os << "lista" << endl << endl;
+	os << "lista" << endl;
+	os << "sair" << endl << endl;
 	os << "Modo 2: Campeonato" << endl;
 	os << "campeonato <A1> <A2> ... <An>" << endl;
 	os << "passatempo <n>" << endl;
-
+	os << "--------------------------" << endl;
+	os << "Nota: chamar comando campeonato para entrar no modo2" << endl;
+	os << "--------------------------" << endl;
 	return os.str();
 }

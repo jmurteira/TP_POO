@@ -1,5 +1,8 @@
 #include "Dga.h"
 #include "Autodromo.h"
+#include "Dgv.h"
+#include "Carro.h"
+#include "Piloto.h"
 #include <sstream>
 #include <iostream>
 
@@ -65,7 +68,7 @@ int Dga::verificaNumParametrosFicheiroTexto(string fich) {
 		while (is >> linha)
 		{
 			++n_parametros;
-			cout << n_parametros << endl;
+			//cout << n_parametros << endl;
 		}
 
 		file.close();
@@ -76,12 +79,18 @@ int Dga::verificaNumParametrosFicheiroTexto(string fich) {
 //ter cuidado com isto porque penso que todos os carros sao destruidos
 void Dga::apagaAutodromo(string nome) {
 	if (procuraAutodromo(nome) != nullptr) {
-		cout << "entrou";
+		//cout << "entrou";
 		for (size_t i = 0; i < autodromos.size(); i++) {
 			if (autodromos[i]->getNome() == nome)
+				for (size_t j = 0; j < autodromos[i]->getPista().size(); j++) { 
+					//falta ir a dgv retirar os pilotos dos carros danificados. conclusao, os autodromos tambem devem estar na dgv
+					autodromos[i]->getPista().erase(autodromos[i]->getPista().begin() + j); //retirar pilotos da pista
+					autodromos[i]->getGaragem().erase(autodromos[i]->getGaragem().begin() + j); //retirar carros da garagem
+				}
 				//pilotos[i]->getCarro()->setDesocupado();
 			autodromos.erase(autodromos.begin() + i);
 		}
+
 		delete procuraAutodromo(nome);
 	}
 	else

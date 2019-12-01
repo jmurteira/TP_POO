@@ -37,32 +37,74 @@ void Interface::Simulador() {
 	//acaba corrida, aparece classificacao final //maybe
 	//carregar qualquer tecla para voltar ao menu inicial
 	
-	Consola::setBackgroundColor(Consola::BRANCO_CLARO);
-	Consola::setTextColor(Consola::PRETO);
+	//Consola::setBackgroundColor(Consola::BRANCO_CLARO);
+	//Consola::setTextColor(Consola::VERDE_CLARO);
+	////Consola::setTextColor(Consola::PRETO);
 
-	for (int i = 0; i < 30; i++) {
+	//for (int i = 0; i < 30; i++) {
+	//	for (int j = 0; j < 10; j++) {
+	//		Consola::gotoxy(i + 45, j);
+	//		cout << " ";
+	//	}
+	//}
+
+	//Consola::setBackgroundColor(Consola::PRETO);
+	////Consola::setTextColor(Consola::BRANCO);
+
+	//for (int i = 0; i < 16; i++) {
+	//	for (int j = 0; j < 6; j++) {
+	//		Consola::gotoxy(i + 52, j + 2);
+	//		cout << " ";
+	//	}
+	//}
+
+
+	Consola::setBackgroundColor(Consola::PRETO);
+	//Consola::setTextColor(Consola::VERDE_CLARO);
+	//Consola::setTextColor(Consola::PRETO);
+
+	for (int i = 0; i < 50; i++) {
 		for (int j = 0; j < 10; j++) {
-			Consola::gotoxy(i + 45, j);
-			cout << " ";
+			Consola::gotoxy(i + 35, j + 8);
+			cout << char(28);
 		}
 	}
 
 	Consola::setBackgroundColor(Consola::PRETO);
-	Consola::setTextColor(Consola::BRANCO);
+	//Consola::setTextColor(Consola::BRANCO);
 
-	for (int i = 0; i < 16; i++) {
+	for (int i = 0; i < 42; i++) {
 		for (int j = 0; j < 6; j++) {
-			Consola::gotoxy(i + 52, j + 2);
+			Consola::gotoxy(i + 39, j + 10);
 			cout << " ";
 		}
 	}
 
+	
+	Consola::gotoxy(53, 12);
+	cout << "RACE" <<endl;
+	Consola::gotoxy(59, 13);
+	cout << "SIMULATOR" << endl;
+
+	
+	Consola::setTextColor(Consola::VERDE_CLARO);
+	Consola::gotoxy(42, 20);
+	cout << "Carregar numa tecla para continuar";
+
+	
+	Consola::getch();
+	
+
+	Consola::clrscr();
+
+	
 	cout << comando->getStringListaComandos();
 
 
 
 	while (flag_sair == 0){
 
+		
 		string res = comando->lerComandoModo1();
 
 		if (res == "sair")
@@ -73,6 +115,10 @@ void Interface::Simulador() {
 
 		while (flag_campeonato == 1) {
 			//modo 2
+			res = comando->lerComandoModo2();
+
+			//quando campeonato terminar, pergunta se quer sair logo = flag_campeonato == 0 e flag_sair == 1. se so quiser voltar atras, flag_campeonato ==0.
+
 		}
 
 	}

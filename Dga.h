@@ -7,6 +7,7 @@
 class Piloto;
 class Carro;
 class Autodromo;
+class Dgv;
 
 using namespace std;
 

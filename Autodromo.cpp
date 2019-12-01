@@ -1,6 +1,8 @@
 #include "Autodromo.h"
 #include "Piloto.h"
 #include "Carro.h"
+#include "Dgv.h"
+#include "Interface.h"
 #include <sstream>
 
 
@@ -94,3 +96,10 @@ string Autodromo::getStringDescricao()const {
 	return os.str();
 }
 
+
+Dgv* Autodromo::getDgv()const{
+	return dgv;
+}
+void Autodromo::setDgv(Dgv* d) {
+	dgv = d;
+}

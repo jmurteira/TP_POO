@@ -3,14 +3,16 @@
 #include <vector>
 #include <iostream>
 
+class Interface; //provisorio, so para aceder a dgv
 class Piloto;
 class Carro;
+class Dgv;
 
 using namespace std;
 
 class Autodromo
 {
-
+	Dgv* dgv;
 	string nome;
 	int distancia;
 	int capacidade;
@@ -43,7 +45,10 @@ public:
 	vector <Piloto*> getPista() const;
 	vector <Carro*> getGaragem() const;
 
+	Dgv* getDgv()const;
+	void setDgv(Dgv *d);
 
+	
 	////obter a pista (participantes) ???
 	//vector <Piloto> getPista()const;
 	////obter os carros que estao na garagem ???

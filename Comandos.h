@@ -6,6 +6,7 @@ class Piloto;
 class Dgv;
 class Dga;
 class Campeonato;
+class Autodromo;
 
 using namespace std;
 class Comandos
