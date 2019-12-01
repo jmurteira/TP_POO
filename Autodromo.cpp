@@ -36,7 +36,8 @@ string Autodromo::getNome() const{
 	return nome;
 }
 
-void Autodromo::passatempo(int t) {
+void Autodromo::passatempo(int t){
+
 		for (vector<Piloto*>::const_iterator it = pista.cbegin();
 		it != pista.cend();
 		it++) {
@@ -57,13 +58,11 @@ bool Autodromo::getIniciada() const {
 
 void Autodromo::setIniciada(bool inic) {
 	iniciada = inic;
-	cout << "setiniciada" << endl;
 	for (vector<Piloto*>::const_iterator it = pista.cbegin();
 		it != pista.cend();
 		it++) {
-		cout << "sim" << endl;
 		(*it)->setAtualizado(false);
-		//(*it)->getCarro()->setPosicao(0);
+		(*it)->getCarro()->setPosicao(0);
 	}
 }
 

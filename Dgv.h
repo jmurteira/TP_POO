@@ -4,7 +4,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <cctype>
 
 class Piloto;
 class Carro;
