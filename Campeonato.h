@@ -9,6 +9,7 @@ class Autodromo;
 class Piloto;
 class Classificacao;
 class Dgv;
+class Carro;
 
 using namespace std;
 
@@ -32,6 +33,8 @@ public:
 
 	void setCorrida(Autodromo * aut);
 	Autodromo* getCorrida() const;
+
+	int getAutorizados() const;
 
 	void addParticipantes(); //funcao para adicionar carros no autodromo. perguntar quantos para a pista e quantos para a garagem
 

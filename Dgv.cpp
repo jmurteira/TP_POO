@@ -245,3 +245,7 @@ void Dgv::saiDoCarro(char ident) {
 	else
 		cout << "carro com id: " << ident << " inexistente" << endl;
 }
+
+vector<Piloto*> Dgv::getPilotos() const {
+	return pilotos;
+}

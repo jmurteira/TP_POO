@@ -46,6 +46,8 @@ public:
 	void apagaCarro(char ident);
 	void apagaPiloto(string nome);
 
+	vector<Piloto*> getPilotos() const;
+
 	
 
 	//void criaCarro(int capAtual, int capMax, string marc, string mod);

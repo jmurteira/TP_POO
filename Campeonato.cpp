@@ -1,6 +1,7 @@
 #include "Campeonato.h"
 #include "Autodromo.h"
 #include "Piloto.h"
+#include "Carro.h"
 #include "Classificacao.h"
 #include "Dgv.h"
 
@@ -62,6 +63,18 @@ Autodromo* Campeonato::getCorrida() const {
 	return corrida;
 }
 
+int Campeonato::getAutorizados() const {
+	vector <Piloto*> p = dgv->getPilotos();
+	int i = 0;
+	for (vector<Piloto*>::const_iterator it = p.cbegin();
+		it != p.cend();
+		it++) {
+		if ((*it)->getCarro() != nullptr)
+			i++;
+	}
+
+	return i;
+}
 
 
 //melhorar a funcao depois
@@ -71,6 +84,11 @@ void Campeonato::addParticipantes() {
 	char ident_carro;
 	cout << "Indique o numero de participantes a introduzir na pista: ";
 	cin >> n_pista;
+
+	int autorizados = getAutorizados();
+
+
+
 	if (n_pista < 2) {
 		n_pista = 2;
 		cout << "Capacidade minima dos autodromos e de: " << "2" << " carros. Adicionar 2 carros." << endl;
@@ -79,20 +97,27 @@ void Campeonato::addParticipantes() {
 		n_pista = 6;
 		cout << "Capacidade maxima dos autodromos e de: " << "6" << " carros. Adicionar 6 carros." << endl;
 	}
+	if (autorizados < n_pista)
+		return;
 	for (size_t i = 0; i < n_pista; i++) {
 		cout << "Inserir nome do piloto: " << endl;
 		cin >> nome_piloto;
-		if (getDgv()->procuraPiloto(nome_piloto) != nullptr) {
-			getCorrida()->adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
-			
-			cout << getCorrida()->getPista().size() << endl;
+		if (getDgv()->procuraPiloto(nome_piloto) != nullptr ) {
+
+			if (getDgv()->procuraPiloto(nome_piloto)->getCarro() != nullptr)
+				getCorrida()->adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
+			else
+				cout << "Piloto sem Carro atribuido!!!" << endl << "Introduza piloto associado a um carro." << endl;
 		}
 	}
 	for (size_t i = 0; i < n_pista; i++) {
 		cout << "Inserir id do carro: " << endl;
 		cin >> ident_carro;
 		if (getDgv()->procuraCarro(ident_carro) != nullptr) {
-			getCorrida()->adicionaCarro(getDgv()->procuraCarro(ident_carro));
+			if (getDgv()->procuraCarro(ident_carro)->getOcupado() == true)
+				getCorrida()->adicionaCarro(getDgv()->procuraCarro(ident_carro));
+			else
+				cout << "Carro sem piloto!!!" << endl << "Introduza carro associado a um piloto." << endl;
 
 			cout << getCorrida()->getGaragem().size() << endl;
 		}
