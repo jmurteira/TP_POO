@@ -28,21 +28,14 @@ void Interface::Simulador() {
 	int flag_sair = 0;
 	int flag_campeonato = 0;
 	
-	//imprimir as merdas todas bonitas da consola bla bla
-	//talvez aparecer primeiro um "intro" a dizer Car Simulator e carregar qualquer tecla para entrar
-	//depois apareceria uma lista de comandos, com uma distincao dos modos
-	//assim que fosse escolhido o Campeonato, apareceria a pista e a garagem do autodromo e apenas os comandos do modo 2 (talvez)
-	//o campeonato pede o numero de carros que vao para a pista
-	//o mesmo mas para a garagem
+	
 	//e a corrida começa a partir do momento em que todos os carros da pista têm piloto
 	//acaba corrida, aparece classificacao final //maybe
 	//carregar qualquer tecla para voltar ao menu inicial
 	
 
 	Consola::setBackgroundColor(Consola::PRETO);
-	//Consola::setTextColor(Consola::VERDE_CLARO);
-	//Consola::setTextColor(Consola::PRETO);
-
+	
 	for (int i = 0; i < 50; i++) {
 		for (int j = 0; j < 10; j++) {
 			Consola::gotoxy(i + 35, j + 8);
@@ -51,8 +44,7 @@ void Interface::Simulador() {
 	}
 
 	Consola::setBackgroundColor(Consola::PRETO);
-	//Consola::setTextColor(Consola::BRANCO);
-
+	
 	for (int i = 0; i < 42; i++) {
 		for (int j = 0; j < 6; j++) {
 			Consola::gotoxy(i + 39, j + 10);
@@ -87,8 +79,10 @@ void Interface::Simulador() {
 		
 		string res = comando->lerComandoModo1();
 
-		if (res == "sair")
+		if (res == "sair"){
 			flag_sair = 1;
+			cout << "simulador terminou" <<endl;
+		}
 
 		else if (res == "campeonato")
 			flag_campeonato = 1;
@@ -97,8 +91,22 @@ void Interface::Simulador() {
 			//modo 2
 			res = comando->lerComandoModo2();
 
-			//quando campeonato terminar, pergunta se quer sair logo = flag_campeonato == 0 e flag_sair == 1. se so quiser voltar atras, flag_campeonato ==0.
+			Consola::clrscr();
+			
+			
+			
+			cout << comando->getStringListaComandosModo2();
 
+			if (res == "modo1") { //cancelar campeonato. cuidado: limpar vector pista e corrida
+				flag_campeonato = 0;
+				cout << "\ncampeonato cancelado. retornar ao modo 1.." << endl;
+				Consola::getch();
+				Consola::clrscr();
+				cout << comando->getStringListaComandos();
+			}
+
+
+			//quando campeonato terminar, pergunta se quer sair logo = flag_campeonato == 0 e flag_sair == 1. se so quiser voltar atras, flag_campeonato ==0.
 		}
 
 	}

@@ -28,5 +28,6 @@ public:
 	void atribuiDgv(Dgv * d);
 	void atribuiDga(Dga* da);
 	string getStringListaComandos()const;
+	string getStringListaComandosModo2()const;
 };
 
