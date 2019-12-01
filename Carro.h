@@ -4,7 +4,6 @@
 
 using namespace std;
 
-//todas as funcionalidades do carro: acelerar, travar, etc que são controladas pelo piloto têm de ficar privadas, pois só o piloto é que as controla
 
 class Carro
 {
@@ -23,7 +22,7 @@ class Carro
 	bool sinalEmerg;
 	bool avariado;
 
-	//ponteiro para piloto ( ??? )
+	
 
 public:
 	Carro(string marc, string mod, int capAtual, int capMax, char id = ' ');

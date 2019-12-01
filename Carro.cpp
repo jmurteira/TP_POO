@@ -66,7 +66,9 @@ void Carro::passaTempoCarro(int t, int distPista) {	//PASSATEMPO NO CARRO?
 	for (int i = 1; i <= t; i++) {
 		if (posicao < distPista)
 		{
+			cout << ident <<  posicao << endl<< endl;
 			posicao = posicao + velocidade;
+			cout << ident << posicao << endl << endl;
 			cronometro++;
 			if (posicao >= distPista)
 			{

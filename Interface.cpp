@@ -78,26 +78,35 @@ void Interface::Simulador() {
 
 		
 
-	/*	for (int i = 0; i < 50; i++) {
-			for (int j = 0; j < 10; j++) {
-				Consola::gotoxy(i + 5, j + 8);
-				cout << char(28);
-			}
-		}*/
+		//for (int i = 0; i < 50; i++) {
+		//	for (int j = 0; j < 10; j++) {
+		//		Consola::gotoxy(i + 20, j + 10);
+		//		cout << char(28);
+		//	}
+		//}
 
-		//fazer uma funcao para nao repetir isto
-		/*Consola::gotoxy(75, 3);
-		cout << "\nLista de Comandos: " << endl << endl;
-		Consola::gotoxy(75, 4);
-		cout << "Modo 2: Campeonato" << endl;
-		Consola::gotoxy(75, 5);
-		cout << "campeonato <A1> <A2> ... <An>" << endl;
-		Consola::gotoxy(75, 6);
-		cout << "passatempo <n>" << endl;
-		Consola::gotoxy(75, 7);
-		cout << "modo1 (voltar ao Modo 1)" << endl;
+		//for (int i = 0; i < 50; i++) {
+		//	for (int j = 0; j < 10; j++) {
+		//		j++;
+		//		Consola::gotoxy(i + 20, j + 10);
+		//		cout << " ";
+		//	}
+		//}
 
-		Consola::gotoxy(75, 8);*/
+
+		////fazer uma funcao para nao repetir isto
+		//Consola::gotoxy(75, 3);
+		//cout << "\nLista de Comandos: " << endl << endl;
+		//Consola::gotoxy(75, 4);
+		//cout << "Modo 2: Campeonato" << endl;
+		//Consola::gotoxy(75, 5);
+		//cout << "campeonato <A1> <A2> ... <An>" << endl;
+		//Consola::gotoxy(75, 6);
+		//cout << "passatempo <n>" << endl;
+		//Consola::gotoxy(75, 7);
+		//cout << "modo1 (voltar ao Modo 1)" << endl;
+
+		
 		string res = comando->lerComandoModo1();
 		
 		
@@ -109,14 +118,44 @@ void Interface::Simulador() {
 			flag_campeonato = 1;
 
 		while (flag_campeonato == 1) {
+			int flag = 0;
 			//modo 2
 			
+			if (flag == 0){
+				Consola::clrscr();
+				flag = 1;
+			}
 
-			Consola::clrscr();
+			for (int i = 0; i < 50; i++) {
+				for (int j = 0; j < 10; j++) {
+					Consola::gotoxy(i + 20, j + 10);
+					cout << char(28);
+				}
+			}
+
+			for (int i = 0; i < 50; i++) {
+				for (int j = 0; j < 10; j++) {
+					j++;
+					Consola::gotoxy(i + 20, j + 10);
+					cout << " ";
+				}
+			}
+
+
+			//fazer uma funcao para nao repetir isto
+			Consola::gotoxy(75, 3);
+			cout << "\nLista de Comandos: " << endl << endl;
+			Consola::gotoxy(75, 4);
+			cout << "Modo 2: Campeonato" << endl;
+			Consola::gotoxy(75, 5);
+			cout << "campeonato <A1> <A2> ... <An>" << endl;
+			Consola::gotoxy(75, 6);
+			cout << "passatempo <n>" << endl;
+			Consola::gotoxy(75, 7);
+			cout << "modo1 (voltar ao Modo 1)" << endl;
 			
 			
-			
-			cout << comando->getStringListaComandosModo2();
+			//cout << comando->getStringListaComandosModo2();
 
 			res = comando->lerComandoModo2();
 
@@ -125,10 +164,26 @@ void Interface::Simulador() {
 				cout << "\ncampeonato cancelado. retornar ao modo 1.." << endl;
 				Consola::getch();
 				Consola::clrscr();
+
+				Consola::gotoxy(75, 3);
+				cout << "\nLista de Comandos: " << endl << endl;
+				Consola::gotoxy(75, 4);
+				cout << "Modo 2: Campeonato" << endl;
+				Consola::gotoxy(75, 5);
+				cout << "campeonato <A1> <A2> ... <An>" << endl;
+				Consola::gotoxy(75, 6);
+				cout << "passatempo <n>" << endl;
+				Consola::gotoxy(75, 7);
+				cout << "modo1 (voltar ao Modo 1)" << endl;
+				
+
+				
+				
+				Consola::clrscr();
 				cout << comando->getStringListaComandos();
 			}
 
-
+			//cin.get();
 
 			//quando campeonato terminar, pergunta se quer sair logo = flag_campeonato == 0 e flag_sair == 1. se so quiser voltar atras, flag_campeonato ==0.
 		}
