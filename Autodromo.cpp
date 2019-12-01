@@ -41,7 +41,7 @@ void Autodromo::passatempo(int t) {
 		it != pista.cend();
 		it++) {
 		
-			(*it)->passaTempoPiloto(t, distancia);
+			(*it)->passaTempoPiloto(t, get);
 		}
 }
 
