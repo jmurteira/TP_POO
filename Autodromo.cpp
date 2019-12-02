@@ -41,7 +41,7 @@ void Autodromo::passatempo(int t){
 		for (vector<Piloto*>::const_iterator it = pista.cbegin();
 		it != pista.cend();
 		it++) {
-		
+			//(*it)->getCarro()
 			(*it)->passaTempoPiloto(t, getDistancia());
 		}
 }

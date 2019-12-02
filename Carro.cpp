@@ -4,7 +4,7 @@
 
 
 Carro::Carro(string marc, string mod, int capAtual, int capMax, char id) : 
-marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual),velocidade(0), velMax(50), ocupado(false), sinalEmerg(false), avariado(false), n_energia(5)
+marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual),velocidade(1), velMax(50), ocupado(false), sinalEmerg(false), avariado(false), n_energia(5)
 {
 		
 
@@ -64,10 +64,10 @@ void Carro::setVelocidade(int x) {
 void Carro::passaTempoCarro(int t, int distPista) {	//PASSATEMPO NO CARRO?
 
 	for (int i = 1; i <= t; i++) {
-		if (posicao < distPista)
+		if (posicao < distPista && posicao != -2)
 		{
 			cout << ident <<  posicao << endl<< endl;
-			posicao = posicao + velocidade;
+			setPosicao(getPosicao() + getVelocidade());
 			cout << ident << posicao << endl << endl;
 			cronometro++;
 			if (posicao >= distPista)
