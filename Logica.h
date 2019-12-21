@@ -1,5 +1,4 @@
 #pragma once
-
 class Dga;
 class Dgv;
 class Comandos;
@@ -8,29 +7,23 @@ class Carro;
 class Piloto;
 class Campeonato;
 class Autodromo;
-class Logica;
 
-using namespace std;
-
-class Interface
+class Logica
 {
-	//ISTO VAI SAIR DAQUI
 	Dga* dga;
 	Dgv* dgv;
 	Comandos* comando;
 
-	Logica* logica;
-
 
 
 public:
-	Interface(Logica* log);
+	Logica(Dgv* d, Dga* da, Comandos* com);
 
 	//funcao para correr o simulador
 	void Simulador();
 
-	Dgv *getDgv();
-	Dga *getDga();
+	Dgv* getDgv();
+	Dga* getDga();
 	Comandos* getComandos();
 };
 

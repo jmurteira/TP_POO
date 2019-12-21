@@ -9,10 +9,8 @@
 #include "Autodromo.h"
 
 
-Interface::Interface(Dgv* d, Dga* da, Comandos* com) {
-	dgv = d;
-	dga = da;
-	comando = com;
+Interface::Interface(Logica* log) {
+	logica = log;
 }
 
 
@@ -22,6 +20,10 @@ Dgv* Interface::getDgv() {
 
 Dga* Interface::getDga() {
 	return dga;
+}
+
+Comandos* Interface::getComandos() {
+	return comando;
 }
 
 void Interface::Simulador() {
@@ -130,14 +132,18 @@ void Interface::Simulador() {
 				for (int j = 0; j < 10; j++) {
 					Consola::gotoxy(i + 20, j + 10);
 					cout << char(28);
+					j++;
 				}
 			}
 
-			for (int i = 0; i < 50; i++) {
+			for (int i = 0; i < getComandos()->getCamp()->getCorrida()->getPista().size(); i++) {
+				int pos = getComandos()->getCamp()->getCorrida()->getPista()[i]->getCarro()->getPosicao();
+				int dist = getComandos()->getCamp()->getCorrida()->getDistancia();
+				float x = round( (pos * 50) / dist );
 				for (int j = 0; j < 10; j++) {
 					j++;
-					Consola::gotoxy(i + 20, j + 10);
-					cout << " ";
+					Consola::gotoxy(x + 20, 2*i + 1 + 10);
+					cout << getComandos()->getCamp()->getCorrida()->getPista()[i]->getCarro()->getIdent();
 				}
 			}
 
