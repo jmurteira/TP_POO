@@ -15,13 +15,7 @@ using namespace std;
 class Interface
 {
 	//ISTO VAI SAIR DAQUI
-	Dga* dga;
-	Dgv* dgv;
-	Comandos* comando;
-
 	Logica* logica;
-
-
 
 public:
 	Interface(Logica* log);
@@ -29,8 +23,6 @@ public:
 	//funcao para correr o simulador
 	void Simulador();
 
-	Dgv *getDgv();
-	Dga *getDga();
-	Comandos* getComandos();
+	Logica* getLogica();
 };
 

@@ -5,6 +5,7 @@
 #include "Dgv.h"
 #include "Consola.h"
 #include "Interface.h"
+#include "Logica.h"
 #include <string>
 #include <vector>
 #include <iostream>
@@ -123,12 +124,13 @@ int main() {
 
 	//APENAS ESTÁ AQUI PARA TESTAR
 	Comandos c = Comandos();
+	Logica logic = Logica(&dgv, &dga, &c);
 	c.atribuiDgv(&dgv);
 	c.atribuiDga(&dga);
 	//c.lerComando();
 
 
-	Interface i =Interface(&dgv, &dga, &c);
+	Interface i =Interface(&logic);
 	i.Simulador();
 
 	/*cout << endl << endl << endl;
