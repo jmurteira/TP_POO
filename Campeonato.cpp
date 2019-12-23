@@ -58,10 +58,15 @@ int Campeonato::getTam() const {
 
 void Campeonato::setCorrida(Autodromo* aut) {
 	corrida = aut;
+	corridas.push_back(aut);
 }
 
 Autodromo* Campeonato::getCorrida() const {
 	return corrida;
+}
+
+vector <Autodromo*> Campeonato::getCorridas() const {
+	return corridas;
 }
 
 int Campeonato::getAutorizados() const {
@@ -171,4 +176,36 @@ void Campeonato::setDgv(Dgv* d) {
 
 bool Campeonato::getIniciada()const {
 	return corrida->getIniciada();
+}
+
+Autodromo* Campeonato::getCorridaAtiva() const {
+	for (vector<Autodromo*>::const_iterator it = corridas.cbegin();
+		it != corridas.cend();
+		it++) {
+		if ((*it)->getFinalizada() == false && (*it)->getIniciada() == true) {
+			return (*it);
+		}
+	}
+}
+
+bool Campeonato::finalizaCorrida() {
+	
+	int emCorrida = 0;
+	
+	for (vector<Piloto*>::const_iterator it = getCorridaAtiva()->getPista().cbegin();
+		it != getCorridaAtiva()->getPista().cend();
+		it++) {
+
+		if ((*it)->getCarro()->getPosicao() != -2)
+		{
+			emCorrida++;
+		}
+	}
+
+	if (emCorrida > 0)
+		return false;
+	else {
+		getCorridaAtiva()->setFinalizada(true);
+		return true;
+	}
 }

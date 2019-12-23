@@ -19,7 +19,7 @@ class Campeonato
 	int tam = 1;					//num de corridas (autodromos)
 	int realizadas = 0;				//num de corridas concluidas
 	Autodromo* corrida;
-	//vector <Autodromo*> corrida;
+	vector <Autodromo*> corridas;
 	vector <Piloto*> participantes;
 	vector<Classificacao*> classGeral;
 
@@ -32,7 +32,10 @@ public:
 	int getTam() const;
 
 	void setCorrida(Autodromo * aut);
+	
 	Autodromo* getCorrida() const;
+	Autodromo* getCorridaAtiva() const;
+	vector <Autodromo*> getCorridas() const;
 
 	int getAutorizados() const;
 
@@ -46,5 +49,7 @@ public:
 	void setDgv(Dgv* d);
 
 	bool getIniciada()const;
+
+	bool finalizaCorrida();
 	
 };

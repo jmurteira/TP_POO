@@ -42,6 +42,8 @@ public:
 	int getDistancia() const;
 
 	bool getFinalizada() const;
+	void setFinalizada(bool fin);
+
 	bool getClassifAtualizada() const;
 
 	vector <Piloto*> getPista() const;

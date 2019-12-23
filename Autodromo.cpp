@@ -74,6 +74,10 @@ bool Autodromo::getFinalizada() const {
 	return finalizada;
 }
 
+void Autodromo::setFinalizada(bool fin) {
+	finalizada = fin;
+}
+
 bool Autodromo::getClassifAtualizada() const {
 	return classifAtualizada;
 }
