@@ -135,7 +135,6 @@ string Autodromo::getStringDescricao()const {
 
 void Autodromo::adicionaParticipante(Piloto* p) {
 	pista.push_back(p);
-
 }
 
 void Autodromo::adicionaCarro(Carro* c) {

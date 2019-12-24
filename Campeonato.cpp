@@ -20,12 +20,9 @@ bool Campeonato::iniciaCamp() {
 		if (getIniciada() == false) {
 
 			getCorridas()[realizadas]->setIniciada(true);
-			cout << getIniciada() << endl;
-
+			//cout << getIniciada() << endl;
 			return true;
 		}
-		//else
-			//cout << "TRUE";
 	}
 	else
 		return false;
