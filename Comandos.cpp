@@ -193,7 +193,6 @@ string Comandos::lerComandoModo1() {
 					setCamp(&(Campeonato()));
 					getCamp()->setDgv(dgv);
 					getCamp()->setCorrida(getDga()->procuraAutodromo(op2));
-					cout << getCamp()->getCorrida()->getStringDescricao();
 					if (getCamp()->addParticipantes() == true)
 						return op1;
 					else
@@ -218,18 +217,36 @@ string Comandos::lerComandoModo1() {
 string Comandos::lerComandoModo2() {
 	string op1;
 	int op2;
+	char ch1;
+	float flt1;
 	cout << "\nIntroduza comando: ";
 	getline(cin, comando);
 	istringstream is(comando);
 	if (is >> op1) {
 		if (op1 == "passatempo") {
 			if (is >> op2) {
-				cout << getCamp()->getCorrida()->getNome() << endl;
+				cout << getCamp()->getCorridaAtiva()->getNome() << endl;
 				getCamp()->passatempo(op2);
 				return op1;
 			}
 			else
 				cout << "numero de parametros errado. passatempo <n>" << endl;
+		}
+		else if (op1 == "carregabat") {
+			if (is >> ch1) {
+				if (is >> flt1) {
+					getCamp()->carregabat(ch1, flt1);
+				}
+				else
+					cout << "numero de parametros errado. carregabat <letraCarro> <Q>";
+			}
+			else
+				cout << "numero de parametros errado. carregabat <letraCarro> <Q>";
+		}
+		else if (op1 == "carregatudo") {
+			if (is >> op1) {
+				cout << "CARREGA TUDO"; // alterar
+			}
 		}
 		else if (op1 == "modo1") {
 			return op1;

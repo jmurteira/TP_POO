@@ -3,8 +3,8 @@
 #include <iostream>
 
 
-Carro::Carro(string marc, string mod, int capAtual, int capMax, char id) : 
-marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual),velocidade(1), velMax(50), ocupado(false), sinalEmerg(false), avariado(false), n_energia(5)
+Carro::Carro(string marc, string mod, float capAtual, float capMax, char id) : 
+marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual),velocidade(1), velMax(50), ocupado(false), sinalEmerg(false), avariado(false)//, n_energia(5)
 {
 		
 
@@ -15,7 +15,7 @@ marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMa
 	else if (capMax > 100)
 		energiaMax = 100;
 		
-	
+
 	//estao alguns valores inicializados por defeito
 }
 
@@ -61,7 +61,7 @@ void Carro::setVelocidade(int x) {
 }
 
 
-void Carro::passaTempoCarro(int t, int distPista) {	//PASSATEMPO NO CARRO?
+void Carro::passaTempoCarro(int t, int distPista) {	
 
 	for (int i = 1; i <= t; i++) {
 		if (posicao < distPista && posicao != -2)
@@ -133,9 +133,7 @@ int Carro::getVelocidadeMax() {
 	return velMax;
 }
 
-void Carro::carregaBat() {
-
-	cout << "Carro: " << getIdent() << endl;
+void Carro::carregaBat(float n_energia) {
 
 	if (velocidade == 0) {
 

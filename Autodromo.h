@@ -49,6 +49,10 @@ public:
 	vector <Piloto*> getPista() const;
 	vector <Carro*> getGaragem() const;
 
+	Piloto* procuraPilotoPorCarro(Carro * c) const;
+
+	void carregabat(Carro* c, float q);
+
 	void adicionaParticipante(Piloto* p);
 	void adicionaCarro(Carro* c);
 	//Dgv* getDgv()const;

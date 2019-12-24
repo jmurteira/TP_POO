@@ -34,6 +34,8 @@ public:
 
 	Carro* getCarro() const;
 
+	void carregaCarro(float n_energia);
+
 	string getStringDescricao()const;
 
 };

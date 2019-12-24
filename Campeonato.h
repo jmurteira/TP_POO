@@ -18,7 +18,7 @@ class Campeonato
 	Dgv* dgv;
 	int tam = 1;					//num de corridas (autodromos)
 	int realizadas = 0;				//num de corridas concluidas
-	Autodromo* corrida;
+	//Autodromo* corrida;
 	vector <Autodromo*> corridas;
 	vector <Piloto*> participantes;
 	vector<Classificacao*> classGeral;
@@ -33,9 +33,11 @@ public:
 
 	void setCorrida(Autodromo * aut);
 	
-	Autodromo* getCorrida() const;
+	//Autodromo* getCorrida() const;
 	Autodromo* getCorridaAtiva() const;
 	vector <Autodromo*> getCorridas() const;
+
+	void carregabat(char ident, float q);
 
 	int getAutorizados() const;
 
@@ -51,5 +53,8 @@ public:
 	bool getIniciada()const;
 
 	bool finalizaCorrida();
+
+	int getRealizadas();
+	void setRealizadas(int n);
 	
 };

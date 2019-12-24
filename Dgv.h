@@ -24,6 +24,7 @@ public:
 
 	Carro* procuraCarro(char ident) const;
 	Piloto* procuraPiloto(string nome) const;
+	Piloto* procuraPilotoPorCarro(char ident) const;
 
 	void carregaP(string fich);
 	void carregaC(string fich);

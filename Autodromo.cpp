@@ -7,7 +7,7 @@
 
 
 
-Autodromo::Autodromo(int cap, int dist, string n):capacidade(cap), distancia(dist), nome(n),  iniciada(false), finalizada(false)
+Autodromo::Autodromo(int cap, int dist, string n):capacidade(cap), distancia(dist), nome(n),  iniciada(false), finalizada(false), classifAtualizada(false) //classifAtualizada???
 {
 	if (cap < 2){
 		capacidade = 2; //minimo definido no enunciado
@@ -88,6 +88,26 @@ vector <Piloto*> Autodromo::getPista() const {
 
 vector <Carro*> Autodromo::getGaragem() const {
 	return garagem;
+}
+
+Piloto* Autodromo::procuraPilotoPorCarro(Carro * c) const {
+	//Carro* c = procuraCarro(ident);
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();
+		it++)
+		if ((*it)->getCarro() == c)
+			return *it;
+	cout << "Carro nao encontrado";
+	return nullptr;
+}
+
+void Autodromo::carregabat(Carro * c, float q) {
+	Piloto* p = procuraPilotoPorCarro(c);
+	if (p != nullptr) {
+		p->carregaCarro(q);
+	}
+	else
+		return;
 }
 
 //vector <Piloto *> Autodromo::getPista()const {

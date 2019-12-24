@@ -67,6 +67,11 @@ void Piloto::passaTempoPiloto(int t, int dist) {
 	carro->passaTempoCarro(t, dist);
 }
 
+void Piloto::carregaCarro(float n_energia) {
+	carro->carregaBat(n_energia);
+}
+
+
 string Piloto::getStringDescricao()const {
 	ostringstream os;
 	os << "Piloto: " << nome << endl;

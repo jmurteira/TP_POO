@@ -137,14 +137,16 @@ void Logica::Simulador() {
 				}
 			}
 
-			for (int i = 0; i < getComandos()->getCamp()->getCorrida()->getPista().size(); i++) {
-				int pos = getComandos()->getCamp()->getCorrida()->getPista()[i]->getCarro()->getPosicao();
-				int dist = getComandos()->getCamp()->getCorrida()->getDistancia();
+			int x = getComandos()->getCamp()->getRealizadas();
+
+			for (int i = 0; i < getComandos()->getCamp()->getCorridas()[x]->getPista().size(); i++) {
+				int pos = getComandos()->getCamp()->getCorridas()[x]->getPista()[i]->getCarro()->getPosicao();
+				int dist = getComandos()->getCamp()->getCorridas()[x]->getDistancia();
 				float x = round((pos * 50) / dist);
 				for (int j = 0; j < 10; j++) {
 					j++;
 					Consola::gotoxy(x + 20, 2 * i + 1 + 10);
-					cout << getComandos()->getCamp()->getCorrida()->getPista()[i]->getCarro()->getIdent();
+					cout << getComandos()->getCamp()->getCorridas()[x]->getPista()[i]->getCarro()->getIdent();
 				}
 			}
 
@@ -159,6 +161,22 @@ void Logica::Simulador() {
 			Consola::gotoxy(75, 6);
 			cout << "passatempo <n>" << endl;
 			Consola::gotoxy(75, 7);
+			cout << "listacarros";
+			Consola::gotoxy(75, 8);
+			cout << "carregabat <letraCarro> <Q>";
+			Consola::gotoxy(75, 9);
+			cout << "carregatudo";
+			Consola::gotoxy(75, 10);
+			cout << "corrida";
+			Consola::gotoxy(75, 11);
+			cout << "acidente <letraCarro>";
+			Consola::gotoxy(75, 12);
+			cout << "stop <nomePiloto>";
+			Consola::gotoxy(75, 13);
+			cout << "destroi <letraCarro>";
+			Consola::gotoxy(75, 14);
+			cout << "log";
+			Consola::gotoxy(75, 15);
 			cout << "modo1 (voltar ao Modo 1)" << endl;
 
 
@@ -181,6 +199,22 @@ void Logica::Simulador() {
 				Consola::gotoxy(75, 6);
 				cout << "passatempo <n>" << endl;
 				Consola::gotoxy(75, 7);
+				cout << "listacarros";
+				Consola::gotoxy(75, 8);
+				cout << "carregabat <letraCarro> <Q>";
+				Consola::gotoxy(75, 9);
+				cout << "carregatudo";
+				Consola::gotoxy(75, 10);
+				cout << "corrida";
+				Consola::gotoxy(75, 11);
+				cout << "acidente <letraCarro>";
+				Consola::gotoxy(75, 12);
+				cout << "stop <nomePiloto>";
+				Consola::gotoxy(75, 13);
+				cout << "destroi <letraCarro>";
+				Consola::gotoxy(75, 14);
+				cout << "log";
+				Consola::gotoxy(75, 15);
 				cout << "modo1 (voltar ao Modo 1)" << endl;
 
 

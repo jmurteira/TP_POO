@@ -15,7 +15,7 @@ class Carro
 
 	float energia;
 	float energiaMax;
-	float n_energia; // utiliza uma vez a manivela de carregamento de energia no carro identificado por letraCarro fornecendo Q mAh. é um dos comandos, para a meta 2, mas para já fica om default igual 5
+	//float n_energia; // utiliza uma vez a manivela de carregamento de energia no carro identificado por letraCarro fornecendo Q mAh. é um dos comandos, para a meta 2, mas para já fica om default igual 5
 	int velocidade;
 	int velMax;
 	bool ocupado;		//ver se tem piloto ou não
@@ -25,7 +25,7 @@ class Carro
 	
 
 public:
-	Carro(string marc, string mod, int capAtual, int capMax, char id = ' ');
+	Carro(string marc, string mod, float capAtual, float capMax, char id = ' ');
 	~Carro();
 	
 	char getIdent()const;
@@ -53,8 +53,8 @@ public:
 
 	//Energia
 	void gastaEnergia();
-	void carregaBat();
-	float getEnergia();
+	void carregaBat(float n_energia);
+	float getEnergia() const;
 	
 	//Botao Emergencia
 	void BotaoSOS();

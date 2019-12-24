@@ -5,7 +5,7 @@
 #include "Classificacao.h"
 #include "Dgv.h"
 
-Campeonato::Campeonato():corrida(nullptr), dgv(nullptr)
+Campeonato::Campeonato(): dgv(nullptr), tam(0), realizadas(0)
 {
 }
 
@@ -15,12 +15,11 @@ Campeonato::~Campeonato()
 }
 
 bool Campeonato::iniciaCamp() {
-	if (getCorrida() != nullptr) {
-		//cout << "DIF NULLPTR";
+	if (getCorridas().size() != 0) {
+		//cout << "DIF ZERO";
 		if (getIniciada() == false) {
-			//if(participantes.size() == 0)
-			//cout << "FALSE";
-			getCorrida()->setIniciada(true);
+
+			getCorridas()[realizadas]->setIniciada(true);
 			cout << getIniciada() << endl;
 
 			return true;
@@ -40,16 +39,16 @@ void Campeonato::passatempo(int t) {
 	}*/
 	//SÓ HÁ UMA CORRIDA
 	//corrida->setIniciada(true);
-	
+	for (vector<Autodromo*>::const_iterator it = corridas.cbegin();
+		it != corridas.cend();
+		it++) {
+		if ((*it)->getIniciada() == true && (*it)->getFinalizada() == false) {
+			(*it)->passatempo(t);
+		}
 
-	if (getCorrida()->getIniciada() == true ){
-		if (getCorrida()->getFinalizada() == false)
-			getCorrida()->passatempo(t);
-	}
-	else if (getIniciada() == false && getCorrida()->getFinalizada() == false)
-		cout << "\nNenhuma corrida a decorrer\n\n";
-
-	
+		else if ((*it)->getIniciada() == false && (*it)->getFinalizada() == false)
+			cout << "\nNenhuma corrida a decorrer\n\n";
+	}	
 }
 
 int Campeonato::getTam() const {
@@ -57,13 +56,13 @@ int Campeonato::getTam() const {
 }
 
 void Campeonato::setCorrida(Autodromo* aut) {
-	corrida = aut;
+	//corrida = aut;
 	corridas.push_back(aut);
 }
 
-Autodromo* Campeonato::getCorrida() const {
-	return corrida;
-}
+//Autodromo* Campeonato::getCorrida() const {
+//	return corrida;
+//}
 
 vector <Autodromo*> Campeonato::getCorridas() const {
 	return corridas;
@@ -112,8 +111,15 @@ bool Campeonato::addParticipantes() {
 		cin >> nome_piloto;
 		if (getDgv()->procuraPiloto(nome_piloto) != nullptr ) {
 
-			if (getDgv()->procuraPiloto(nome_piloto)->getCarro() != nullptr)
-				getCorrida()->adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
+			if (getDgv()->procuraPiloto(nome_piloto)->getCarro() != nullptr) {
+				participantes.push_back(getDgv()->procuraPiloto(nome_piloto));
+				//adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
+				for (vector<Autodromo*>::const_iterator it = corridas.cbegin();
+					it != corridas.cend();
+					it++) {
+					(*it)->adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
+				}
+			}
 			else
 				cout << "Piloto sem Carro atribuido!!!" << endl << "Introduza piloto associado a um carro." << endl;
 		}
@@ -123,15 +129,18 @@ bool Campeonato::addParticipantes() {
 		cin >> ident_carro;
 		if (getDgv()->procuraCarro(ident_carro) != nullptr) {
 			if (getDgv()->procuraCarro(ident_carro)->getOcupado() == true)
-				getCorrida()->adicionaCarro(getDgv()->procuraCarro(ident_carro));
+
+				for (vector<Autodromo*>::const_iterator it = corridas.cbegin();
+					it != corridas.cend();
+					it++) {
+					(*it)->adicionaCarro(getDgv()->procuraCarro(ident_carro));
+				}
 			else
 				cout << "Carro sem piloto!!!" << endl << "Introduza carro associado a um piloto." << endl;
-
-			cout << getCorrida()->getGaragem().size() << endl;
 		}
 	}
 
-	if (getCorrida()->getPista().size() >= 2 && getCorrida()->getGaragem().size() >= 2)
+	if (participantes.size() >= 2 && getCorridas()[0]->getGaragem().size() >= 2)
 		return iniciaCamp();
 	else
 		return false;
@@ -175,7 +184,7 @@ void Campeonato::setDgv(Dgv* d) {
 }
 
 bool Campeonato::getIniciada()const {
-	return corrida->getIniciada();
+	return corridas[realizadas]->getIniciada();
 }
 
 Autodromo* Campeonato::getCorridaAtiva() const {
@@ -186,6 +195,24 @@ Autodromo* Campeonato::getCorridaAtiva() const {
 			return (*it);
 		}
 	}
+}
+
+int Campeonato::getRealizadas() {
+	return realizadas;
+}
+
+void Campeonato::carregabat(char ident, float q) {		//DUVIDA EM QUE CARROS É PARA CARREGAR A BATERIA E QUAIS OS REQUISITOS (SE É PRECISO ESTAR NO CAMPEONATO/CORRIDA)
+														//NESTE MOMENTO ESTÁ A CARREGAR TODOS OS CARROS DA DGV (NAO TEM VERIFICAÇÃO)
+	//Autodromo * a = getCorridaAtiva();
+	Piloto * p = getDgv()->procuraPilotoPorCarro(ident);
+	//Piloto * partic = a->procuraPilotoPorCarro(p->getCarro());
+	if(p != nullptr)
+		p->carregaCarro(q);
+	//partic->carregaCarro(q);
+}
+
+void Campeonato::setRealizadas(int n) {
+	realizadas = n;
 }
 
 bool Campeonato::finalizaCorrida() {
@@ -205,6 +232,7 @@ bool Campeonato::finalizaCorrida() {
 	if (emCorrida > 0)
 		return false;
 	else {
+		setRealizadas(getRealizadas() + 1);
 		getCorridaAtiva()->setFinalizada(true);
 		return true;
 	}

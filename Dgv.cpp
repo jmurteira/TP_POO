@@ -115,6 +115,16 @@ Piloto* Dgv::procuraPiloto(string nome) const {
 	return nullptr;
 }
 
+Piloto* Dgv::procuraPilotoPorCarro(char ident) const {
+	Carro* c = procuraCarro(ident);
+	for (vector<Piloto*>::const_iterator it = pilotos.cbegin();
+		it != pilotos.cend();
+		it++)
+		if ((*it)->getCarro() == c)
+			return *it;
+	return nullptr;
+}
+
 
 
 bool Dgv::verificaIdent(char ident) {
