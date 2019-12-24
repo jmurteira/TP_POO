@@ -139,7 +139,7 @@ void Logica::Simulador() {
 
 			int x = getComandos()->getCamp()->getRealizadas();
 
-			for (int i = 0; i < getComandos()->getCamp()->getCorridas()[x]->getPista().size(); i++) {
+			/*for (int i = 0; i < getComandos()->getCamp()->getCorridas()[x]->getPista().size(); i++) {
 				int pos = getComandos()->getCamp()->getCorridas()[x]->getPista()[i]->getCarro()->getPosicao();
 				int dist = getComandos()->getCamp()->getCorridas()[x]->getDistancia();
 				float x = round((pos * 50) / dist);
@@ -147,6 +147,17 @@ void Logica::Simulador() {
 					j++;
 					Consola::gotoxy(x + 20, 2 * i + 1 + 10);
 					cout << getComandos()->getCamp()->getCorridas()[x]->getPista()[i]->getCarro()->getIdent();
+				}
+			}*/
+
+			for (int i = 0; i < getComandos()->getCamp()->getCorridaAtiva()->getPista().size(); i++) {
+				int pos = getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getPosicao();
+				int dist = getComandos()->getCamp()->getCorridaAtiva()->getDistancia();
+				float x = round((pos * 50) / dist);
+				for (int j = 0; j < 10; j++) {
+					j++;
+					Consola::gotoxy(x + 20, 2 * i + 1 + 10);
+					cout << getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getIdent();
 				}
 			}
 

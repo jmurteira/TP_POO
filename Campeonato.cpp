@@ -18,7 +18,6 @@ bool Campeonato::iniciaCamp() {
 	if (getCorridas().size() != 0) {
 		//cout << "DIF ZERO";
 		if (getIniciada() == false) {
-
 			getCorridas()[realizadas]->setIniciada(true);
 			//cout << getIniciada() << endl;
 			return true;
