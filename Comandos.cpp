@@ -188,11 +188,15 @@ string Comandos::lerComandoModo1() {
 			else if (op1 == "campeonato") {
 			if (is >> op2)
 			{
+				
 				if (getDga()->procuraAutodromo(op2) != nullptr) {
 					cout << "\n\nCOMECOU O CAMPEONATO\n" << endl;
 					setCamp(&(Campeonato()));
 					getCamp()->setDgv(dgv);
 					getCamp()->setCorrida(getDga()->procuraAutodromo(op2));
+					while (is >> op2) {
+						getCamp()->setCorrida(getDga()->procuraAutodromo(op2));
+					}
 					if (getCamp()->addParticipantes() == true)
 						return op1;
 					else
