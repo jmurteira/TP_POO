@@ -238,14 +238,14 @@ string Comandos::lerComandoModo2() {
 				cout << "numero de parametros errado. passatempo <n>" << endl;
 		}
 		else if (op1 == "corrida") {
-			if (is >> op1) {
 				getCamp()->proximaCorrida();
-			}
+				return op1;
 		}
 		else if (op1 == "carregabat") {
 			if (is >> ch1) {
 				if (is >> flt1) {
 					getCamp()->carregabat(ch1, flt1);
+					return op1;
 				}
 				else
 					cout << "numero de parametros errado. carregabat <letraCarro> <Q>";

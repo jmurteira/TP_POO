@@ -137,8 +137,6 @@ bool Campeonato::addParticipantes() {
 		return iniciaCamp();
 	else
 		return false;
-	
-
 }
 
 
@@ -233,19 +231,15 @@ bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 	else if (emCorrida == 0) {
 		setRealizadas(getRealizadas() + 1);
 		getCorridaAtiva()->setFinalizada(true);
-		/*cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
-		cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
-		cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
-		cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
-		cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
-		cin.get();*/
 		return true;
 	}
 }
 
 void Campeonato::proximaCorrida() {
-	if (getCorridas().size() > 1) {
-		getCorridas()[realizadas]->setIniciada(true);
+	if (getCorridas().size() != 0) {
+		getCorridas()[getRealizadas()]->setIniciada(true);
+		cout << "PROXIMA CORRIDAAAAA" << endl << endl << getCorridaAtiva()->getNome() << endl << endl;
+		cin.get();
 		return;
 	}
 }
