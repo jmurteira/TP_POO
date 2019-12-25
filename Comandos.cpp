@@ -5,6 +5,7 @@
 #include "Carro.h"
 #include "Dgv.h"
 #include "Dga.h"
+#include "Consola.h"
 #include <sstream>
 #include <iostream>
 
@@ -223,7 +224,10 @@ string Comandos::lerComandoModo2() {
 	int op2;
 	char ch1;
 	float flt1;
-	cout << "\nIntroduza comando: ";
+	Consola::gotoxy(75, 17);
+	cout << "Introduza comando:";
+	Consola::gotoxy(75, 18);
+	cout << " -> ";
 	getline(cin, comando);
 	istringstream is(comando);
 	if (is >> op1) {

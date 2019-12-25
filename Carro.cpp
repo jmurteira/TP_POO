@@ -60,21 +60,35 @@ void Carro::setVelocidade(int x) {
 	velocidade = x;
 }
 
+float Carro::getEnergia() const {
+	return energia;
+}
 
-void Carro::passaTempoCarro(int t, int distPista) {	
+float Carro::getEnergiaMax() const {
+	return energiaMax;
+}
+
+void Carro::gastaEnergia() {
+	if(energia -1 >= 0)
+		energia = energia - 1;
+}
+
+void Carro::passaTempoCarro(int t, int distPista) {
 
 	for (int i = 1; i <= t; i++) {
 		if (posicao < distPista && posicao != -2)
 		{
-			cout << ident <<  posicao << endl<< endl;
-			setPosicao(getPosicao() + getVelocidade());
-			cout << ident << posicao << endl << endl;
-			cronometro++;
-			if (posicao >= distPista)
-			{
-				posicao = -2;
+			if (energia != 0) {
+				cout << ident <<  posicao << endl<< endl;
+				setPosicao(getPosicao() + getVelocidade());
+				cout << ident <<  posicao << endl<< endl;
+				//gastaEnergia();
+				cronometro++;
+				if (posicao >= distPista) {
+					posicao = -2;
+				}
 			}
-		}		
+		}
 	}
 }
 

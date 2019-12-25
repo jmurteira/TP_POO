@@ -35,11 +35,14 @@ void Campeonato::passatempo(int t) {
 	}*/
 	//SÓ HÁ UMA CORRIDA
 	//corrida->setIniciada(true);
-	if (getCorridaAtiva() != nullptr) {
-		getCorridaAtiva()->passatempo(t);
-		finalizaCorrida(getPistaAtiva());//TESTE
+	for (int i = 0; i < t; i++) {
+
+		if (getCorridaAtiva() != nullptr) {
+			getCorridaAtiva()->passatempo(1);
+			finalizaCorrida(getPistaAtiva());//TESTE
+		}
 	}
-	else
+	if (getCorridaAtiva() == nullptr)
 		cout << "\nNenhuma corrida a decorrer\n\n";
 }	
 
@@ -56,6 +59,10 @@ void Campeonato::setCorrida(Autodromo* aut) {
 //Autodromo* Campeonato::getCorrida() const {
 //	return corrida;
 //}
+
+vector <Piloto*> Campeonato::getParticipantes() const {
+	return participantes;
+}
 
 vector <Autodromo*> Campeonato::getCorridas() const {
 	return corridas;
@@ -204,6 +211,14 @@ void Campeonato::carregabat(char ident, float q) {		//DUVIDA EM QUE CARROS É PAR
 	//partic->carregaCarro(q);
 }
 
+void Campeonato::carregaTudo() {
+	for (vector<Piloto*>::const_iterator it = getParticipantes().cbegin();
+		it != getParticipantes().cend();
+		it++) {
+		(*it)->carregaCarro((*it)->getCarro()->getEnergiaMax());
+	}
+}
+
 void Campeonato::setRealizadas(int n) {
 	realizadas = n;
 }
@@ -236,10 +251,14 @@ bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 }
 
 void Campeonato::proximaCorrida() {
-	if (getCorridas().size() != 0) {
+	if (getCorridas().size() > realizadas) {
 		getCorridas()[getRealizadas()]->setIniciada(true);
 		cout << "PROXIMA CORRIDAAAAA" << endl << endl << getCorridaAtiva()->getNome() << endl << endl;
 		cin.get();
 		return;
+	}
+	else {
+		cout << "Ja estao concluidas todas as corridas!";
+		cin.get();
 	}
 }

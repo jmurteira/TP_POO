@@ -160,9 +160,7 @@ void Logica::Simulador() {
 				for (int j = 0; j < 10; j++) {
 					j++;
 					Consola::gotoxy(x + 20, 2 * i + 1 + 10);
-					//if (getComandos()->getCamp()->getCorridaAtiva() != nullptr) {
-						cout << getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getIdent();
-					//}
+					cout << getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getIdent();
 				}
 			}
 
@@ -202,12 +200,12 @@ void Logica::Simulador() {
 
 			if (res == "modo1") { //cancelar campeonato. cuidado: limpar vector pista e corrida
 				flag_campeonato = 0;
-				cout << "\ncampeonato cancelado. retornar ao modo 1.." << endl;
+				cout << "\nA retornar ao modo 1.." << endl;
 				Consola::getch();
 				Consola::clrscr();
 
-				Consola::gotoxy(75, 3);
-				cout << "\nLista de Comandos: " << endl << endl;
+				Consola::gotoxy(75, 2);
+				cout << "Lista de Comandos: " << endl << endl;
 				Consola::gotoxy(75, 4);
 				cout << "Modo 2: Campeonato" << endl;
 				Consola::gotoxy(75, 5);

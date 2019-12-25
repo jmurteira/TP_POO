@@ -34,11 +34,13 @@ public:
 	void setCorrida(Autodromo * aut);
 	
 	//Autodromo* getCorrida() const;
+	vector <Piloto*> getParticipantes() const;
 	Autodromo* getCorridaAtiva() const;
 	vector<Piloto*> getPistaAtiva() const;
 	vector <Autodromo*> getCorridas() const;
 
 	void carregabat(char ident, float q);
+	void carregaTudo();
 
 	int getAutorizados() const;
 

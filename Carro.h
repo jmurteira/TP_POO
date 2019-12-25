@@ -55,6 +55,7 @@ public:
 	void gastaEnergia();
 	void carregaBat(float n_energia);
 	float getEnergia() const;
+	float getEnergiaMax() const;
 	
 	//Botao Emergencia
 	void BotaoSOS();
