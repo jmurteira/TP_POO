@@ -242,3 +242,10 @@ bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 		return true;
 	}
 }
+
+void Campeonato::proximaCorrida() {
+	if (getCorridas().size() > 1) {
+		getCorridas()[realizadas]->setIniciada(true);
+		return;
+	}
+}

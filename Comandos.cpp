@@ -237,6 +237,11 @@ string Comandos::lerComandoModo2() {
 			else
 				cout << "numero de parametros errado. passatempo <n>" << endl;
 		}
+		else if (op1 == "corrida") {
+			if (is >> op1) {
+				getCamp()->proximaCorrida();
+			}
+		}
 		else if (op1 == "carregabat") {
 			if (is >> ch1) {
 				if (is >> flt1) {

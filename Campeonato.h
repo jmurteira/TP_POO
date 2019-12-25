@@ -58,4 +58,5 @@ public:
 	int getRealizadas();
 	void setRealizadas(int n);
 	
+	void proximaCorrida();
 };
