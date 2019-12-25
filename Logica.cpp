@@ -150,14 +150,19 @@ void Logica::Simulador() {
 				}
 			}*/
 
-			for (int i = 0; i < getComandos()->getCamp()->getCorridaAtiva()->getPista().size(); i++) {
+
+
+			//REBENTA PQ NAO ENCONTRA CORRIDA ATIVA
+			for (size_t i = 0; (getComandos()->getCamp()->getCorridaAtiva() != nullptr) && i < getComandos()->getCamp()->getCorridaAtiva()->getPista().size(); i++) {
 				int pos = getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getPosicao();
 				int dist = getComandos()->getCamp()->getCorridaAtiva()->getDistancia();
 				float x = round((pos * 50) / dist);
 				for (int j = 0; j < 10; j++) {
 					j++;
 					Consola::gotoxy(x + 20, 2 * i + 1 + 10);
-					cout << getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getIdent();
+					//if (getComandos()->getCamp()->getCorridaAtiva() != nullptr) {
+						cout << getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getIdent();
+					//}
 				}
 			}
 

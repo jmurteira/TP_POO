@@ -35,17 +35,14 @@ void Campeonato::passatempo(int t) {
 	}*/
 	//SÓ HÁ UMA CORRIDA
 	//corrida->setIniciada(true);
-	for (vector<Autodromo*>::const_iterator it = corridas.cbegin();
-		it != corridas.cend();
-		it++) {
-		if ((*it)->getIniciada() == true && (*it)->getFinalizada() == false) {
-			(*it)->passatempo(t);
-		}
+	if (getCorridaAtiva() != nullptr) {
+		getCorridaAtiva()->passatempo(t);
+		finalizaCorrida(getPistaAtiva());//TESTE
+	}
+	else
+		cout << "\nNenhuma corrida a decorrer\n\n";
+}	
 
-		else if ((*it)->getIniciada() == false && (*it)->getFinalizada() == false)
-			cout << "\nNenhuma corrida a decorrer\n\n";
-	}	
-}
 
 int Campeonato::getTam() const {
 	return tam;
@@ -145,9 +142,6 @@ bool Campeonato::addParticipantes() {
 }
 
 
-
-
-
 //ATUALIZAR CLASSIF GERAL POIS TEMPOS CLASSIF ESPECIFICA DE CADA CORRIDA (NAO SEI SE É PRECISO NESTA META)
 //void Campeonato::atualizaClassif() {
 //	if (corrida->getFinalizada() == true && corrida->getClassifAtualizada() == false)
@@ -191,6 +185,11 @@ Autodromo* Campeonato::getCorridaAtiva() const {
 			return (*it);
 		}
 	}
+	return nullptr;
+}
+
+vector<Piloto*> Campeonato::getPistaAtiva() const {
+	return getCorridaAtiva()->getPista();
 }
 
 int Campeonato::getRealizadas() {
@@ -211,12 +210,15 @@ void Campeonato::setRealizadas(int n) {
 	realizadas = n;
 }
 
-bool Campeonato::finalizaCorrida() {
+bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 	
 	int emCorrida = 0;
-	
-	for (vector<Piloto*>::const_iterator it = getCorridaAtiva()->getPista().cbegin();
-		it != getCorridaAtiva()->getPista().cend();
+
+	if (pista.size() == 0)
+		return false;
+
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();
 		it++) {
 
 		if ((*it)->getCarro()->getPosicao() != -2)
@@ -227,9 +229,16 @@ bool Campeonato::finalizaCorrida() {
 
 	if (emCorrida > 0)
 		return false;
-	else {
+
+	else if (emCorrida == 0) {
 		setRealizadas(getRealizadas() + 1);
 		getCorridaAtiva()->setFinalizada(true);
+		/*cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
+		cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
+		cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
+		cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
+		cout << "CORRIDA FINALIZADAAAAAAAAAAAA" << endl;
+		cin.get();*/
 		return true;
 	}
 }

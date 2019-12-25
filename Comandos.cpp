@@ -229,8 +229,9 @@ string Comandos::lerComandoModo2() {
 	if (is >> op1) {
 		if (op1 == "passatempo") {
 			if (is >> op2) {
-				cout << getCamp()->getCorridaAtiva()->getNome() << endl;
-				getCamp()->passatempo(op2);
+				//cout << getCamp()->getCorridaAtiva()->getNome() << endl;
+				if(getCamp()->getCorridaAtiva() != nullptr)
+					getCamp()->passatempo(op2);
 				return op1;
 			}
 			else

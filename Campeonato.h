@@ -35,6 +35,7 @@ public:
 	
 	//Autodromo* getCorrida() const;
 	Autodromo* getCorridaAtiva() const;
+	vector<Piloto*> getPistaAtiva() const;
 	vector <Autodromo*> getCorridas() const;
 
 	void carregabat(char ident, float q);
@@ -52,7 +53,7 @@ public:
 
 	bool getIniciada()const;
 
-	bool finalizaCorrida();
+	bool finalizaCorrida(vector<Piloto*> pista);
 
 	int getRealizadas();
 	void setRealizadas(int n);
