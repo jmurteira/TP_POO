@@ -88,7 +88,7 @@ void Carro::gastaEnergia() {
 void Carro::passaTempoCarro(int t, int distPista) {
 
 	for (int i = 1; i <= t; i++) {
-		if (posicao < distPista && posicao != -2)
+		if (posicao < distPista && posicao != -2 && danificado == false)
 		{
 			if (energia != 0) {
 				//cout << ident <<  posicao << endl<< endl;
