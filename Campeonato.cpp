@@ -4,6 +4,7 @@
 #include "Carro.h"
 #include "Classificacao.h"
 #include "Dgv.h"
+#include "Consola.h"
 
 Campeonato::Campeonato(): dgv(nullptr), tam(0), realizadas(0)
 {
@@ -201,7 +202,8 @@ int Campeonato::getRealizadas() {
 	return realizadas;
 }
 
-void Campeonato::carregabat(char ident, float q) {		//DUVIDA EM QUE CARROS É PARA CARREGAR A BATERIA E QUAIS OS REQUISITOS (SE É PRECISO ESTAR NO CAMPEONATO/CORRIDA)
+void Campeonato::carregabat(char ident, float q) {		//NAO ESTÁ A FUNCIOANAR (não percebo o porquê)
+														//DUVIDA EM QUE CARROS É PARA CARREGAR A BATERIA E QUAIS OS REQUISITOS (SE É PRECISO ESTAR NO CAMPEONATO/CORRIDA)
 														//NESTE MOMENTO ESTÁ A CARREGAR TODOS OS CARROS DA DGV (NAO TEM VERIFICAÇÃO)
 	//Autodromo * a = getCorridaAtiva();
 	Piloto * p = getDgv()->procuraPilotoPorCarro(ident);
@@ -212,10 +214,11 @@ void Campeonato::carregabat(char ident, float q) {		//DUVIDA EM QUE CARROS É PAR
 }
 
 void Campeonato::carregaTudo() {
-	for (vector<Piloto*>::const_iterator it = getParticipantes().cbegin();
-		it != getParticipantes().cend();
+	for (vector<Piloto*>::const_iterator it = getParticipantes().begin();
+		it != getParticipantes().end();
 		it++) {
-		(*it)->carregaCarro((*it)->getCarro()->getEnergiaMax());
+		float q = (*it)->getCarro()->getEnergiaMax();
+		(*it)->carregaCarro(q);
 	}
 }
 
@@ -253,11 +256,13 @@ bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 void Campeonato::proximaCorrida() {
 	if (getCorridas().size() > realizadas) {
 		getCorridas()[getRealizadas()]->setIniciada(true);
-		cout << "PROXIMA CORRIDAAAAA" << endl << endl << getCorridaAtiva()->getNome() << endl << endl;
+		Consola::gotoxy(75, 20);
+		cout << "Proxima Corrida: "<< getCorridaAtiva()->getNome();
 		cin.get();
 		return;
 	}
 	else {
+		Consola::gotoxy(75, 20);
 		cout << "Ja estao concluidas todas as corridas!";
 		cin.get();
 	}

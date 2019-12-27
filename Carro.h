@@ -20,7 +20,7 @@ class Carro
 	int velMax;
 	bool ocupado;		//ver se tem piloto ou não
 	bool sinalEmerg;
-	bool avariado;
+	bool danificado;
 
 	
 
@@ -42,11 +42,12 @@ public:
 	void setOcupado();
 	void setDesocupado();
 
+	bool getDanificado() const;
+	void setDanificado(bool dan);
+
 	//ideia das funções
 	//Velocidade
-
-	
-	
+		
 	int getVelocidade();
 	void setVelocidade(int x);
 	int getVelocidadeMax();

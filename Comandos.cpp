@@ -242,8 +242,12 @@ string Comandos::lerComandoModo2() {
 				cout << "numero de parametros errado. passatempo <n>" << endl;
 		}
 		else if (op1 == "corrida") {
-				getCamp()->proximaCorrida();
-				return op1;
+			getCamp()->proximaCorrida();
+			return op1;
+		}
+		else if (op1 == "listacarros") {
+			cout << "ListarCarros";
+			return op1;
 		}
 		else if (op1 == "carregabat") {
 			if (is >> ch1) {
@@ -258,9 +262,36 @@ string Comandos::lerComandoModo2() {
 				cout << "numero de parametros errado. carregabat <letraCarro> <Q>";
 		}
 		else if (op1 == "carregatudo") {
-			if (is >> op1) {
-				cout << "CARREGA TUDO"; // alterar
+			getCamp()->carregaTudo();
+			return op1;
+		}
+		else if (op1 == "acidente") {
+			if (is >> ch1) {
+				cout << "Acidente no carro " << ch1;
+				return op1;
 			}
+			else
+				cout << "numero de parametros errado. acidente <letraCarro>";
+		}
+		else if (op1 == "stop") {
+			if (is >> op2) {
+				cout << "O piloto " << op2 << " parou de correr";
+				return op1;
+			}
+			else
+				cout << "numero de parametros errado. stop <nomePiloto>";
+		}
+		else if (op1 == "destroi") {
+			if (is >> ch1) {
+				cout << "Carro " << ch1 << " destruido";
+				return op1;
+			}
+			else
+				cout << "numero de parametros errado. destroi <letraCarro> <Q>";
+		}
+		else if (op1 == "log") {
+			cout << "log";
+			return op1;
 		}
 		else if (op1 == "modo1") {
 			return op1;

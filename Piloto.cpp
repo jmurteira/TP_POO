@@ -68,7 +68,7 @@ void Piloto::passaTempoPiloto(int t, int dist) {
 }
 
 void Piloto::carregaCarro(float n_energia) {
-	carro->carregaBat(n_energia);
+	getCarro()->carregaBat(n_energia);
 }
 
 

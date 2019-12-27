@@ -4,7 +4,7 @@
 
 
 Carro::Carro(string marc, string mod, float capAtual, float capMax, char id) : 
-marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual),velocidade(1), velMax(50), ocupado(false), sinalEmerg(false), avariado(false)//, n_energia(5)
+marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual), velocidade(1), velMax(50), ocupado(false), sinalEmerg(false), danificado(false)//, n_energia(5)
 {
 		
 
@@ -56,8 +56,20 @@ void Carro::setDesocupado() {
 	ocupado = false;
 }
 
+bool Carro::getDanificado() const {
+	return danificado;
+}
+void Carro::setDanificado(bool dan) {
+	danificado = dan;
+}
+
 void Carro::setVelocidade(int x) {
-	velocidade = x;
+	if (x < 0)
+		velocidade = 0;
+	else if (x > velMax)
+		velocidade = velMax;
+	else
+		velocidade = x;
 }
 
 float Carro::getEnergia() const {
@@ -79,14 +91,17 @@ void Carro::passaTempoCarro(int t, int distPista) {
 		if (posicao < distPista && posicao != -2)
 		{
 			if (energia != 0) {
-				cout << ident <<  posicao << endl<< endl;
+				//cout << ident <<  posicao << endl<< endl;
 				setPosicao(getPosicao() + getVelocidade());
-				cout << ident <<  posicao << endl<< endl;
-				//gastaEnergia();
+				//cout << ident <<  posicao << endl<< endl;
+				gastaEnergia();
 				cronometro++;
 				if (posicao >= distPista) {
 					posicao = -2;
 				}
+			}
+			if (energia == 0) {
+				setVelocidade(getVelocidade() - 1);
 			}
 		}
 	}
@@ -95,9 +110,9 @@ void Carro::passaTempoCarro(int t, int distPista) {
 string Carro::getAsString()const {		//tem coisas feitas para facilitar o teste das funções
 	ostringstream os;
 	os << "Carro com identificador: " << ident << endl << marca << modelo << endl;
-	if (avariado == false)
+	if (danificado == false)
 		os << "Carro operacional" << endl;
-	if (avariado == true)
+	if (danificado == true)
 		os << "Carro avariado" << endl;
 	if(posicao > 0)
 		os << "Situa-se no metro " << posicao << " da pista" << endl;
@@ -149,18 +164,18 @@ int Carro::getVelocidadeMax() {
 
 void Carro::carregaBat(float n_energia) {
 
-	if (velocidade == 0) {
+	//if (getVelocidade() == 0) {
 
-		energia += n_energia;
-		if (energia >= 100) {
-			energia = 100;
+		energia = getEnergia() + n_energia;
+		if (energia >= getEnergiaMax()) {
+			energia = getEnergiaMax();
 			cout << "Bateria já atingiu " << energia << " mAh. Carregada ao máximo, nao necessita de mais carga" << endl;
 		}
 		else
 			cout << "Carregou bateria com " << n_energia << " mAh." << endl;
 		cout << "Bateria atingiu " << energia << " mAh. Falta " << energiaMax - energia << " para atingir o total." << endl;
-	}
-	else
-		cout << "Carro ainda continua em andamento. Parar completamente o carro para efectuar carga." << endl;
+	//}
+	//else
+	//	cout << "Carro ainda continua em andamento. Parar completamente o carro para efectuar carga." << endl;
 	
 }
