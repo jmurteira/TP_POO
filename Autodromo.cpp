@@ -82,6 +82,16 @@ bool Autodromo::getClassifAtualizada() const {
 	return classifAtualizada;
 }
 
+void Autodromo::acidente(char ident) {
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();
+		it++) {
+		if ((*it)->getCarro()->getIdent() == ident) {
+			(*it)->acidente();
+		}
+	}
+}
+
 vector <Piloto*> Autodromo::getPista() const {
 	return pista;
 }

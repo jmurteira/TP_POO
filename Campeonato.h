@@ -48,6 +48,8 @@ public:
 
 	void atualizaClassif();
 
+	void acidente(char ident);
+
 	bool iniciaCamp();
 
 	Dgv* getDgv()const;

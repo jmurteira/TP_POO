@@ -217,9 +217,19 @@ void Campeonato::carregaTudo() {
 	for (vector<Piloto*>::const_iterator it = getParticipantes().begin();
 		it != getParticipantes().end();
 		it++) {
+		//(*it)->getCarro().
 		float q = (*it)->getCarro()->getEnergiaMax();
 		(*it)->carregaCarro(q);
 	}
+}
+
+void Campeonato::acidente(char ident) {
+	if (getCorridaAtiva() == nullptr) {
+		cout << "Nenhuma corrida a decorrer!";
+		cin.get();
+	}
+	else
+		getCorridaAtiva()->acidente(ident);
 }
 
 void Campeonato::setRealizadas(int n) {

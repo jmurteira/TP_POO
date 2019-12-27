@@ -267,6 +267,7 @@ string Comandos::lerComandoModo2() {
 		}
 		else if (op1 == "acidente") {
 			if (is >> ch1) {
+				getCamp()->acidente(ch1);
 				cout << "Acidente no carro " << ch1;
 				return op1;
 			}

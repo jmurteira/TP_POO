@@ -67,6 +67,10 @@ void Piloto::passaTempoPiloto(int t, int dist) {
 	carro->passaTempoCarro(t, dist);
 }
 
+void Piloto::acidente() {
+	getCarro()->setDanificado(true);
+}
+
 void Piloto::carregaCarro(float n_energia) {
 	getCarro()->carregaBat(n_energia);
 }

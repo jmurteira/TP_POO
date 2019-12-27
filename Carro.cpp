@@ -164,18 +164,20 @@ int Carro::getVelocidadeMax() {
 
 void Carro::carregaBat(float n_energia) {
 
-	//if (getVelocidade() == 0) {
+	if (getVelocidade() == 0) {
 
-		energia = getEnergia() + n_energia;
-		if (energia >= getEnergiaMax()) {
+		
+		if (energia + n_energia > getEnergiaMax()) {
 			energia = getEnergiaMax();
 			cout << "Bateria já atingiu " << energia << " mAh. Carregada ao máximo, nao necessita de mais carga" << endl;
 		}
-		else
+		else {
+			energia = getEnergia() + n_energia;
 			cout << "Carregou bateria com " << n_energia << " mAh." << endl;
+		}
 		cout << "Bateria atingiu " << energia << " mAh. Falta " << energiaMax - energia << " para atingir o total." << endl;
-	//}
-	//else
-	//	cout << "Carro ainda continua em andamento. Parar completamente o carro para efectuar carga." << endl;
+	}
+	else
+		cout << "Carro ainda continua em andamento. Parar completamente o carro para efectuar carga." << endl;
 	
 }
