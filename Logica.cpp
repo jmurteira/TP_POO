@@ -160,7 +160,8 @@ void Logica::Simulador() {
 				for (int j = 0; j < 10; j++) {
 					j++;
 					Consola::gotoxy(x + 20, 2 * i + 1 + 10);
-					cout << getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getIdent();
+					if(getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getDanificado() == false)
+						cout << getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getIdent();
 				}
 			}
 
