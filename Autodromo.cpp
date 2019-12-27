@@ -87,6 +87,7 @@ void Autodromo::acidente(char ident) {
 		it != pista.cend();
 		it++) {
 		if ((*it)->getCarro()->getIdent() == ident) {
+			//apagar carro da pista uma vez que está danificado irremediávelmente
 			(*it)->acidente();
 		}
 	}
