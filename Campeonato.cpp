@@ -214,11 +214,15 @@ void Campeonato::carregabat(char ident, float q) {		//NAO ESTÁ A FUNCIOANAR (não
 }
 
 void Campeonato::carregaTudo() {
-	for (vector<Piloto*>::const_iterator it = getParticipantes().begin();
-		it != getParticipantes().end();
+	const vector<Piloto*> copia = getPistaAtiva();
+	vector<Piloto*>::const_iterator it;
+	for (it = copia.begin();
+		it < copia.end();
 		it++) {
-		//(*it)->getCarro().
 		float q = (*it)->getCarro()->getEnergiaMax();
+		if ((*it)->getCarro()->getEnergia() == 0) {
+			(*it)->getCarro()->setVelocidade(1);
+		}
 		(*it)->carregaCarro(q);
 	}
 }
