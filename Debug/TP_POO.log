@@ -1,7 +1,8 @@
-﻿  Comandos.cpp
-  Interface.cpp
-  Source.cpp
-  Generating Code...
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Source.cpp(17,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Comandos.cpp(213): warning C4715: 'Comandos::lerComandoModo1': not all control paths return a value
+﻿  Campeonato.cpp
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(110,23): warning C4018: '<': signed/unsigned mismatch
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(128,23): warning C4018: '<': signed/unsigned mismatch
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(88,15): warning C4101: 'n_garagem': unreferenced local variable
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(271,27): warning C4018: '>': signed/unsigned mismatch
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(29): warning C4715: 'Campeonato::iniciaCamp': not all control paths return a value
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(268): warning C4715: 'Campeonato::finalizaCorrida': not all control paths return a value
   TP_POO.vcxproj -> C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Debug\TP_POO.exe

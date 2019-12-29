@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 
+//nota: garagem tem de estar vazia se nao estiver la nenhum carro
+
 class Interface; //provisorio, so para aceder a dgv
 class Piloto;
 class Carro;
@@ -19,13 +21,13 @@ class Autodromo
 	bool iniciada;		//a combinação dos bools "iniciada", "finalizada" permite saber quais as corridas que já foram feitas, as que ainda não foram feitas e a que está a decorrer
 	bool finalizada;
 	bool classifAtualizada;
-	vector <Carro *> garagem;
-	vector <Piloto *> pista;
+	vector <Carro*> garagem;
+	vector <Piloto*> pista;
 
-	vector <Piloto *> classificacao[5];	//(?)
+	vector <Piloto*> classificacao[5];	//(?)
 
 public:
-	Autodromo(int cap , int dist, string n);
+	Autodromo(int cap, int dist, string n);
 	~Autodromo();
 
 	string getNome() const;
@@ -51,12 +53,15 @@ public:
 	vector <Piloto*> getPista() const;
 	vector <Carro*> getGaragem() const;
 
-	Piloto* procuraPilotoPorCarro(Carro * c) const;
+	Piloto* procuraPilotoPorCarro(Carro* c) const;
 
 	void carregabat(Carro* c, float q);
 
 	void adicionaParticipante(Piloto* p);
 	void adicionaCarro(Carro* c);
+
+	string listacarros() const;
+
 	//Dgv* getDgv()const;
 	//void setDgv(Dgv *d);
 

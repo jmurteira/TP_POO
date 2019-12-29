@@ -217,13 +217,11 @@ void Campeonato::carregaTudo() {
 	const vector<Piloto*> copia = getPistaAtiva();
 	vector<Piloto*>::const_iterator it;
 	for (it = copia.begin();
-		it < copia.end();
+		it != copia.end();
 		it++) {
 		float q = (*it)->getCarro()->getEnergiaMax();
-		if ((*it)->getCarro()->getEnergia() == 0) {
-			(*it)->getCarro()->setVelocidade(1);
-		}
 		(*it)->carregaCarro(q);
+		(*it)->getCarro()->setVelocidade(1);
 	}
 }
 
@@ -232,8 +230,10 @@ void Campeonato::acidente(char ident) {
 		cout << "Nenhuma corrida a decorrer!";
 		cin.get();
 	}
-	else
+	else{
 		getCorridaAtiva()->acidente(ident);
+		retiracarrocampeonato(ident);
+	}
 }
 
 void Campeonato::setRealizadas(int n) {
@@ -281,3 +281,27 @@ void Campeonato::proximaCorrida() {
 		cin.get();
 	}
 }
+
+void Campeonato::retiracarrocampeonato(char ident) {
+	vector<Piloto*> copia = getCorridaAtiva()->getPista();
+	vector<Piloto*>::const_iterator it;
+	for (it = copia.cbegin();
+		it != copia.cend();
+		it++) {
+		if ((*it)->getCarro()->getIdent() == ident) {
+			getCorridaAtiva()->adicionaCarro((*it)->getCarro());
+			(*it)->sairCarro();
+			delete (*it);
+			it = copia.erase(it);
+		}
+	}
+		/*for (size_t i = 0; i < getCorridaAtiva()->getPista().size(); i++) {
+			if (getCorridaAtiva()->getPista()[i]->getCarro()->getIdent() == ident) {
+				getCorridaAtiva()->adicionaCarro(getParticipantes()[i]->getCarro());
+				getCorridaAtiva()->getPista()[i]->sairCarro();
+				getCorridaAtiva()->getPista().erase(getCorridaAtiva()->getPista().end() - i);
+			}
+		}*/
+}
+		
+

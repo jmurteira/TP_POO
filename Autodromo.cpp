@@ -87,7 +87,7 @@ void Autodromo::acidente(char ident) {
 		it != pista.cend();
 		it++) {
 		if ((*it)->getCarro()->getIdent() == ident) {
-			//apagar carro da pista uma vez que está danificado irremediávelmente
+			//apagar carro da pista uma vez que está danificado irremediavelmente
 			(*it)->acidente();
 		}
 	}
@@ -150,4 +150,26 @@ void Autodromo::adicionaParticipante(Piloto* p) {
 
 void Autodromo::adicionaCarro(Carro* c) {
 	garagem.push_back(c);
+}
+
+
+
+string Autodromo::listacarros() const {
+	string res = "\nCarros inscritos no campeonato: \n---------------";
+	res += "Carros na pista:\n";
+	vector<Piloto*> copiapilotos = getPista();
+	vector<Carro*> copiacarros = getGaragem();
+	for (vector<Piloto*>::const_iterator it = copiapilotos.begin();
+		it != copiapilotos.end();
+		it++)
+		res += "\n" + (*it)->getCarro()->getStringDescricao();
+	res += "\nCarros na garagem:\n";
+	for (vector<Carro*>::const_iterator it = copiacarros.begin();
+		it != copiacarros.end();
+		it++){
+		if((*it)->getOcupado() == false)
+			res += "\n" + (*it)->getStringDescricao();
+	}
+	res += "\nCarregar qualquer tecla para continuar";
+	return res;
 }
