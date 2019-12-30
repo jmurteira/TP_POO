@@ -1,7 +1,7 @@
 #pragma once
 #include "Piloto.h"
 
-class Crazy : public Piloto			//class Crazy : public Piloto (???)
+class Crazy : public Piloto
 {
 
 public:
