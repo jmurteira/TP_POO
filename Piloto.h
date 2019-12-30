@@ -8,11 +8,11 @@ using namespace std;
 
 class Piloto
 {
+private:
 	string nome;
 	string tipo;
 	bool atualizado;
 	Carro * carro;		//ponteiro para carro						(ponteiro de carro para piloto e de piloto para carro ???)
-
 
 public:
 	Piloto(string t, string n);
@@ -29,7 +29,7 @@ public:
 	bool getAtualizado()const;
 	void setAtualizado(bool a);
 
-	void passaTempoPiloto(int t, int dist);
+	virtual void passaTempoPiloto(int t, int dist);
 
 	string getNome() const;
 	char getIdCarro() const;
@@ -41,12 +41,5 @@ public:
 	void carregaCarro(float n_energia);
 
 	virtual string getStringDescricao()const;
-
-};
-
-class Crazy:Piloto			//class Crazy : public Piloto
-{
-
-public:
 
 };
