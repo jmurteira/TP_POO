@@ -287,6 +287,8 @@ string Comandos::lerComandoModo2() {
 		}
 		else if (op1 == "destroi") {
 			if (is >> ch1) {
+				getCamp()->destroiCarro(ch1);
+				getDgv()->apagaCarro(ch1);
 				cout << "Carro " << ch1 << " destruido";
 				return op1;
 			}

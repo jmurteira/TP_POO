@@ -594,3 +594,15 @@ Debug/vc142.pdb
 *.tlog
 *.idb
 *.pdb
+Debug/vc142.pdb
+Debug/vc142.idb
+Debug/TP_POO.tlog/CL.write.1.tlog
+Debug/TP_POO.tlog/CL.read.1.tlog
+Debug/TP_POO.tlog/CL.command.1.tlog
+Debug/TP_POO.log
+Debug/TP_POO.exe
+Debug/Source.obj
+Debug/Dga.obj
+Debug/Comandos.obj
+Debug/Campeonato.obj
+Debug/Autodromo.obj

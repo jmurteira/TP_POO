@@ -226,6 +226,7 @@ void Campeonato::carregaTudo() {
 }
 
 //falta remover o piloto da dgv, visto que morre
+//meter uma mensagem a dizer que houve um acidente, que o carro em causa ficou danificado e que o piloto morreu
 void Campeonato::acidente(char ident) {
 	int flag = 0; //na ultima corrida, pode tirar o piloto do carro
 	if (getCorridaAtiva() == nullptr) {
@@ -242,6 +243,28 @@ void Campeonato::acidente(char ident) {
 			}
 	}
 }
+
+
+void Campeonato::destroiCarro(char ident) {
+	//usar erase para retirar primeiro das pistas
+	int flag = 0; //na ultima corrida, pode tirar o piloto do carro e remover o carro da dgv
+	if (getCorridaAtiva() == nullptr) {
+		cout << "Nenhuma corrida a decorrer!";
+		cin.get();
+	}
+	else {
+		for (vector<Autodromo*>::const_iterator it = corridas.begin();
+			it != corridas.end();
+			it++) {
+			if (it == (corridas.end() - 1))
+				flag = 1;
+			(*it)->destroiCarro(ident, flag);
+		}
+	}
+
+
+}
+
 
 void Campeonato::setRealizadas(int n) {
 	realizadas = n;

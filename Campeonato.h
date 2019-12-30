@@ -49,6 +49,7 @@ public:
 	void atualizaClassif();
 
 	void acidente(char ident);
+	void destroiCarro(char ident);
 
 	bool iniciaCamp();
 

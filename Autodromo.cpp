@@ -89,14 +89,30 @@ void Autodromo::acidente(char ident, int flag) {
 			//apagar carro da pista uma vez que está danificado irremediavelmente
 			(*it)->acidente();
 			adicionaCarro((*it)->getCarro());
-			if(flag == 1)
+			if(flag == 1){
 				(*it)->sairCarro();
+			}
 			it = pista.erase(it);
 		}
 		else
 			++it;
 	}
 }
+
+void Autodromo::destroiCarro(char ident, int flag) {
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();) {
+		if ((*it)->getCarro()->getIdent() == ident) {
+			if (flag == 1) {
+				(*it)->sairCarro();
+			}
+			it = pista.erase(it);
+		}
+		else
+			++it;
+	}
+}
+
 
 vector <Piloto*> Autodromo::getPista() const {
 	return pista;
