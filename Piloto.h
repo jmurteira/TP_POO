@@ -44,3 +44,9 @@ public:
 
 };
 
+class Crazy:Piloto			//class Crazy : public Piloto
+{
+
+public:
+
+};
