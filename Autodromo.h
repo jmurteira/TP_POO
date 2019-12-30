@@ -48,7 +48,7 @@ public:
 
 	bool getClassifAtualizada() const;
 
-	void acidente(char ident);
+	void acidente(char ident, int flag);
 
 	vector <Piloto*> getPista() const;
 	vector <Carro*> getGaragem() const;

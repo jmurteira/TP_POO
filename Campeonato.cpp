@@ -225,14 +225,21 @@ void Campeonato::carregaTudo() {
 	}
 }
 
+//falta remover o piloto da dgv, visto que morre
 void Campeonato::acidente(char ident) {
+	int flag = 0; //na ultima corrida, pode tirar o piloto do carro
 	if (getCorridaAtiva() == nullptr) {
 		cout << "Nenhuma corrida a decorrer!";
 		cin.get();
 	}
 	else{
-		getCorridaAtiva()->acidente(ident);
-		retiracarrocampeonato(ident);
+		for (vector<Autodromo*>::const_iterator it = corridas.begin();
+			it != corridas.end();
+			it++){
+			if (it == (corridas.end() - 1))
+				flag = 1;
+			(*it)->acidente(ident, flag);
+			}
 	}
 }
 
@@ -282,26 +289,4 @@ void Campeonato::proximaCorrida() {
 	}
 }
 
-void Campeonato::retiracarrocampeonato(char ident) {
-	vector<Piloto*> copia = getCorridaAtiva()->getPista();
-	vector<Piloto*>::const_iterator it;
-	for (it = copia.cbegin();
-		it != copia.cend();
-		it++) {
-		if ((*it)->getCarro()->getIdent() == ident) {
-			getCorridaAtiva()->adicionaCarro((*it)->getCarro());
-			(*it)->sairCarro();
-			delete (*it);
-			it = copia.erase(it);
-		}
-	}
-		/*for (size_t i = 0; i < getCorridaAtiva()->getPista().size(); i++) {
-			if (getCorridaAtiva()->getPista()[i]->getCarro()->getIdent() == ident) {
-				getCorridaAtiva()->adicionaCarro(getParticipantes()[i]->getCarro());
-				getCorridaAtiva()->getPista()[i]->sairCarro();
-				getCorridaAtiva()->getPista().erase(getCorridaAtiva()->getPista().end() - i);
-			}
-		}*/
-}
 		
-

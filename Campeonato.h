@@ -49,7 +49,6 @@ public:
 	void atualizaClassif();
 
 	void acidente(char ident);
-	void retiracarrocampeonato(char ident);
 
 	bool iniciaCamp();
 

@@ -82,14 +82,19 @@ bool Autodromo::getClassifAtualizada() const {
 	return classifAtualizada;
 }
 
-void Autodromo::acidente(char ident) {
+void Autodromo::acidente(char ident, int flag) {
 	for (vector<Piloto*>::const_iterator it = pista.cbegin();
-		it != pista.cend();
-		it++) {
+		it != pista.cend();) {
 		if ((*it)->getCarro()->getIdent() == ident) {
 			//apagar carro da pista uma vez que está danificado irremediavelmente
 			(*it)->acidente();
+			adicionaCarro((*it)->getCarro());
+			if(flag == 1)
+				(*it)->sairCarro();
+			it = pista.erase(it);
 		}
+		else
+			++it;
 	}
 }
 
@@ -155,7 +160,7 @@ void Autodromo::adicionaCarro(Carro* c) {
 
 
 string Autodromo::listacarros() const {
-	string res = "\nCarros inscritos no campeonato: \n---------------";
+	string res = "\n---------------Carros inscritos no campeonato---------------\n";
 	res += "Carros na pista:\n";
 	vector<Piloto*> copiapilotos = getPista();
 	vector<Carro*> copiacarros = getGaragem();

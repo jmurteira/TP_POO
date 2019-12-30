@@ -586,3 +586,11 @@ Debug/vc142.pdb
 *.obj
 *.idb
 .vs/TP_POO/v16/ipch/AutoPCH/214463a5d43dc5a7/AUTODROMO.ipch
+*.ipch
+*.db
+*.obj
+*.exe
+*.log
+*.tlog
+*.idb
+*.pdb
