@@ -81,8 +81,9 @@ float Carro::getEnergiaMax() const {
 }
 
 void Carro::gastaEnergia() {
-	if(energia -1 >= 0)
-		energia = energia - 1;
+	if(energia -0.1 >= 0){
+		energia = floor((energia - 0.1)*10)/10;
+	}
 }
 
 void Carro::passaTempoCarro(int t, int distPista) {
@@ -109,7 +110,7 @@ void Carro::passaTempoCarro(int t, int distPista) {
 
 string Carro::getAsString()const {		//tem coisas feitas para facilitar o teste das funções
 	ostringstream os;
-	os << "Carro com identificador: " << ident << endl << marca << modelo << endl;
+	os << "Carro com identificador: " << ident << endl << marca << modelo << endl <<"carga actual: " << getEnergia() << endl;
 	if (danificado == false)
 		os << "Carro operacional" << endl;
 	if (danificado == true)

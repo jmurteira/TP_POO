@@ -8,7 +8,6 @@ using namespace std;
 Piloto::Piloto(string t, string n):tipo(t),carro(nullptr),atualizado(false)
 {
 	//verificar o nome do piloto de forma a ser único. ir ao vector da dgv?
-	//if()
 	nome = n;
 	
 }

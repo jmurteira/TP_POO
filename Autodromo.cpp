@@ -183,13 +183,13 @@ string Autodromo::listacarros() const {
 	for (vector<Piloto*>::const_iterator it = copiapilotos.begin();
 		it != copiapilotos.end();
 		it++)
-		res += "\n" + (*it)->getCarro()->getStringDescricao();
+		res += "\n" + (*it)->getCarro()->getAsString();
 	res += "\nCarros na garagem:\n";
 	for (vector<Carro*>::const_iterator it = copiacarros.begin();
 		it != copiacarros.end();
 		it++){
 		if((*it)->getOcupado() == false)
-			res += "\n" + (*it)->getStringDescricao();
+			res += "\n" + (*it)->getAsString();
 	}
 	res += "\nCarregar qualquer tecla para continuar";
 	return res;

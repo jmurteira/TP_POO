@@ -261,8 +261,6 @@ void Campeonato::destroiCarro(char ident) {
 			(*it)->destroiCarro(ident, flag);
 		}
 	}
-
-
 }
 
 

@@ -18,10 +18,12 @@ public:
 	Piloto(string t, string n);
 	~Piloto();
 
+	//ver sinal de emergencia
+
 	void entrarCarro(Carro * c);
 	void sairCarro();
 
-	void acelera();
+	virtual void acelera();
 	void trava();
 
 	bool getAtualizado()const;
@@ -38,7 +40,7 @@ public:
 
 	void carregaCarro(float n_energia);
 
-	string getStringDescricao()const;
+	virtual string getStringDescricao()const;
 
 };
 
