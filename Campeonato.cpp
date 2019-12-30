@@ -244,7 +244,6 @@ void Campeonato::acidente(char ident) {
 	}
 }
 
-
 void Campeonato::destroiCarro(char ident) {
 	//usar erase para retirar primeiro das pistas
 	int flag = 0; //na ultima corrida, pode tirar o piloto do carro e remover o carro da dgv

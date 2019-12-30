@@ -113,7 +113,6 @@ void Autodromo::destroiCarro(char ident, int flag) {
 	}
 }
 
-
 vector <Piloto*> Autodromo::getPista() const {
 	return pista;
 }
