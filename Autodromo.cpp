@@ -3,6 +3,7 @@
 #include "Carro.h"
 //#include "Dgv.h"
 #include "Interface.h"
+#include "Classificacao.h"
 #include <sstream>
 
 
@@ -43,12 +44,33 @@ void Autodromo::passatempo(int t){
 		it++) {
 			//(*it)->getCarro()
 			(*it)->passaTempoPiloto(t, getDistancia());
+			atualizaClassif();
 		}
 }
 
 void Autodromo::atualizaClassif() {
-	for (int i = 0; i < capacidade; i++) {
-		
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();
+		it++) {
+		if ((*it)->getAtualizado() == false && (*it)->getCarro()->getPosicao() == -2) {
+			int temp = (*it)->getCarro()->getTempo();
+			int lug = classificacao.size() + 1;
+			int pts = 0;
+			if (lug == 1){
+				pts = 10;
+			}
+			if (lug == 2){
+				pts = 5;
+			}
+			if (lug == 3){
+				pts = 2;
+			}
+
+			Classificacao* c = new Classificacao(lug, temp, pts, (*it));
+			classificacao.push_back(c);
+
+			(*it)->setAtualizado(true);
+		}
 	}
 }
 
@@ -63,6 +85,7 @@ void Autodromo::setIniciada(bool inic) {
 		it++) {
 		(*it)->setAtualizado(false);
 		(*it)->getCarro()->setPosicao(0);
+		(*it)->setAtualizado(false);
 	}
 }
 

@@ -11,8 +11,8 @@ class Piloto
 private:
 	string nome;
 	string tipo;
-	bool atualizado;
-	Carro * carro;		//ponteiro para carro						(ponteiro de carro para piloto e de piloto para carro ???)
+	bool atualizado;	//serve para saber se a classificação está atualizada
+	Carro * carro;		//ponteiro para carro
 
 public:
 	Piloto(string t, string n);

@@ -18,7 +18,6 @@ class Campeonato
 	Dgv* dgv;
 	int tam = 1;					//num de corridas (autodromos)
 	int realizadas = 0;				//num de corridas concluidas
-	//Autodromo* corrida;
 	vector <Autodromo*> corridas;
 	vector <Piloto*> participantes;
 	vector<Classificacao*> classGeral;

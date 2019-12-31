@@ -8,6 +8,7 @@
 class Interface; //provisorio, so para aceder a dgv
 class Piloto;
 class Carro;
+class Classificacao;
 //class Dgv;
 
 using namespace std;
@@ -24,7 +25,7 @@ class Autodromo
 	vector <Carro*> garagem;
 	vector <Piloto*> pista;
 
-	vector <Piloto*> classificacao[5];	//(?)
+	vector <Classificacao*> classificacao;	//(?)
 
 public:
 	Autodromo(int cap, int dist, string n);
