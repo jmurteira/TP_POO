@@ -1,8 +1,6 @@
-﻿  Campeonato.cpp
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(110,23): warning C4018: '<': signed/unsigned mismatch
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(128,23): warning C4018: '<': signed/unsigned mismatch
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(88,15): warning C4101: 'n_garagem': unreferenced local variable
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(271,27): warning C4018: '>': signed/unsigned mismatch
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(29): warning C4715: 'Campeonato::iniciaCamp': not all control paths return a value
-C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Campeonato.cpp(268): warning C4715: 'Campeonato::finalizaCorrida': not all control paths return a value
+﻿  CrazyDriver.cpp
+  PilotoRapido.cpp
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\CrazyDriver.h(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\PilotoRapido.h(5,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   TP_POO.vcxproj -> C:\ISEC\3º Ano\1º Semestre\Programação Orientada a Objectos\Trabalho Prático\TP_POO\Debug\TP_POO.exe

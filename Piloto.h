@@ -16,6 +16,7 @@ private:
 
 public:
 	Piloto(string t, string n);
+	Piloto(const Piloto& orig);
 	~Piloto();
 
 	//ver sinal de emergencia
@@ -40,6 +41,6 @@ public:
 
 	void carregaCarro(float n_energia);
 
-	virtual string getStringDescricao()const;
+	string getStringDescricao()const;
 
 };

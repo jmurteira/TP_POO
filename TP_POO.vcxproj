@@ -121,11 +121,13 @@
     <ClCompile Include="Classificacao.cpp" />
     <ClCompile Include="Comandos.cpp" />
     <ClCompile Include="Consola.cpp" />
+    <ClCompile Include="CrazyDriver.cpp" />
     <ClCompile Include="Dga.cpp" />
     <ClCompile Include="Dgv.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Logica.cpp" />
     <ClCompile Include="Piloto.cpp" />
+    <ClCompile Include="PilotoRapido.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -135,11 +137,13 @@
     <ClInclude Include="Classificacao.h" />
     <ClInclude Include="Comandos.h" />
     <ClInclude Include="Consola.h" />
+    <ClInclude Include="CrazyDriver.h" />
     <ClInclude Include="Dga.h" />
     <ClInclude Include="Dgv.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Logica.h" />
     <ClInclude Include="Piloto.h" />
+    <ClInclude Include="PilotoRapido.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
