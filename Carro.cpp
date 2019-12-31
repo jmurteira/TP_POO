@@ -63,6 +63,10 @@ void Carro::setDanificado(bool dan) {
 	danificado = dan;
 }
 
+void Carro::BotaoSOS(bool b) {
+	sinalEmerg = b;
+}
+
 void Carro::setVelocidade(int x) {
 	if (x < 0)
 		velocidade = 0;

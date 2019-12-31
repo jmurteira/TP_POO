@@ -41,19 +41,23 @@ void Campeonato::passatempo(int t) {
 
 		if (getCorridaAtiva() != nullptr) {
 			getCorridaAtiva()->passatempo(1);
-			finalizaCorrida(getPistaAtiva());//TESTE
-		}
-		vector<Piloto*> copia = getPistaAtiva();
-		for (vector<Piloto*>::const_iterator it = copia.cbegin();it != copia.cend(); it++){
+			
+			vector<Piloto*> copia = getPistaAtiva();
+			for (vector<Piloto*>::const_iterator it = copia.cbegin(); it != copia.cend(); it++) {
 
-			if ((*it)->getCarro()->getTempo() > 0 && (*it)->getTipo() == "CrazyDriver") {
-				//if (rand() % 5 == 0) {		//ACHO QUE ISTO NÃO É 5% é para aí 20%
-				/*ACHO QUE É ASSIM:*/
-				if (rand() % 20 == 10) {
-					acidente((*it)->getIdCarro());
+				if ((*it)->getCarro()->getTempo() > 0 && (*it)->getTipo() == "CrazyDriver") {
+					//if (rand() % 5 == 0) {		//ACHO QUE ISTO NÃO É 5% é para aí 20%
+					/*ACHO QUE É ASSIM:*/
+					if (rand() % 20 == 10) {
+						acidente((*it)->getIdCarro());
+					}
 				}
 			}
+			
+			finalizaCorrida(getPistaAtiva());//TESTE
+
 		}
+		
 
 	}
 	if (getCorridaAtiva() == nullptr)
@@ -311,11 +315,19 @@ bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 
 void Campeonato::proximaCorrida() {
 	if (getCorridas().size() > realizadas) {
-		getCorridas()[getRealizadas()]->setIniciada(true);
-		Consola::gotoxy(75, 20);
-		cout << "Proxima Corrida: "<< getCorridaAtiva()->getNome();
-		cin.get();
-		return;
+		if (getCorridas()[getRealizadas()]->getFinalizada() == false) {
+			Consola::gotoxy(75, 20);
+			cout << "Corrida ainda em andamento!";
+			cin.get();
+			return;
+		}
+		else {
+			getCorridas()[getRealizadas()]->setIniciada(true);
+			Consola::gotoxy(75, 20);
+			cout << "Proxima Corrida: " << getCorridaAtiva()->getNome();
+			cin.get();
+			return;
+		}
 	}
 	else {
 		Consola::gotoxy(75, 20);

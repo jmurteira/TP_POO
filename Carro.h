@@ -59,7 +59,7 @@ public:
 	float getEnergiaMax() const;
 	
 	//Botao Emergencia
-	void BotaoSOS();
+	void BotaoSOS(bool b);
 
 	void passaTempoCarro(int t, int distPista);
 
