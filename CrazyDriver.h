@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream> 
+#include<string>
 using namespace std;
 
 #include "Piloto.h";
@@ -9,11 +9,12 @@ class CrazyDriver: public virtual Piloto
 {
 
 public: 
-	string getStringDescricao()const override;
+	CrazyDriver(string n);
+	/*string getStringDescricao()const override;
 	void acelera()override;
 	void verPosicao();
 	void perdePosicao();
-	void randomAcidente();
+	void randomAcidente();*/
 
 
 };

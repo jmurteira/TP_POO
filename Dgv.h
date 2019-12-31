@@ -5,6 +5,9 @@
 #include <fstream>
 #include <sstream>
 
+#include "CrazyDriver.h"
+#include "PilotoRapido.h"
+
 class Piloto;
 class Carro;
 

@@ -2,6 +2,8 @@
 #include "Dgv.h"
 #include "Carro.h"
 #include "Piloto.h"
+#include "CrazyDriver.h"
+#include "PilotoRapido.h"
 
 Dgv::Dgv(string id):DgvID(id) {}
 
@@ -39,9 +41,17 @@ Piloto* Dgv::novoPiloto(string t, string n) {
 		n.append(id_unico);
 	}
 	if (procuraPiloto(n) == nullptr) {
-		Piloto* p = new Piloto(t, n);
-		pilotos.push_back(p);
-		return p;
+		
+		if (t == "CrazyDriver") {
+			Piloto* p =  new CrazyDriver(n);
+			pilotos.push_back(p);
+			return p;
+		}
+		else if (t == "PilotoRapido") {
+			Piloto* p = new PilotoRapido(n);
+			pilotos.push_back(p);
+			return p;
+		}
 	}
 	return nullptr;
 
@@ -59,8 +69,8 @@ void Dgv::carregaP(string fich) {
 			string nome;
 			istringstream is(linha);
 			is >> tipo;
-			if (tipo == "classico" /*|| tipo == "Classico"*/) {
-				t = 1;
+			if (tipo == "CrazyDriver" || tipo == "PilotoRapido") {
+				t = tipo;
 				is >> nome;
 				novoPiloto(t,nome);
 			}

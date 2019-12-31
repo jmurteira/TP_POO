@@ -5,13 +5,14 @@
 
 using namespace std;
 
-Piloto::Piloto(string t, string n):tipo(t),carro(nullptr),atualizado(false)
+Piloto::Piloto(string t, string n):tipo(t), nome(n),carro(nullptr),atualizado(false)
 {
 	//verificar o nome do piloto de forma a ser único. ir ao vector da dgv?
-	nome = n;
-	
+	//nome = n;
 }
+Piloto::Piloto(const Piloto & orig):tipo(orig.tipo),nome(orig.nome),carro(nullptr),atualizado(false) {
 
+}
 
 Piloto::~Piloto()
 {
@@ -77,11 +78,11 @@ void Piloto::carregaCarro(float n_energia) {
 
 string Piloto::getStringDescricao()const {
 	ostringstream os;
-	os << "Piloto: " << nome << endl;
+	os << "Piloto: " << nome << " (" << tipo << ")"<< endl;
 	if (carro == nullptr)
 		os << "Sem Carro atribuido" << endl;
 	else
-		os << "Com Carro atribuido" << endl;
+		os << "Com Carro atribuido" << " -> " << getCarro()->getIdent() << endl;
 	return os.str();
 
 }
