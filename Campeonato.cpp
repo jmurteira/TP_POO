@@ -5,6 +5,8 @@
 #include "Classificacao.h"
 #include "Dgv.h"
 #include "Consola.h"
+#include <time.h>
+
 
 Campeonato::Campeonato(): dgv(nullptr), tam(0), realizadas(0)
 {
@@ -46,10 +48,13 @@ void Campeonato::passatempo(int t) {
 		for (vector<Piloto*>::const_iterator it = copia.cbegin();it != copia.cend(); it++){
 
 			if ((*it)->getCarro()->getTempo() > 0 && (*it)->getTipo() == "CrazyDriver") {
-				if (rand() % 5 == 0) {
+				//if (rand() % 5 == 0) {		//ACHO QUE ISTO NÃO É 5% é para aí 20%
+				/*ACHO QUE É ASSIM:*/
+				srand(time(0));
+				if (rand() % 20 == 0) {
 					acidente((*it)->getIdCarro());
 				}
-		}
+			}
 		}
 
 	}
@@ -279,13 +284,15 @@ void Campeonato::setRealizadas(int n) {
 
 bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 	
+	vector<Piloto*> copia = pista;
+
 	int emCorrida = 0;
 
 	if (pista.size() == 0)
 		return false;
 
-	for (vector<Piloto*>::const_iterator it = pista.cbegin();
-		it != pista.cend();
+	for (vector<Piloto*>::const_iterator it = copia.cbegin();
+		it != copia.cend();
 		it++) {
 
 		if ((*it)->getCarro()->getPosicao() != -2)
