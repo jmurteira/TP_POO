@@ -15,7 +15,7 @@
 using namespace std;
 
 int main() {
-	srand(time(0)); //nao sei se é a melhor cena mas se estiver no construtor carro repete sempre a mesma letra. supostamente só deve ser chamada uma vez
+	srand(time(NULL)); //nao sei se é a melhor cena mas se estiver no construtor carro repete sempre a mesma letra. supostamente só deve ser chamada uma vez
 	
 	/*Consola::setBackgroundColor(Consola::BRANCO_CLARO);
 	Consola::setTextColor(Consola::PRETO);

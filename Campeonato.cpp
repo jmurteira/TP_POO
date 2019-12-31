@@ -5,7 +5,6 @@
 #include "Classificacao.h"
 #include "Dgv.h"
 #include "Consola.h"
-#include <time.h>
 
 
 Campeonato::Campeonato(): dgv(nullptr), tam(0), realizadas(0)
@@ -50,8 +49,7 @@ void Campeonato::passatempo(int t) {
 			if ((*it)->getCarro()->getTempo() > 0 && (*it)->getTipo() == "CrazyDriver") {
 				//if (rand() % 5 == 0) {		//ACHO QUE ISTO NÃO É 5% é para aí 20%
 				/*ACHO QUE É ASSIM:*/
-				srand(time(0));
-				if (rand() % 20 == 0) {
+				if (rand() % 20 == 10) {
 					acidente((*it)->getIdCarro());
 				}
 			}
