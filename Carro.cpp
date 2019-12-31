@@ -4,7 +4,7 @@
 
 
 Carro::Carro(string marc, string mod, float capAtual, float capMax, char id) : 
-marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual), velocidade(1), velMax(50), ocupado(false), sinalEmerg(false), danificado(false)//, n_energia(5)
+marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual), velocidade(1), velMax(100), ocupado(false), sinalEmerg(false), danificado(false)//, n_energia(5)
 {
 		
 
