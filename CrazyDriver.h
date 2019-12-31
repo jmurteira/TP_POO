@@ -4,6 +4,8 @@ using namespace std;
 
 #include "Piloto.h";
 class Carro;
+class Classificacao;
+
 class CrazyDriver: public virtual Piloto
 {
 	//Carro* carro;
@@ -12,9 +14,7 @@ public:
 	int inicio_aleatorio();
 	/*string getStringDescricao()const override;
 	void acelera()override;
-	void verPosicao();
-	void perdePosicao();
-	void randomAcidente();*/
+	void perdePosicao();*/
 	void passaTempoPiloto(int t, int dist)override;
-
+	//void perguntaPista();
 };

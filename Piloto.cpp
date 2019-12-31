@@ -66,6 +66,10 @@ char Piloto::getIdCarro() const {
 		return carro->getIdent();
 }
 
+string Piloto::getTipo()const {
+	return tipo;
+}
+
 void Piloto::passaTempoPiloto(int t, int dist) {
 	carro->passaTempoCarro(t, dist);
 }

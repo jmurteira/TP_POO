@@ -1,9 +1,8 @@
 #include "CrazyDriver.h"
 #include "Carro.h"
-#include <iostream>
+#include "Classificacao.h"
+
 CrazyDriver::CrazyDriver(string n):Piloto("CrazyDriver", n) {}
-
-
 
 
 int CrazyDriver::inicio_aleatorio() {
@@ -26,3 +25,8 @@ void CrazyDriver::passaTempoPiloto(int t, int dist) {
 		flag = 1;
 	}
 }
+
+//
+//void CrazyDriver::perguntaPista() {
+//}
+

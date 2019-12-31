@@ -34,6 +34,7 @@ public:
 
 	string getNome() const;
 	char getIdCarro() const;
+	string getTipo()const;
 
 	Carro* getCarro() const;
 

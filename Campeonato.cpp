@@ -42,6 +42,16 @@ void Campeonato::passatempo(int t) {
 			getCorridaAtiva()->passatempo(1);
 			finalizaCorrida(getPistaAtiva());//TESTE
 		}
+		vector<Piloto*> copia = getPistaAtiva();
+		for (vector<Piloto*>::const_iterator it = copia.cbegin();it != copia.cend(); it++){
+
+			if ((*it)->getCarro()->getTempo() > 0 && (*it)->getTipo() == "CrazyDriver") {
+				if (rand() % 5 == 0) {
+					acidente((*it)->getIdCarro());
+				}
+		}
+		}
+
 	}
 	if (getCorridaAtiva() == nullptr)
 		cout << "\nNenhuma corrida a decorrer\n\n";
