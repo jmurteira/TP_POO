@@ -21,11 +21,11 @@ public:
 
 	//ver sinal de emergencia
 
-	void entrarCarro(Carro * c);
+	virtual void entrarCarro(Carro * c);
 	void sairCarro();
 
 	virtual void acelera();
-	void trava();
+	virtual void trava();
 
 	bool getAtualizado()const;
 	void setAtualizado(bool a);
@@ -41,6 +41,6 @@ public:
 
 	void carregaCarro(float n_energia);
 
-	string getStringDescricao()const;
+	virtual string getStringDescricao()const;
 
 };

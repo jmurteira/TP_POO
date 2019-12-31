@@ -20,6 +20,9 @@ Piloto::~Piloto()
 }
 
 void Piloto::acelera() { //A funçao acelera só aumenta em 1m/s de cada vez que é chamada? ou recebe o valor para aumentar?
+	
+	
+	
 	if (carro->getVelocidade() + 1 <= carro->getVelocidadeMax())
 	{
 		carro->setVelocidade(carro->getVelocidade() + 1);
