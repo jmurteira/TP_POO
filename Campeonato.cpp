@@ -167,7 +167,7 @@ bool Campeonato::addParticipantes() {
 void Campeonato::atualizaClassifGeral() {
 	if (getCorridaAtiva() == nullptr) {
 		
-		if (realizadas - 1 < 0) {
+		if (realizadas - 1 >= 0) {
 			if (classGeral.size() == 0) {
 				for (int i = 0; i < getCorridas()[realizadas - 1]->getClassificacao().size(); i++)
 					classGeral.push_back(getCorridas()[realizadas - 1]->getClassificacao()[i]);
@@ -352,17 +352,19 @@ bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 }
 
 void Campeonato::apresentaVencedores() const {
-	Consola::gotoxy(20,20);
-	cout << "Campeonato Finalizado!!";
-	if (classGeral.size() > 0) {
-		Consola::gotoxy(20, 22);
-		cout << "CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
+	if (getCorridas().size() == realizadas) {
+		Consola::gotoxy(20, 20);
+		cout << "Campeonato Finalizado!!";
+		if (classGeral.size() > 0) {
+			Consola::gotoxy(20, 22);
+			cout << "CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
+		}
+		if (classGeral.size() > 1) {
+			Consola::gotoxy(20, 23);
+			cout << "Vice-Campeao:   " << classGeral[1]->getPiloto()->getStringDescricao();
+		}
+		cin.get();
 	}
-	if (classGeral.size() > 1) {
-		Consola::gotoxy(20, 23);
-		cout << "Vice-Campeao:   " << classGeral[1]->getPiloto()->getStringDescricao();
-	}
-	cin.get();
 }
 
 void Campeonato::proximaCorrida() {

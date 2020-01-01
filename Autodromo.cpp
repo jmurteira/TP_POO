@@ -4,6 +4,7 @@
 //#include "Dgv.h"
 #include "Interface.h"
 #include "Classificacao.h"
+#include "Consola.h"
 #include <sstream>
 
 
@@ -58,6 +59,8 @@ void Autodromo::atualizaClassif() {
 			int pts = 0;
 			if (lug == 1){
 				pts = 10;
+				Consola::gotoxy(20,19);
+				cout << "10 pontos";
 			}
 			if (lug == 2){
 				pts = 5;
