@@ -55,7 +55,6 @@ void Campeonato::passatempo(int t) {
 			}
 			
 			finalizaCorrida(getPistaAtiva());//TESTE
-			atualizaClassifGeral();
 
 		}
 		
@@ -343,8 +342,25 @@ bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 	else if (emCorrida == 0) {
 		setRealizadas(getRealizadas() + 1);
 		getCorridaAtiva()->setFinalizada(true);
+		atualizaClassifGeral();
+		if (getCorridas().size() == realizadas)
+			apresentaVencedores();
 		return true;
 	}
+}
+
+void Campeonato::apresentaVencedores() const {
+	Consola::gotoxy(20,20);
+	cout << "Campeonato Finalizado!!";
+	if (classGeral.size() > 1) {
+		Consola::gotoxy(20, 22);
+		cout << "/tCAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
+	}
+	if (classGeral.size() > 2) {
+		Consola::gotoxy(20, 23);
+		cout << "/tVice-Campeao:   " << classGeral[1]->getPiloto()->getStringDescricao();
+	}
+	cin.get();
 }
 
 void Campeonato::proximaCorrida() {

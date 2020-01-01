@@ -61,6 +61,8 @@ public:
 
 	bool finalizaCorrida(vector<Piloto*> pista);
 
+	void apresentaVencedores() const;
+
 	int getRealizadas();
 	void setRealizadas(int n);
 	
