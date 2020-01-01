@@ -21,7 +21,7 @@ class Autodromo
 	int capacidade;
 	bool iniciada;		//a combinação dos bools "iniciada", "finalizada" permite saber quais as corridas que já foram feitas, as que ainda não foram feitas e a que está a decorrer
 	bool finalizada;
-	bool classifAtualizada;
+	bool classifGeralAtualizada;
 	vector <Carro*> garagem;
 	vector <Piloto*> pista;
 
@@ -53,6 +53,7 @@ public:
 	void destroiCarro(char ident, int flag);
 	vector <Piloto*> getPista() const;
 	vector <Carro*> getGaragem() const;
+	vector <Classificacao*> getClassificacao() const;
 
 	Piloto* procuraPilotoPorCarro(Carro* c) const;
 

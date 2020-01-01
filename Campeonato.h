@@ -45,7 +45,9 @@ public:
 
 	bool addParticipantes(); //funcao para adicionar carros no autodromo. perguntar quantos para a pista e quantos para a garagem
 
-	void atualizaClassif();
+	void atualizaClassifGeral();
+
+	bool comparaPts(Classificacao c1, Classificacao c2);
 
 	void acidente(char ident);
 	void destroiCarro(char ident);

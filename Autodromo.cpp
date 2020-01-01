@@ -102,7 +102,7 @@ void Autodromo::setFinalizada(bool fin) {
 }
 
 bool Autodromo::getClassifAtualizada() const {
-	return classifAtualizada;
+	return classifGeralAtualizada;
 }
 
 void Autodromo::acidente(char ident, int flag) {
@@ -142,6 +142,10 @@ vector <Piloto*> Autodromo::getPista() const {
 
 vector <Carro*> Autodromo::getGaragem() const {
 	return garagem;
+}
+
+vector <Classificacao*> Autodromo::getClassificacao() const {
+	return classificacao;
 }
 
 Piloto* Autodromo::procuraPilotoPorCarro(Carro * c) const {

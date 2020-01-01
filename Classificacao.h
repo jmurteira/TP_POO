@@ -6,7 +6,6 @@ class Classificacao
 {
 	Piloto* piloto;
 	int lugar;
-	int tempo;
 	int pontos;
 public:
 

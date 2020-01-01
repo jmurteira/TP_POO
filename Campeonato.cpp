@@ -5,7 +5,7 @@
 #include "Classificacao.h"
 #include "Dgv.h"
 #include "Consola.h"
-
+#include <algorithm>
 
 Campeonato::Campeonato(): dgv(nullptr), tam(0), realizadas(0)
 {
@@ -55,6 +55,7 @@ void Campeonato::passatempo(int t) {
 			}
 			
 			finalizaCorrida(getPistaAtiva());//TESTE
+			atualizaClassifGeral();
 
 		}
 		
@@ -166,7 +167,28 @@ bool Campeonato::addParticipantes() {
 
 
 //ATUALIZAR CLASSIF GERAL POIS TEMPOS CLASSIF ESPECIFICA DE CADA CORRIDA (NAO SEI SE É PRECISO NESTA META)
-//void Campeonato::atualizaClassif() {
+void Campeonato::atualizaClassifGeral() {
+	if (getCorridaAtiva() == nullptr) {
+		
+		if (realizadas - 1 < 0) {
+			if (classGeral.size() == 0) {
+				for (int i = 0; i < getCorridas()[realizadas - 1]->getClassificacao().size(); i++)
+					classGeral.push_back(getCorridas()[realizadas - 1]->getClassificacao()[i]);
+			}
+			else
+				for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
+					it != classGeral.cend();
+					it++) {
+					for (int i = 0; i < getCorridas()[realizadas - 1]->getClassificacao().size(); i++) {
+						if ((*it)->getPiloto() == getCorridas()[realizadas - 1]->getClassificacao()[i]->getPiloto()) {
+							(*it)->setPontos((*it)->getPontos() + getCorridas()[realizadas - 1]->getClassificacao()[i]->getPontos);
+							sort(classGeral.begin(), classGeral.end(), comparaPts);
+						}
+					}
+				}
+		}
+
+	}
 //	if (corrida->getFinalizada() == true && corrida->getClassifAtualizada() == false)
 //	{
 //		for (vector<Piloto*>::const_iterator it = corrida->getPista().cbegin();
@@ -187,7 +209,11 @@ bool Campeonato::addParticipantes() {
 //			}
 //		}
 //	}
-//}
+}
+
+bool Campeonato::comparaPts(Classificacao c1, Classificacao c2){
+	return (c1.getPontos() < c2.getPontos());
+}
 
 Dgv* Campeonato::getDgv()const{
 	return dgv;
