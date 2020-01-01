@@ -107,7 +107,6 @@ string Piloto::getStringDescricao()const {
 	else
 		os << "Com Carro atribuido" << " -> " << getCarro()->getIdent() << endl;
 	return os.str();
-
 }
 
 Carro* Piloto::getCarro()  const {
