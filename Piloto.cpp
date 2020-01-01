@@ -1,5 +1,6 @@
 #include "Piloto.h"
 #include "Carro.h"
+#include "Classificacao.h"
 #include <sstream>
 #include <iostream>
 
@@ -18,6 +19,21 @@ Piloto::~Piloto()
 {
 
 }
+
+//bool Piloto::comparaPts(const Classificacao* c1, const Classificacao* c2) {
+//
+//	const int pts1 = c1->getPontos();
+//	const int pts2 = c2->getPontos();
+//
+//	/*const Time aTime = a->getTime();
+//	const Time bTime = b->getTime();*/
+//
+//	if (pts1 < pts2)
+//		return true;
+//	else
+//		return false;
+//
+//}
 
 void Piloto::acelera() { //A funçao acelera só aumenta em 1m/s de cada vez que é chamada? ou recebe o valor para aumentar?
 	

@@ -180,11 +180,15 @@ void Campeonato::atualizaClassifGeral() {
 					it++) {
 					for (int i = 0; i < getCorridas()[realizadas - 1]->getClassificacao().size(); i++) {
 						if ((*it)->getPiloto() == getCorridas()[realizadas - 1]->getClassificacao()[i]->getPiloto()) {
-							(*it)->setPontos((*it)->getPontos() + getCorridas()[realizadas - 1]->getClassificacao()[i]->getPontos);
+							(*it)->setPontos((*it)->getPontos() + getCorridas()[realizadas - 1]->getClassificacao()[i]->getPontos());
 						}
 					}
 				}
-				sort(classGeral.begin(), classGeral.end(), comparaPts);
+				sort(classGeral.begin(), classGeral.end(), [](Classificacao* a, Classificacao* b)			/*Piloto::comparaPts*/
+					{
+						return a->getPontos() < b->getPontos();
+					}					
+					);
 				int i = 0;
 				for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
 					it != classGeral.cend();
@@ -218,9 +222,9 @@ void Campeonato::atualizaClassifGeral() {
 //	}
 }
 
-bool Campeonato::comparaPts(Classificacao c1, Classificacao c2){
-	return (c1.getPontos() < c2.getPontos());
-}
+//bool Campeonato::comparaPts(const Classificacao &c1, const Classificacao &c2){
+//	return (c1.getPontos() < c2.getPontos());
+//}
 
 Dgv* Campeonato::getDgv()const{
 	return dgv;

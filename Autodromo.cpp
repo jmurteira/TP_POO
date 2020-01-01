@@ -8,7 +8,7 @@
 
 
 
-Autodromo::Autodromo(int cap, int dist, string n):capacidade(cap), distancia(dist), nome(n),  iniciada(false), finalizada(false), classifAtualizada(false) //classifAtualizada???
+Autodromo::Autodromo(int cap, int dist, string n):capacidade(cap), distancia(dist), nome(n),  iniciada(false), finalizada(false), classifGeralAtualizada(false) //classifAtualizada???
 {
 	if (cap < 2){
 		capacidade = 2; //minimo definido no enunciado

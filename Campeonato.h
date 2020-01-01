@@ -47,7 +47,7 @@ public:
 
 	void atualizaClassifGeral();
 
-	bool comparaPts(Classificacao c1, Classificacao c2);
+	//bool comparaPts(const Classificacao& c1, const Classificacao& c2);
 
 	void acidente(char ident);
 	void destroiCarro(char ident);

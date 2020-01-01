@@ -1,8 +1,8 @@
 #pragma once
 #include <string>
 
-
 class Carro;
+class Classificacao;
 
 using namespace std;
 
@@ -18,6 +18,8 @@ public:
 	Piloto(string t, string n);
 	Piloto(const Piloto& orig);
 	~Piloto();
+
+	//bool comparaPts(const Classificacao * c1, const Classificacao * c2);
 
 	//ver sinal de emergencia
 
