@@ -175,17 +175,25 @@ void Campeonato::atualizaClassifGeral() {
 				for (int i = 0; i < getCorridas()[realizadas - 1]->getClassificacao().size(); i++)
 					classGeral.push_back(getCorridas()[realizadas - 1]->getClassificacao()[i]);
 			}
-			else
+			else {
 				for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
 					it != classGeral.cend();
 					it++) {
 					for (int i = 0; i < getCorridas()[realizadas - 1]->getClassificacao().size(); i++) {
 						if ((*it)->getPiloto() == getCorridas()[realizadas - 1]->getClassificacao()[i]->getPiloto()) {
 							(*it)->setPontos((*it)->getPontos() + getCorridas()[realizadas - 1]->getClassificacao()[i]->getPontos);
-							sort(classGeral.begin(), classGeral.end(), comparaPts);
 						}
 					}
 				}
+				sort(classGeral.begin(), classGeral.end(), comparaPts);
+				int i = 0;
+				for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
+					it != classGeral.cend();
+					it++) {
+					(*it)->setLugar(i + 1);
+					i++;
+				}
+			}
 		}
 
 	}
