@@ -358,10 +358,14 @@ void Campeonato::apresentaVencedores() const {
 		if (classGeral.size() > 0) {
 			Consola::gotoxy(20, 22);
 			cout << "CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
+			Consola::gotoxy(20, 23);
+			cout << "           " << classGeral[0]->getPontos() << " Pontos";
 		}
 		if (classGeral.size() > 1) {
-			Consola::gotoxy(20, 23);
+			Consola::gotoxy(20, 24);
 			cout << "Vice-Campeao:   " << classGeral[1]->getPiloto()->getStringDescricao();
+			Consola::gotoxy(20, 25);
+			cout << "           " << classGeral[1]->getPontos() << " Pontos";
 		}
 		cin.get();
 	}
@@ -369,16 +373,17 @@ void Campeonato::apresentaVencedores() const {
 
 void Campeonato::proximaCorrida() {
 	if (getCorridas().size() > realizadas) {
-		if (getCorridas()[getRealizadas()]->getFinalizada() == false) {
-			Consola::gotoxy(75, 20);
-			cout << "Corrida ainda em andamento!";
-			cin.get();
-			return;
-		}
-		else {
+		
+		if (getCorridas()[getRealizadas()]->getIniciada() == false) {
 			getCorridas()[getRealizadas()]->setIniciada(true);
 			Consola::gotoxy(75, 20);
 			cout << "Proxima Corrida: " << getCorridaAtiva()->getNome();
+			cin.get();
+			return;
+		}
+		else if (getCorridas()[getRealizadas()]->getIniciada() == true && getCorridas()[getRealizadas()]->getFinalizada() == false) {
+			Consola::gotoxy(75, 20);
+			cout << "Corrida ainda em andamento!";
 			cin.get();
 			return;
 		}

@@ -101,7 +101,7 @@ void Piloto::carregaCarro(float n_energia) {
 
 string Piloto::getStringDescricao()const {
 	ostringstream os;
-	os << "Piloto: " << nome << " (" << tipo << ")"<< endl;
+	os << "Piloto: " << nome << " (" << tipo << ")\t";
 	if (carro == nullptr)
 		os << "Sem Carro atribuido" << endl;
 	else
