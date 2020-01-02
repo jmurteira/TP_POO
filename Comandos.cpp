@@ -246,9 +246,11 @@ string Comandos::lerComandoModo2() {
 			return op1;
 		}
 		else if (op1 == "listacarros") {
-			Consola::gotoxy(75, 20);
-			cout << getCamp()->getCorridaAtiva()->listacarros();
-			cin.get();
+			if (getCamp()->getCorridaAtiva() != nullptr) {
+				Consola::gotoxy(75, 20);
+				cout << getCamp()->getCorridaAtiva()->listacarros();
+				cin.get();
+			}
 			//cout << "ListarCarros";
 			return op1;
 		}

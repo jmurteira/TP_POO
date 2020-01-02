@@ -26,7 +26,9 @@ void PilotoRapido::passaTempoPiloto(int t, int dist){
 		setDezSeg(getDezSeg() + 1);
 	}
 	else if (getDezSeg() == 10) {
-		getCarro()->BotaoSOS(true);
+		if (rand() % 10 == 9) {
+			getCarro()->BotaoSOS(true);
+		}
 		setDezSeg(0);
 	}
 }

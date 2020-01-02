@@ -30,6 +30,7 @@ Comandos* Logica::getComandos() {
 void Logica::Simulador() {
 	int flag_sair = 0;
 	int flag_campeonato = 0;
+	int flag_campeoes = 0;
 
 
 	//e a corrida começa a partir do momento em que todos os carros da pista têm piloto
@@ -75,7 +76,7 @@ void Logica::Simulador() {
 
 	cout << comando->getStringListaComandos();
 
-
+	
 
 	while (flag_sair == 0) {
 
@@ -130,8 +131,8 @@ void Logica::Simulador() {
 			}
 
 			for (int i = 0; i < 50; i++) {
-				for (int j = 0; j < 10; j++) {
-					Consola::gotoxy(i + 20, j + 10);
+				for (int j = 0; j < 14; j++) {
+					Consola::gotoxy(i + 20, j + 6);
 					cout << char(28);
 					j++;
 				}
@@ -157,14 +158,19 @@ void Logica::Simulador() {
 				int pos = getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getPosicao();
 				int dist = getComandos()->getCamp()->getCorridaAtiva()->getDistancia();
 				int x = round((pos * 50) / dist);
-				for (int j = 0; j < 10; j++) {
+				for (int j = 0; j < 14; j++) {
 					j++;
-					Consola::gotoxy(x + 20, 2 * i + 1 + 10);
-					if(getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getDanificado() == false)
+					Consola::gotoxy(x + 20, 2 * i + 1 + 6);
+					Carro *c = getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro();
+					if(c->getDanificado() == false)
 						cout << getComandos()->getCamp()->getCorridaAtiva()->getPista()[i]->getCarro()->getIdent();
 				}
 			}
 
+			if (flag_campeoes == 0 && getComandos()->getCamp()->getCorridaAtiva() == nullptr && getComandos()->getCamp()->getRealizadas() == getComandos()->getCamp()->getCorridas().size()) {
+				getComandos()->getCamp()->apresentaVencedores();
+				flag_campeoes = 1;
+			}
 
 			//fazer uma funcao para nao repetir isto
 			Consola::gotoxy(75, 3);

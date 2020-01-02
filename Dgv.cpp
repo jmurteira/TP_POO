@@ -4,6 +4,7 @@
 #include "Piloto.h"
 #include "CrazyDriver.h"
 #include "PilotoRapido.h"
+#include "PilotoSurpresa.h"
 
 Dgv::Dgv(string id):DgvID(id) {}
 
@@ -37,7 +38,7 @@ Piloto* Dgv::novoPiloto(string t, string n) {
 		cout << "Nome: " << n << " ja existe. Ira ser adicionado um identificador ao nome para futura distincao." << endl;
 		int id = rand() % ((100 - 1) + 1) + 1;
 		string id_unico = to_string(id);
-		n.append(" ");
+		//n.append(" ");
 		n.append(id_unico);
 	}
 	if (procuraPiloto(n) == nullptr) {
@@ -49,6 +50,11 @@ Piloto* Dgv::novoPiloto(string t, string n) {
 		}
 		else if (t == "PilotoRapido") {
 			Piloto* p = new PilotoRapido(n);
+			pilotos.push_back(p);
+			return p;
+		}
+		else if (t == "PilotoSurpresa") {
+			Piloto* p = new PilotoSurpresa(n);
 			pilotos.push_back(p);
 			return p;
 		}
@@ -69,7 +75,7 @@ void Dgv::carregaP(string fich) {
 			string nome;
 			istringstream is(linha);
 			is >> tipo;
-			if (tipo == "CrazyDriver" || tipo == "PilotoRapido") {
+			if (tipo == "CrazyDriver" || tipo == "PilotoRapido" || tipo == "PilotoSurpresa") {
 				t = tipo;
 				is >> nome;
 				novoPiloto(t,nome);
@@ -206,7 +212,7 @@ string Dgv::descricaoPiloto() const {
 
 void Dgv::apagaCarro(char ident) {
 	if (procuraCarro(ident) != nullptr) {
-		cout << "entrou";
+
 		for (size_t i = 0; i < pilotos.size(); i++) {
 			if (pilotos[i]->getIdCarro() == ident)
 				pilotos[i]->sairCarro();
@@ -223,7 +229,7 @@ void Dgv::apagaCarro(char ident) {
 
 void Dgv::apagaPiloto(string nome) {
 	if (procuraPiloto(nome) != nullptr) {
-		cout << "entrou";
+
 		for (size_t i = 0; i < pilotos.size(); i++) {
 			if (pilotos[i]->getNome() == nome)
 				pilotos[i]->getCarro()->setDesocupado();

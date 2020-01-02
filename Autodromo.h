@@ -50,6 +50,7 @@ public:
 	bool getClassifAtualizada() const;
 
 	void acidente(char ident, int flag);
+	void emergencia();
 	void destroiCarro(char ident, int flag);
 	vector <Piloto*> getPista() const;
 	vector <Carro*> getGaragem() const;

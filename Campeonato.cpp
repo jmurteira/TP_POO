@@ -18,10 +18,8 @@ Campeonato::~Campeonato()
 
 bool Campeonato::iniciaCamp() {
 	if (getCorridas().size() != 0) {
-		//cout << "DIF ZERO";
 		if (getIniciada() == false) {
 			getCorridas()[realizadas]->setIniciada(true);
-			//cout << getIniciada() << endl;
 			return true;
 		}
 	}
@@ -30,13 +28,6 @@ bool Campeonato::iniciaCamp() {
 }
 
 void Campeonato::passatempo(int t) {
-	/*for (vector<Autodromo*>::const_iterator it = corrida.cbegin();
-		it != corrida.cend();
-		it++) {
-
-	}*/
-	//SÓ HÁ UMA CORRIDA
-	//corrida->setIniciada(true);
 	for (int i = 0; i < t; i++) {
 
 		if (getCorridaAtiva() != nullptr) {
@@ -48,14 +39,18 @@ void Campeonato::passatempo(int t) {
 				if ((*it)->getCarro()->getTempo() > 0 && (*it)->getTipo() == "CrazyDriver") {
 					//if (rand() % 5 == 0) {		//ACHO QUE ISTO NÃO É 5% é para aí 20%
 					/*ACHO QUE É ASSIM:*/
-					if (rand() % 20 == 10) {
+					if (rand() % 20 == 19) {
 						acidente((*it)->getIdCarro());
 					}
 				}
+
+				if ((*it)->getTipo() == "PilotoRapido" && (*it)->getCarro()->getBotaoSOS() == true) {
+					getCorridaAtiva()->emergencia(/* (*it)->getIdCarro()*/ );
+				}
 			}
 			
-			if (finalizaCorrida(getPistaAtiva()) == true)
-				apresentaVencedores();
+			finalizaCorrida(getPistaAtiva());
+				//apresentaVencedores();
 		}
 	}
 	if (getCorridaAtiva() == nullptr)
@@ -68,13 +63,8 @@ int Campeonato::getTam() const {
 }
 
 void Campeonato::setCorrida(Autodromo* aut) {
-	//corrida = aut;
 	corridas.push_back(aut);
 }
-
-//Autodromo* Campeonato::getCorrida() const {
-//	return corrida;
-//}
 
 vector <Piloto*> Campeonato::getParticipantes() const {
 	return participantes;
@@ -196,33 +186,8 @@ void Campeonato::atualizaClassifGeral() {
 				}
 			}
 		}
-
 	}
-//	if (corrida->getFinalizada() == true && corrida->getClassifAtualizada() == false)
-//	{
-//		for (vector<Piloto*>::const_iterator it = corrida->getPista().cbegin();
-//			it != corrida->getPista().cend();
-//			it++) {
-//
-//			
-//			if ((*it)->getCarro()->getPosicao() == -2 && (*it)->getAtualizado() == false) {
-//				
-//				int i = 0;
-//
-//				Classificacao* c = new Classificacao(i + 1, (*it)->getCarro()->getTempo(), 10/*Como ficam todos empatados, 10pts para todos*/, (*it));
-//				classGeral.push_back(c);
-//
-//				(*it)->setAtualizado(true);
-//
-//				i++;
-//			}
-//		}
-//	}
 }
-
-//bool Campeonato::comparaPts(const Classificacao &c1, const Classificacao &c2){
-//	return (c1.getPontos() < c2.getPontos());
-//}
 
 Dgv* Campeonato::getDgv()const{
 	return dgv;
@@ -259,10 +224,8 @@ void Campeonato::carregabat(char ident, float q) {		//NAO ESTÁ A FUNCIOANAR (não
 														//NESTE MOMENTO ESTÁ A CARREGAR TODOS OS CARROS DA DGV (NAO TEM VERIFICAÇÃO)
 	//Autodromo * a = getCorridaAtiva();
 	Piloto * p = getDgv()->procuraPilotoPorCarro(ident);
-	//Piloto * partic = a->procuraPilotoPorCarro(p->getCarro());
 	if(p != nullptr)
 		p->carregaCarro(q);
-	//partic->carregaCarro(q);
 }
 
 void Campeonato::carregaTudo() {
@@ -325,14 +288,17 @@ bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 
 	int emCorrida = 0;
 
-	if (pista.size() == 0)
+	if (pista.size() == 0 && getCorridaAtiva() != nullptr) {
+		setRealizadas(getRealizadas() + 1);
+		getCorridaAtiva()->setFinalizada(true);
 		return false;
+	}
 
 	for (vector<Piloto*>::const_iterator it = copia.cbegin();
 		it != copia.cend();
 		it++) {
 
-		if ((*it)->getCarro()->getPosicao() != -2)
+		if ((*it)->getCarro()->getPosicao() != -2 /*&& (*it)->getCarro()->getBotaoSOS() == false*/)
 		{
 			emCorrida++;
 		}
@@ -345,8 +311,6 @@ bool Campeonato::finalizaCorrida(vector<Piloto*> pista) {
 		setRealizadas(getRealizadas() + 1);
 		getCorridaAtiva()->setFinalizada(true);
 		atualizaClassifGeral();
-		/*if (getCorridas().size() == realizadas)
-			apresentaVencedores();*/
 		return true;
 	}
 }
@@ -355,17 +319,43 @@ void Campeonato::apresentaVencedores() const {
 	if (getCorridas().size() == realizadas) {
 		Consola::gotoxy(20, 20);
 		cout << "Campeonato Finalizado!!";
-		if (classGeral.size() > 0) {
+		if (classGeral.size() == 0) {
 			Consola::gotoxy(20, 22);
-			cout << "CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
-			Consola::gotoxy(20, 23);
-			cout << "           " << classGeral[0]->getPontos() << " Pontos";
+			cout << "-> Nenhuma corrida chegou a ser terminada uma vez que ocorreram varias desistencias";
 		}
-		if (classGeral.size() > 1) {
-			Consola::gotoxy(20, 24);
-			cout << "Vice-Campeao:   " << classGeral[1]->getPiloto()->getStringDescricao();
-			Consola::gotoxy(20, 25);
-			cout << "           " << classGeral[1]->getPontos() << " Pontos";
+		if (classGeral.size() > 1 && classGeral[0]->getPontos() >= classGeral[1]->getPontos()) {
+			if (classGeral.size() > 0) {
+				Consola::gotoxy(20, 22);
+				cout << "     CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
+				Consola::gotoxy(20, 23);
+				cout << "                " << classGeral[0]->getPontos() << " Pontos";
+			}
+			if (classGeral.size() > 1) {
+				Consola::gotoxy(20, 24);
+				cout << "Vice-Campeao:   " << classGeral[1]->getPiloto()->getStringDescricao();
+				Consola::gotoxy(20, 25);
+				cout << "                " << classGeral[1]->getPontos() << " Pontos";
+			}
+		}
+		else if (classGeral.size() > 1 && classGeral[1]->getPontos() >= classGeral[0]->getPontos()) {
+			if (classGeral.size() > 0) {
+				Consola::gotoxy(20, 22);
+				cout << "     CAMPEAO:   " << classGeral[1]->getPiloto()->getStringDescricao();
+				Consola::gotoxy(20, 23);
+				cout << "                " << classGeral[1]->getPontos() << " Pontos";
+			}
+			if (classGeral.size() > 1) {
+				Consola::gotoxy(20, 24);
+				cout << "Vice-Campeao:   " << classGeral[0]->getPiloto()->getStringDescricao();
+				Consola::gotoxy(20, 25);
+				cout << "                " << classGeral[0]->getPontos() << " Pontos";
+			}
+		}
+		else if (classGeral.size() == 1) {
+			Consola::gotoxy(20, 22);
+			cout << "     CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
+			Consola::gotoxy(20, 23);
+			cout << "                " << classGeral[0]->getPontos() << " Pontos";
 		}
 		cin.get();
 	}

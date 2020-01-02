@@ -21,6 +21,7 @@ class Carro
 	bool ocupado;		//ver se tem piloto ou não
 	bool sinalEmerg;
 	bool danificado;
+	int turbo;
 
 	
 
@@ -38,6 +39,9 @@ public:
 
 	int getTempo()const;
 	void setTempo(int t);
+
+	int getTurbo()const;
+	void setTurbo(int t);
 
 	void setOcupado();
 	void setDesocupado();
@@ -59,6 +63,7 @@ public:
 	float getEnergiaMax() const;
 	
 	//Botao Emergencia
+	bool getBotaoSOS() const;
 	void BotaoSOS(bool b);
 
 	void passaTempoCarro(int t, int distPista);

@@ -4,7 +4,7 @@
 
 
 Carro::Carro(string marc, string mod, float capAtual, float capMax, char id) : 
-marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), energia(capAtual), velocidade(1), velMax(100), ocupado(false), sinalEmerg(false), danificado(false)//, n_energia(5)
+marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), turbo(5), energia(capAtual), velocidade(1), velMax(100), ocupado(false), sinalEmerg(false), danificado(false)//, n_energia(5)
 {
 		
 
@@ -48,6 +48,16 @@ void Carro::setTempo(int t) {
 	cronometro = t;
 }
 
+int Carro::getTurbo()const {
+	return turbo;
+}
+
+void Carro::setTurbo(int t) {
+	if (t <= 5 && t >= 0) {
+		turbo = t;
+	}
+}
+
 void Carro::setOcupado() {
 	ocupado = true;
 }
@@ -61,6 +71,10 @@ bool Carro::getDanificado() const {
 }
 void Carro::setDanificado(bool dan) {
 	danificado = dan;
+}
+
+bool Carro::getBotaoSOS() const {
+	return sinalEmerg;
 }
 
 void Carro::BotaoSOS(bool b) {
@@ -93,7 +107,7 @@ void Carro::gastaEnergia() {
 void Carro::passaTempoCarro(int t, int distPista) {
 
 	for (int i = 1; i <= t; i++) {
-		if (posicao < distPista && posicao != -2 && danificado == false)
+		if (posicao < distPista && posicao != -2 && danificado == false && sinalEmerg == false)
 		{
 			if (energia != 0) {
 				//cout << ident <<  posicao << endl<< endl;

@@ -59,8 +59,6 @@ void Autodromo::atualizaClassif() {
 			int pts = 0;
 			if (lug == 1){
 				pts = 10;
-				Consola::gotoxy(20,19);
-				cout << "10 pontos";
 			}
 			if (lug == 2){
 				pts = 5;
@@ -88,6 +86,7 @@ void Autodromo::setIniciada(bool inic) {
 		it++) {
 		(*it)->setAtualizado(false);
 		(*it)->getCarro()->setPosicao(0);
+		(*it)->getCarro()->BotaoSOS(false);
 		(*it)->setAtualizado(false);
 	}
 }
@@ -118,6 +117,21 @@ void Autodromo::acidente(char ident, int flag) {
 			if(flag == 1){
 				(*it)->sairCarro();
 			}
+			it = pista.erase(it);
+		}
+		else
+			++it;
+	}
+}
+
+void Autodromo::emergencia() {
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();) {
+		if ((*it)->getCarro()->getBotaoSOS() == true) {
+			//apagar carro da pista uma vez que ligou o botao de emergencia
+			//(*it)->getCarro()->BotaoSOS(false);
+			adicionaCarro((*it)->getCarro());
+			(*it)->getCarro()->BotaoSOS(false);
 			it = pista.erase(it);
 		}
 		else
