@@ -45,7 +45,7 @@ void Campeonato::passatempo(int t) {
 				}
 
 				if ((*it)->getTipo() == "PilotoRapido" && (*it)->getCarro()->getBotaoSOS() == true) {
-					getCorridaAtiva()->emergencia(/* (*it)->getIdCarro()*/ );
+					getCorridaAtiva()->emergencia();
 				}
 			}
 			
