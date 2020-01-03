@@ -141,6 +141,7 @@ string Carro::getAsString()const {		//tem coisas feitas para facilitar o teste d
 		os << "Carro operacional" << endl;
 	if (danificado == true)
 		os << "Carro avariado" << endl;
+	os << "Velocidade atual: " << velocidade << "m/s" << endl;
 	if(posicao > 0)
 		os << "Situa-se no metro " << posicao << " da pista" << endl;
 	if (posicao == 0)

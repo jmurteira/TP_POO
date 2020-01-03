@@ -2,14 +2,20 @@
 #include "Carro.h"
 #include "Classificacao.h"
 
-CrazyDriver::CrazyDriver(string n):Piloto("CrazyDriver", n) {}
+CrazyDriver::CrazyDriver(string n): inicio(0), Piloto("CrazyDriver", n) {}
 
+void CrazyDriver::setInicio(int i) {
+
+}
+
+int CrazyDriver::getInicio() const {
+	return inicio;
+}
 
 int CrazyDriver::inicio_aleatorio() {
-
-	int aleatorio = rand() % 5 + 1;
-
-	return aleatorio;
+	if(inicio == 0)
+		int inicio = rand() % 5 + 1;
+	return inicio;
 }
 
 

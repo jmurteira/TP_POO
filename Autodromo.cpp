@@ -87,6 +87,7 @@ void Autodromo::setIniciada(bool inic) {
 		(*it)->setAtualizado(false);
 		(*it)->getCarro()->setPosicao(0);
 		(*it)->getCarro()->BotaoSOS(false);
+		(*it)->getCarro()->setStop(false);
 		(*it)->setAtualizado(false);
 	}
 }
@@ -129,7 +130,6 @@ void Autodromo::emergencia() {
 		it != pista.cend();) {
 		if ((*it)->getCarro()->getBotaoSOS() == true) {
 			//apagar carro da pista uma vez que ligou o botao de emergencia
-			//(*it)->getCarro()->BotaoSOS(false);
 			adicionaCarro((*it)->getCarro());
 			(*it)->getCarro()->BotaoSOS(false);
 			it = pista.erase(it);
@@ -143,8 +143,10 @@ void Autodromo::stop(string n) {
 	for (vector<Piloto*>::const_iterator it = pista.cbegin();
 		it != pista.cend();
 		it++) {
-		if ((*it)->getNome() == n)
+		if ((*it)->getNome() == n && (*it)->getCarro()->getStop() == false) {
 			(*it)->getCarro()->setStop(true);
+			(*it)->getCarro()->setVelocidade(0);
+		}
 	}
 }
 

@@ -1,8 +1,9 @@
 #pragma once
+#include "Piloto.h";
 #include<string>
 using namespace std;
 
-#include "Piloto.h";
+
 class Carro;
 class PilotoRapido : public virtual Piloto
 {

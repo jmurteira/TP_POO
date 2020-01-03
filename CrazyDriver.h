@@ -1,16 +1,20 @@
 #pragma once
+#include "Piloto.h";
 #include<string>
 using namespace std;
 
-#include "Piloto.h";
+
 class Carro;
 class Classificacao;
 
 class CrazyDriver: public virtual Piloto
 {
+	int inicio;
 	//Carro* carro;
 public: 
 	CrazyDriver(string n);
+	void setInicio(int i);
+	int getInicio() const;
 	int inicio_aleatorio();
 	/*string getStringDescricao()const override;
 	void acelera()override;

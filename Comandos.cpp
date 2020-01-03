@@ -9,7 +9,7 @@
 #include <sstream>
 #include <iostream>
 
-Comandos::Comandos(){}
+Comandos::Comandos():dga(nullptr), dgv(nullptr), camp(nullptr) {}
 
 
 string Comandos::lerComandoModo1() {
@@ -258,7 +258,9 @@ string Comandos::lerComandoModo2() {
 		else if (op1 == "carregabat") {
 			if (is >> ch1) {
 				if (is >> flt1) {
-					getCamp()->carregabat(ch1, flt1);
+					if (getCamp()->getCorridaAtiva() != nullptr) {
+						getCamp()->carregabat(ch1, flt1);
+					}
 					return op1;
 				}
 				else
@@ -268,13 +270,16 @@ string Comandos::lerComandoModo2() {
 				cout << "numero de parametros errado. carregabat <letraCarro> <Q>";
 		}
 		else if (op1 == "carregatudo") {
-			getCamp()->carregaTudo();
+			if (getCamp()->getCorridaAtiva() != nullptr)
+				getCamp()->carregaTudo();
 			return op1;
 		}
 		else if (op1 == "acidente") {
 			if (is >> ch1) {
-				getCamp()->acidente(ch1);
-				cout << "Acidente no carro " << ch1;
+				if (getCamp()->getCorridaAtiva() != nullptr) {
+					getCamp()->acidente(ch1);
+					cout << "Acidente no carro " << ch1;
+				}
 				return op1;
 			}
 			else
@@ -282,7 +287,8 @@ string Comandos::lerComandoModo2() {
 		}
 		else if (op1 == "stop") {
 			if (is >> op2) {
-				getCamp()->stop(str1);
+				if (getCamp()->getCorridaAtiva() != nullptr)
+					getCamp()->stop(str1);
 				return op1;
 			}
 			else
@@ -290,9 +296,10 @@ string Comandos::lerComandoModo2() {
 		}
 		else if (op1 == "destroi") {
 			if (is >> ch1) {
-				getCamp()->destroiCarro(ch1);
-				getDgv()->apagaCarro(ch1);
-				cout << "Carro " << ch1 << " destruido";
+				if (getCamp()->getCorridaAtiva() != nullptr) {
+					getCamp()->destroiCarro(ch1);
+					getDgv()->apagaCarro(ch1);
+				}
 				return op1;
 			}
 			else

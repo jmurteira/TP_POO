@@ -58,7 +58,7 @@ void Campeonato::passatempo(int t) {
 					getCorridaAtiva()->emergencia();
 				}
 
-				if ((*it)->getCarro()->getStop() == true && (*it)->getCarro()->getVelocidade() == 0) {
+				if ((*it)->getCarro() != nullptr && (*it)->getCarro()->getVelocidade() == 0 && (*it)->getCarro()->getStop() == true) {
 					getCorridaAtiva()->removeCarroStop();
 				}
 			}
@@ -188,7 +188,7 @@ void Campeonato::atualizaClassifGeral() {
 				}
 				sort(classGeral.begin(), classGeral.end(), [](Classificacao* a, Classificacao* b)			/*Piloto::comparaPts*/
 					{
-						return a->getPontos() < b->getPontos();
+						return a->getPontos() > b->getPontos();
 					}					
 					);
 				int i = 0;
@@ -340,7 +340,7 @@ void Campeonato::apresentaVencedores() const {
 			Consola::gotoxy(20, 22);
 			cout << "-> Nenhuma corrida chegou a ser terminada uma vez que ocorreram varias desistencias";
 		}
-		if (classGeral.size() > 1 && classGeral[0]->getPontos() >= classGeral[1]->getPontos()) {
+		if (classGeral.size() > 1) {
 			if (classGeral.size() > 0) {
 				Consola::gotoxy(20, 22);
 				cout << "     CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
@@ -354,20 +354,6 @@ void Campeonato::apresentaVencedores() const {
 				cout << "                " << classGeral[1]->getPontos() << " Pontos";
 			}
 		}
-		else if (classGeral.size() > 1 && classGeral[1]->getPontos() >= classGeral[0]->getPontos()) {
-			if (classGeral.size() > 0) {
-				Consola::gotoxy(20, 22);
-				cout << "     CAMPEAO:   " << classGeral[1]->getPiloto()->getStringDescricao();
-				Consola::gotoxy(20, 23);
-				cout << "                " << classGeral[1]->getPontos() << " Pontos";
-			}
-			if (classGeral.size() > 1) {
-				Consola::gotoxy(20, 24);
-				cout << "Vice-Campeao:   " << classGeral[0]->getPiloto()->getStringDescricao();
-				Consola::gotoxy(20, 25);
-				cout << "                " << classGeral[0]->getPontos() << " Pontos";
-			}
-		}
 		else if (classGeral.size() == 1) {
 			Consola::gotoxy(20, 22);
 			cout << "     CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
@@ -377,6 +363,65 @@ void Campeonato::apresentaVencedores() const {
 		cin.get();
 	}
 }
+
+//void Campeonato::apresentaVencedores() const {
+//	int Camp = 0;
+//	int Vice = 0;
+//	
+//	if (getCorridas().size() == realizadas) {
+//		Consola::gotoxy(20, 20);
+//		cout << "Campeonato Finalizado!!";
+//		if (classGeral.size() == 0) {
+//			Consola::gotoxy(20, 22);
+//			cout << "-> Nenhuma corrida chegou a ser terminada uma vez que ocorreram varias desistencias";
+//		}
+//		if (classGeral.size() > 1) {
+//			for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
+//				it != classGeral.cend();
+//				it++) {
+//				if ((*it)->getPontos() > Camp)
+//					Camp = (*it)->getPontos();
+//			}
+//			for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
+//				it != classGeral.cend();
+//				it++) {
+//				if ((*it)->getPontos() != Camp && (*it)->getPontos() > Vice)
+//					Vice = (*it)->getPontos();
+//			}
+//
+//			//MOSTRA CAMPEAO
+//			for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
+//				it != classGeral.cend();
+//				it++) {
+//				if ((*it)->getPontos() == Camp) {
+//					Consola::gotoxy(20, 22);
+//					cout << "     CAMPEAO:   " << (*it)->getPiloto()->getStringDescricao();
+//					Consola::gotoxy(20, 23);
+//					cout << "                " << (*it)->getPontos() << " Pontos";
+//				}
+//			}
+//			//MOSTRA VICE
+//			for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
+//				it != classGeral.cend();
+//				it++) {
+//				if ((*it)->getPontos() == Camp) {
+//					Consola::gotoxy(20, 22);
+//					cout << "Vice-Campeao:   " << (*it)->getPiloto()->getStringDescricao();
+//					Consola::gotoxy(20, 23);
+//					cout << "                " << (*it)->getPontos() << " Pontos";
+//				}
+//			}
+//			
+//		}
+//		else if (classGeral.size() == 1) {
+//			Consola::gotoxy(20, 22);
+//			cout << "     CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
+//			Consola::gotoxy(20, 23);
+//			cout << "                " << classGeral[0]->getPontos() << " Pontos";
+//		}
+//		cin.get();
+//	}
+//}
 
 void Campeonato::proximaCorrida() {
 	if (getCorridas().size() > realizadas) {
