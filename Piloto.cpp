@@ -38,10 +38,11 @@ Piloto::~Piloto()
 void Piloto::acelera() { //A funçao acelera só aumenta em 1m/s de cada vez que é chamada? ou recebe o valor para aumentar?
 	
 	
-	
-	if (carro->getVelocidade() + 1 <= carro->getVelocidadeMax())
-	{
-		carro->setVelocidade(carro->getVelocidade() + 1);
+	if (getCarro()->getStop() == false) {
+		if (carro->getVelocidade() + 1 <= carro->getVelocidadeMax())
+		{
+			carro->setVelocidade(carro->getVelocidade() + 1);
+		}
 	}
 }
 
@@ -86,8 +87,40 @@ string Piloto::getTipo()const {
 	return tipo;
 }
 
-void Piloto::passaTempoPiloto(int t, int dist) {
+void Piloto::passaTempoPiloto(int t, int dist, vector<int> p) {
 	carro->passaTempoCarro(t, dist);
+}
+
+bool Piloto::verificaPrimeiro(vector<int> p) const {
+	int MAX = 0;
+	for (vector<int>::const_iterator it = p.cbegin();
+		it != p.cend();
+		it++) {
+
+		if ((*it) > MAX)
+			MAX = (*it);
+	}
+
+	if (getCarro()->getPosicao() == MAX)
+		return true;
+	else
+		return false;
+}
+
+bool Piloto::verificaUltimo(vector<int> p) const {
+	int MIN = 10000;
+	for (vector<int>::const_iterator it = p.cbegin();
+		it != p.cend();
+		it++) {
+
+		if ((*it) < MIN)
+			MIN = (*it);
+	}
+
+	if (getCarro()->getPosicao() == MIN)
+		return true;
+	else
+		return false;
 }
 
 void Piloto::acidente() {

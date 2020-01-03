@@ -38,13 +38,13 @@ string Autodromo::getNome() const{
 	return nome;
 }
 
-void Autodromo::passatempo(int t){
+void Autodromo::passatempo(int t, vector<int> p){
 
 		for (vector<Piloto*>::const_iterator it = pista.cbegin();
 		it != pista.cend();
 		it++) {
 			//(*it)->getCarro()
-			(*it)->passaTempoPiloto(t, getDistancia());
+			(*it)->passaTempoPiloto(t, getDistancia(), p);
 			atualizaClassif();
 		}
 }
@@ -132,6 +132,29 @@ void Autodromo::emergencia() {
 			//(*it)->getCarro()->BotaoSOS(false);
 			adicionaCarro((*it)->getCarro());
 			(*it)->getCarro()->BotaoSOS(false);
+			it = pista.erase(it);
+		}
+		else
+			++it;
+	}
+}
+
+void Autodromo::stop(string n) {
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();
+		it++) {
+		if ((*it)->getNome() == n)
+			(*it)->getCarro()->setStop(true);
+	}
+}
+
+void Autodromo::removeCarroStop() {
+	for (vector<Piloto*>::const_iterator it = pista.cbegin();
+		it != pista.cend();) {
+		if ((*it)->getCarro()->getStop() == true) {
+			//apagar carro da pista uma vez que o piloto parou de correr (desistiu)
+			adicionaCarro((*it)->getCarro());
+			(*it)->getCarro()->setStop(false);
 			it = pista.erase(it);
 		}
 		else

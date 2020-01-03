@@ -20,6 +20,7 @@ bool Campeonato::iniciaCamp() {
 	if (getCorridas().size() != 0) {
 		if (getIniciada() == false) {
 			getCorridas()[realizadas]->setIniciada(true);
+			carregaTudo();
 			return true;
 		}
 	}
@@ -31,7 +32,16 @@ void Campeonato::passatempo(int t) {
 	for (int i = 0; i < t; i++) {
 
 		if (getCorridaAtiva() != nullptr) {
-			getCorridaAtiva()->passatempo(1);
+
+			vector<int> posicoes;
+
+			vector<Piloto*> copia1 = getPistaAtiva();
+			for (vector<Piloto*>::const_iterator it = copia1.cbegin(); it != copia1.cend(); it++) {
+				if ((*it)->getCarro()->getPosicao() != -2)
+					posicoes.push_back((*it)->getCarro()->getPosicao());
+			}
+
+			getCorridaAtiva()->passatempo(1, posicoes);
 			
 			vector<Piloto*> copia = getPistaAtiva();
 			for (vector<Piloto*>::const_iterator it = copia.cbegin(); it != copia.cend(); it++) {
@@ -46,6 +56,10 @@ void Campeonato::passatempo(int t) {
 
 				if ((*it)->getTipo() == "PilotoRapido" && (*it)->getCarro()->getBotaoSOS() == true) {
 					getCorridaAtiva()->emergencia();
+				}
+
+				if ((*it)->getCarro()->getStop() == true && (*it)->getCarro()->getVelocidade() == 0) {
+					getCorridaAtiva()->removeCarroStop();
 				}
 			}
 			
@@ -277,6 +291,9 @@ void Campeonato::destroiCarro(char ident) {
 	}
 }
 
+void Campeonato::stop(string n) {
+	getCorridaAtiva()->stop(n);
+}
 
 void Campeonato::setRealizadas(int n) {
 	realizadas = n;

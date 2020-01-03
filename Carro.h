@@ -20,6 +20,7 @@ class Carro
 	int velMax;
 	bool ocupado;		//ver se tem piloto ou não
 	bool sinalEmerg;
+	bool stop;
 	bool danificado;
 	int turbo;
 
@@ -65,6 +66,9 @@ public:
 	//Botao Emergencia
 	bool getBotaoSOS() const;
 	void BotaoSOS(bool b);
+
+	bool getStop() const;
+	void setStop(bool s);
 
 	void passaTempoCarro(int t, int distPista);
 

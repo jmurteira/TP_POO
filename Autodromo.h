@@ -37,7 +37,7 @@ public:
 
 	string getStringDescricao()const;
 
-	void passatempo(int t);
+	void passatempo(int t, vector<int> p);
 
 	bool getIniciada() const;
 	void setIniciada(bool inic);
@@ -51,6 +51,8 @@ public:
 
 	void acidente(char ident, int flag);
 	void emergencia();
+	void stop(string n);
+	void removeCarroStop();
 	void destroiCarro(char ident, int flag);
 	vector <Piloto*> getPista() const;
 	vector <Carro*> getGaragem() const;

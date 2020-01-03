@@ -2,18 +2,23 @@
 
 #include "Carro.h"
 
-PilotoSurpresa::PilotoSurpresa(string n) : Piloto("PilotoSurpresa", n) {}
+PilotoSurpresa::PilotoSurpresa(string n) : distAcelera(0), Piloto("PilotoSurpresa", n) {}
 
-void PilotoSurpresa::passaTempoPiloto(int t, int dist) {
+void PilotoSurpresa::passaTempoPiloto(int t, int dist, vector<int> p) {
 
 	//ENERGIA, ACELERAÇÃO E MOVIMENTO
-	if (getCarro()->getPosicao() % 5 == 0) {
+	setDistAcelera();
+
+	if (getCarro()->getPosicao() % distAcelera == 0) {
 		acelera();
 	}
-	if (getCarro()->getPosicao() > dist/2){
-		turbo();
+	if (p.size() > 1) {
+		if (verificaPrimeiro(p) == false) {
+			if (getCarro()->getPosicao() > dist / 2) {
+				turbo();
+			}
+		}
 	}
-
 	getCarro()->passaTempoCarro(t, dist);
 }
 
@@ -25,4 +30,10 @@ bool PilotoSurpresa::turbo() {
 	}
 	else
 		return false;
+}
+
+void PilotoSurpresa::setDistAcelera() {
+	if (distAcelera == 0) {
+		distAcelera = rand() % 5 + 1;
+	}
 }

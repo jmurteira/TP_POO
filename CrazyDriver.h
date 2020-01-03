@@ -15,6 +15,6 @@ public:
 	/*string getStringDescricao()const override;
 	void acelera()override;
 	void perdePosicao();*/
-	void passaTempoPiloto(int t, int dist)override;
+	void passaTempoPiloto(int t, int dist, vector<int> p)override;
 	//void perguntaPista();
 };

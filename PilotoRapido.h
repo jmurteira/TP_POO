@@ -13,7 +13,7 @@ public:
 	PilotoRapido(string n);
 	/*string getStringDescricao()const override;
 	void acelera()override;*/
-	void passaTempoPiloto(int t, int dist)override;
+	void passaTempoPiloto(int t, int dist, vector<int> p)override;
 	int getTresSeg()const;
 	void setTresSeg(int s);
 	int getDezSeg()const;

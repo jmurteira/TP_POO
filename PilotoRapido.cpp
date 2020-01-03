@@ -3,7 +3,7 @@
 
 PilotoRapido::PilotoRapido(string n): tresSeg(0), dezSeg(0), Piloto("PilotoRapido", n) {}
 
-void PilotoRapido::passaTempoPiloto(int t, int dist){
+void PilotoRapido::passaTempoPiloto(int t, int dist, vector<int> p){
 
 	//ENERGIA, ACELERAÇÃO E MOVIMENTO
 	if (((getCarro()->getEnergia()) / (getCarro()->getEnergiaMax())) > 0.5) {

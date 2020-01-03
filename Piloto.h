@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 class Carro;
 class Classificacao;
@@ -32,7 +33,10 @@ public:
 	bool getAtualizado()const;
 	void setAtualizado(bool a);
 
-	virtual void passaTempoPiloto(int t, int dist);
+	virtual void passaTempoPiloto(int t, int dist, vector<int> p);
+
+	bool verificaPrimeiro(vector<int> p) const;
+	bool verificaUltimo(vector<int> p) const;
 
 	string getNome() const;
 	char getIdCarro() const;

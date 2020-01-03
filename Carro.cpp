@@ -4,7 +4,8 @@
 
 
 Carro::Carro(string marc, string mod, float capAtual, float capMax, char id) : 
-marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), turbo(5), energia(capAtual), velocidade(1), velMax(100), ocupado(false), sinalEmerg(false), danificado(false)//, n_energia(5)
+marca(marc), modelo(mod), ident(id), posicao(0), cronometro(0), energiaMax(capMax), turbo(5), energia(capAtual),
+velocidade(1), velMax(100), ocupado(false), sinalEmerg(false), stop(false), danificado(false)//, n_energia(5)
 {
 		
 
@@ -81,6 +82,14 @@ void Carro::BotaoSOS(bool b) {
 	sinalEmerg = b;
 }
 
+bool Carro::getStop() const {
+	return stop;
+}
+
+void Carro::setStop(bool s) {
+	stop = s;
+}
+
 void Carro::setVelocidade(int x) {
 	if (x < 0)
 		velocidade = 0;
@@ -106,24 +115,23 @@ void Carro::gastaEnergia() {
 
 void Carro::passaTempoCarro(int t, int distPista) {
 
-	for (int i = 1; i <= t; i++) {
 		if (posicao < distPista && posicao != -2 && danificado == false && sinalEmerg == false)
 		{
-			if (energia != 0) {
-				//cout << ident <<  posicao << endl<< endl;
-				setPosicao(getPosicao() + getVelocidade());
-				//cout << ident <<  posicao << endl<< endl;
-				gastaEnergia();
-				cronometro++;
-				if (posicao >= distPista) {
-					posicao = -2;
-				}
-			}
+
 			if (energia == 0) {
 				setVelocidade(getVelocidade() - 1);
 			}
+
+			if (getStop() == true)
+				setVelocidade(getVelocidade() - 1);
+
+			setPosicao(getPosicao() + getVelocidade());
+			gastaEnergia();
+			cronometro++;
+			if (posicao >= distPista) {
+				posicao = -2;
+			}
 		}
-	}
 }
 
 string Carro::getAsString()const {		//tem coisas feitas para facilitar o teste das funções

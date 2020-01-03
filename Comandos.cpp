@@ -222,6 +222,7 @@ string Comandos::lerComandoModo1() {
 string Comandos::lerComandoModo2() {
 	string op1;
 	int op2;
+	string str1;
 	char ch1;
 	float flt1;
 	Consola::gotoxy(75, 17);
@@ -281,7 +282,7 @@ string Comandos::lerComandoModo2() {
 		}
 		else if (op1 == "stop") {
 			if (is >> op2) {
-				cout << "O piloto " << op2 << " parou de correr";
+				getCamp()->stop(str1);
 				return op1;
 			}
 			else

@@ -13,16 +13,35 @@ int CrazyDriver::inicio_aleatorio() {
 }
 
 
-void CrazyDriver::passaTempoPiloto(int t, int dist) {
+void CrazyDriver::passaTempoPiloto(int t, int dist, vector<int> p) {
 	int flag = 0;
-	
-	if (flag == 0){
-		int tempo = getCarro()->getTempo() + t;
-		getCarro()->setTempo(tempo);
+
+	if (getCarro()->getEnergia() == 0) {
+		getCarro()->BotaoSOS(true);
 	}
-	if(getCarro()->getTempo() >= inicio_aleatorio()){
-		getCarro()->passaTempoCarro(t, dist);
-		flag = 1;
+	else {
+		if (flag == 0) {
+			int tempo = getCarro()->getTempo() + t;
+			getCarro()->setTempo(tempo);
+		}
+		if (getCarro()->getTempo() >= inicio_aleatorio()) {
+			if (p.size() > 1) {
+				if (verificaUltimo(p) != false) {
+					if (verificaPrimeiro(p) != true) {
+						acelera();
+						getCarro()->passaTempoCarro(t, dist);
+						flag = 1;
+					}
+					else
+					{
+						getCarro()->passaTempoCarro(t, dist);
+						flag = 1;
+					}
+				}
+				else
+					trava();
+			}
+		}
 	}
 }
 

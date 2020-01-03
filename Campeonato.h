@@ -51,6 +51,7 @@ public:
 
 	void acidente(char ident);
 	void destroiCarro(char ident);
+	void stop(string n);
 
 	bool iniciaCamp();
 
