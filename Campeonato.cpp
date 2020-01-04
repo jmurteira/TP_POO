@@ -107,10 +107,10 @@ bool Campeonato::addParticipantes() {
 	int n_pista, n_garagem;
 	string nome_piloto;
 	char ident_carro;
-	do {
+	//do {
 		cout << "Indique o numero de participantes a introduzir na pista: ";
 		cin >> n_pista;
-	} while (isdigit(n_pista));
+	//} while (n_pista < 100 && n_pista > 0);
 
 	int autorizados = getAutorizados();
 
