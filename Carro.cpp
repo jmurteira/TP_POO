@@ -209,3 +209,8 @@ void Carro::carregaBat(float n_energia) {
 		cout << "Carro ainda continua em andamento. Parar completamente o carro para efectuar carga." << endl;
 	
 }
+
+Carro* Carro::duplica()const {
+	Carro* p = new Carro(*this);
+	return p;
+}

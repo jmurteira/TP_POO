@@ -75,6 +75,8 @@ public:
 	string getAsString()const;
 	string getStringOcupado()const;
 	string getStringDescricao()const;
+
+	Carro* duplica()const;
 	
 };
 

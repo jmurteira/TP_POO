@@ -50,4 +50,6 @@ public:
 
 	virtual string getStringDescricao()const;
 
+	Piloto* duplica()const;
+
 };

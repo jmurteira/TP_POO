@@ -11,18 +11,18 @@ class Autodromo;
 class Logica
 {
 	Dga* dga;
-	Dgv* dgv;
+	/*Dgv* dgv;*/
 	Comandos* comando;
 
 
 
 public:
-	Logica(Dgv* d, Dga* da, Comandos* com);
+	Logica(/*Dgv* d,*/ Dga* da, Comandos* com);
 
 	//funcao para correr o simulador
 	void Simulador();
 
-	Dgv* getDgv();
+	//Dgv* getDgv();
 	Dga* getDga();
 	Comandos* getComandos();
 };

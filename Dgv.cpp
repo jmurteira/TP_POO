@@ -8,6 +8,60 @@
 
 Dgv::Dgv(string id):DgvID(id) {}
 
+Dgv::Dgv(string & id, const Dgv& d) {
+	DgvID = id;
+	*this = d;
+}
+
+Dgv& Dgv::operator=(const Dgv& ob) {
+	// prevencao da auto-atribuicao (atribuicao de um objecto a si proprio)
+	// esta feito: nesse caso => sair
+	if (this == &ob) {
+		return *this;
+	}
+	// limpeza da memoria velha do primeiro membro da atribuicao
+	// libertar os livros apontados ...
+	for (Carro* carro : carros) {
+		delete carro;
+	}
+	// esvaziar o vector que agora so aponta para memoria ja nao reservada
+	carros.clear();
+	// copiar a informacao de ob (que refere o segundo membro da atribuicao)
+	// duplicando os objectos dinamicos 
+	for (Carro* carro : ob.carros) {
+		// duplicacao polimorfica de um livro da origem da copia
+		Carro* p = carro->duplica();
+		// acrescenta-se o duplicado  para que depois de uma atribuicao
+		// o destrutor nao faca duplo delete a um mesmo objecto 
+		// em memoria dinamica
+		carros.push_back(p);
+	}
+
+	
+	// limpeza da memoria velha do primeiro membro da atribuicao
+	// libertar os livros apontados ...
+	for (Piloto* piloto : pilotos) {
+		delete piloto;
+	}
+	// esvaziar o vector que agora so aponta para memoria ja nao reservada
+	pilotos.clear();
+	// copiar a informacao de ob (que refere o segundo membro da atribuicao)
+	// duplicando os objectos dinamicos 
+	for (Piloto* piloto : ob.pilotos) {
+		// duplicacao polimorfica de um livro da origem da copia
+		Piloto* p = piloto->duplica();
+		// acrescenta-se o duplicado  para que depois de uma atribuicao
+		// o destrutor nao faca duplo delete a um mesmo objecto 
+		// em memoria dinamica
+		pilotos.push_back(p);
+	}
+
+	// nao esquecer os restantes membros
+	//morada = ob.morada;
+
+	return *this;
+}
+
 Carro* Dgv::novoCarro(int capAtual, int capMax, string marc, string mod, char ident) {
 	
 	if(procuraCarro(ident) == nullptr && carros.size() < 26){
@@ -274,4 +328,12 @@ void Dgv::saiDoCarro(char ident) {
 
 vector<Piloto*> Dgv::getPilotos() const {
 	return pilotos;
+}
+
+vector<Carro*> Dgv::getCarros() const {
+	return carros;
+}
+
+string Dgv::getDgvId() const {
+	return DgvID;
 }

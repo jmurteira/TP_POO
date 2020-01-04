@@ -22,6 +22,8 @@ public:
 
 
 	Dgv(string id);
+	Dgv(string & id, const Dgv& d);
+	Dgv& operator=(const Dgv& ob);
 	Carro* novoCarro(int capAtual, int capMax, string marc, string mod,  char ident = ' ');
 	Piloto* novoPiloto(string t, string n);
 
@@ -51,6 +53,9 @@ public:
 	void apagaPiloto(string nome);
 
 	vector<Piloto*> getPilotos() const;
+	vector<Carro*> getCarros() const;
+
+	string getDgvId() const;
 
 	
 

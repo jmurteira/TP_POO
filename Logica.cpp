@@ -9,15 +9,15 @@
 #include "Campeonato.h"
 #include "Autodromo.h"
 
-Logica::Logica(Dgv* d, Dga* da, Comandos* com) {
-	dgv = d;
+Logica::Logica(/*Dgv* d,*/ Dga* da, Comandos* com) {
+	/*dgv = d;*/
 	dga = da;
 	comando = com;
 }
 
-Dgv* Logica::getDgv() {
-	return dgv;
-}
+//Dgv* Logica::getDgv() {
+//	return dgv;
+//}
 
 Dga* Logica::getDga() {
 	return dga;

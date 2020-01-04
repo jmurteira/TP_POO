@@ -8,6 +8,7 @@
 #include "Consola.h"
 #include <sstream>
 #include <iostream>
+#include <vector>
 
 Comandos::Comandos():dga(nullptr), dgv(nullptr), camp(nullptr) {}
 
@@ -53,6 +54,30 @@ string Comandos::lerComandoModo1() {
 				}
 				else
 					cout << "numero de parametros errado. carregaA <nomeFicheiro> " << endl;
+			}
+			else if (op1 == "savedgv") {
+				if (is >> op2) {
+					saveDgv(op2);
+					return op1;
+				}
+				else
+					cout << "numero de parametros errado. savedgv <nome> " << endl;
+			}
+			else if (op1 == "loaddgv") {
+				if (is >> op2) {
+					alteraDgv(op2);
+					return op1;
+				}
+				else
+					cout << "numero de parametros errado. loaddgv <nome> " << endl;
+			}
+			else if (op1 == "deldgv") {
+				if (is >> op2) {
+					delDgv(op2);
+					return op1;
+				}
+				else
+					cout << "numero de parametros errado. deldgv <nome> " << endl;
 			}
 			else if (op1 == "cria") {
 				if (is >> op4) {
@@ -340,9 +365,51 @@ void Comandos::setCamp(Campeonato* c) {
 	//camp = c;
 }
 
+vector<Dgv*> Comandos::getVectorDgvs()const {
+	return vectorDGVS;
+}
 
 void Comandos::atribuiDgv(Dgv* d) {
 	dgv = d;
+	for (vector<Dgv*>::const_iterator it = vectorDGVS.cbegin();
+		it != vectorDGVS.cend();
+		it++)
+		if ((*it) != nullptr && (*it)->getDgvId() == d->getDgvId())
+			return;
+	vectorDGVS.push_back(d);
+}
+
+void Comandos::alteraDgv(string id) {
+	for (vector<Dgv*>::const_iterator it = vectorDGVS.cbegin();
+		it != vectorDGVS.cend();
+		it++)
+		if ((*it) != nullptr && (*it)->getDgvId() == id)
+			atribuiDgv((*it));
+}
+
+void Comandos::saveDgv(string id) {
+	for (vector<Dgv*>::const_iterator it = vectorDGVS.cbegin();
+		it != vectorDGVS.cend();
+		it++)
+		if ((*it) != nullptr && (*it)->getDgvId() == id)
+			return;
+	vectorDGVS.push_back(&(Dgv(id, *getDgv())));
+}
+
+void Comandos::delDgv(string id) {
+	if (vectorDGVS.size() > 1) {
+		for (vector<Dgv*>::const_iterator it = vectorDGVS.cbegin();
+			it != vectorDGVS.cend();) {
+			if ((*it) != nullptr && (*it)->getDgvId() == id) {
+				if ((*it) == getDgv())
+					return;
+				else if ((*it) != getDgv())
+					it = vectorDGVS.erase(it);
+			}
+			else
+				it++;
+		}
+	}
 }
 
 void Comandos::atribuiDga(Dga* da) {

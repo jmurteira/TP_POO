@@ -39,6 +39,7 @@ int main() {
 
 	Dga dga("Portugal");
 	Dgv dgv("Portugal");
+	Dgv dgve("Espanha");
 	//Autodromo aut1 = Autodromo("Vienna", 4268);
 	//dga.novoAutodromo(2,1000, "Estoril");
 	//dga.novoAutodromo(2, 10, "Estoril");
@@ -124,7 +125,8 @@ int main() {
 
 	//APENAS ESTÁ AQUI PARA TESTAR
 	Comandos c = Comandos();
-	Logica logic = Logica(&dgv, &dga, &c);
+	Logica logic = Logica(/*&dgv,*/ &dga, &c);
+	c.atribuiDgv(&dgve);
 	c.atribuiDgv(&dgv);
 	c.atribuiDga(&dga);
 	//c.lerComando();

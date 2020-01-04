@@ -146,3 +146,7 @@ Carro* Piloto::getCarro()  const {
 		return carro;
 }
 
+Piloto* Piloto::duplica()const {
+	Piloto* p = new Piloto(*this);
+	return p;
+}
