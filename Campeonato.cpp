@@ -107,8 +107,10 @@ bool Campeonato::addParticipantes() {
 	int n_pista, n_garagem;
 	string nome_piloto;
 	char ident_carro;
-	cout << "Indique o numero de participantes a introduzir na pista: ";
-	cin >> n_pista;
+	do {
+		cout << "Indique o numero de participantes a introduzir na pista: ";
+		cin >> n_pista;
+	} while (isdigit(n_pista));
 
 	int autorizados = getAutorizados();
 
@@ -127,40 +129,59 @@ bool Campeonato::addParticipantes() {
 		return false;
 	}
 	for (size_t i = 0; i < n_pista; i++) {
-		cout << "Inserir nome do piloto: " << endl;
-		cin >> nome_piloto;
-		if (getDgv()->procuraPiloto(nome_piloto) != nullptr ) {
+		bool flag_piloto = false;
+		do {
+			cout << "Inserir nome do piloto: " << endl;
+			cin >> nome_piloto;
+			if (getDgv()->procuraPiloto(nome_piloto) != nullptr) {
 
-			if (getDgv()->procuraPiloto(nome_piloto)->getCarro() != nullptr) {
-				participantes.push_back(getDgv()->procuraPiloto(nome_piloto));
-				//adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
-				for (vector<Autodromo*>::const_iterator it = corridas.cbegin();
-					it != corridas.cend();
-					it++) {
-					(*it)->adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
+				if (getDgv()->procuraPiloto(nome_piloto)->getCarro() != nullptr) {
+					participantes.push_back(getDgv()->procuraPiloto(nome_piloto));
+					//adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
+					for (vector<Autodromo*>::const_iterator it = corridas.cbegin();
+						it != corridas.cend();
+						it++) {
+						(*it)->adicionaParticipante(getDgv()->procuraPiloto(nome_piloto));
+					}
+					flag_piloto = true;
 				}
+				else
+					cout << "Piloto sem Carro atribuido!!!" << endl << "Introduza piloto associado a um carro." << endl;
 			}
-			else
-				cout << "Piloto sem Carro atribuido!!!" << endl << "Introduza piloto associado a um carro." << endl;
-		}
+			else {
+				cout << "Piloto nao existe!!!" << endl << "Introduza Piloto valido e associado a um carro." << endl;
+				cin.get();
+			}
+		} while (flag_piloto == false);
 	}
 	for (size_t i = 0; i < n_pista; i++) {
-		cout << "Inserir id do carro: " << endl;
-		cin >> ident_carro;
-		if (getDgv()->procuraCarro(ident_carro) != nullptr) {
-			if (getDgv()->procuraCarro(ident_carro)->getOcupado() == true)
+		bool flag_carro = false;
+		do {
+			cout << "Inserir id do carro: " << endl;
+			cin >> ident_carro;
+			if (getDgv()->procuraCarro(ident_carro) != nullptr) {
+				if (getDgv()->procuraCarro(ident_carro)->getOcupado() == true)
 
-				for (vector<Autodromo*>::const_iterator it = corridas.cbegin();
-					it != corridas.cend();
-					it++) {
+					for (vector<Autodromo*>::const_iterator it = corridas.cbegin();
+						it != corridas.cend();
+						it++) {
 					(*it)->adicionaCarro(getDgv()->procuraCarro(ident_carro));
+
+					flag_carro = true;
 				}
-			else
-				cout << "Carro sem piloto!!!" << endl << "Introduza carro associado a um piloto." << endl;
-		}
+				else{
+					cout << "Carro sem piloto!!!" << endl << "Introduza carro associado a um piloto." << endl;
+					cin.get();
+				}
+			}
+			else {
+				cout << "Carro nao existe!!!" << endl << "Introduza carro valido e associado a um piloto." << endl;
+				cin.get();
+			}
+		} while (flag_carro == false);
 	}
 
-	if (participantes.size() >= 2 && getCorridas()[0]->getGaragem().size() >= 2)
+	if (participantes.size() == n_pista && getCorridas()[0]->getGaragem().size() >= n_pista)
 		return iniciaCamp();
 	else
 		return false;
@@ -363,65 +384,6 @@ void Campeonato::apresentaVencedores() const {
 		cin.get();
 	}
 }
-
-//void Campeonato::apresentaVencedores() const {
-//	int Camp = 0;
-//	int Vice = 0;
-//	
-//	if (getCorridas().size() == realizadas) {
-//		Consola::gotoxy(20, 20);
-//		cout << "Campeonato Finalizado!!";
-//		if (classGeral.size() == 0) {
-//			Consola::gotoxy(20, 22);
-//			cout << "-> Nenhuma corrida chegou a ser terminada uma vez que ocorreram varias desistencias";
-//		}
-//		if (classGeral.size() > 1) {
-//			for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
-//				it != classGeral.cend();
-//				it++) {
-//				if ((*it)->getPontos() > Camp)
-//					Camp = (*it)->getPontos();
-//			}
-//			for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
-//				it != classGeral.cend();
-//				it++) {
-//				if ((*it)->getPontos() != Camp && (*it)->getPontos() > Vice)
-//					Vice = (*it)->getPontos();
-//			}
-//
-//			//MOSTRA CAMPEAO
-//			for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
-//				it != classGeral.cend();
-//				it++) {
-//				if ((*it)->getPontos() == Camp) {
-//					Consola::gotoxy(20, 22);
-//					cout << "     CAMPEAO:   " << (*it)->getPiloto()->getStringDescricao();
-//					Consola::gotoxy(20, 23);
-//					cout << "                " << (*it)->getPontos() << " Pontos";
-//				}
-//			}
-//			//MOSTRA VICE
-//			for (vector<Classificacao*>::const_iterator it = classGeral.cbegin();
-//				it != classGeral.cend();
-//				it++) {
-//				if ((*it)->getPontos() == Camp) {
-//					Consola::gotoxy(20, 22);
-//					cout << "Vice-Campeao:   " << (*it)->getPiloto()->getStringDescricao();
-//					Consola::gotoxy(20, 23);
-//					cout << "                " << (*it)->getPontos() << " Pontos";
-//				}
-//			}
-//			
-//		}
-//		else if (classGeral.size() == 1) {
-//			Consola::gotoxy(20, 22);
-//			cout << "     CAMPEAO:   " << classGeral[0]->getPiloto()->getStringDescricao();
-//			Consola::gotoxy(20, 23);
-//			cout << "                " << classGeral[0]->getPontos() << " Pontos";
-//		}
-//		cin.get();
-//	}
-//}
 
 void Campeonato::proximaCorrida() {
 	if (getCorridas().size() > realizadas) {
