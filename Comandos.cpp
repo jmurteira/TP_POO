@@ -139,8 +139,10 @@ string Comandos::lerComandoModo1() {
 					}
 					else if (op4 == "p") {
 						if (is >> op2){
-							if (op2 != "classico"){
-								cout << "introduzir tipo de piloto. ainda so existe do tipo classico." << endl;
+							if (op2 != "CrazyDriver" && op2 != "PilotoRapido" && op2 != "PilotoSurpresa"){
+								cout << "Tipo de piloto invalido. Introduza um destes 3:" << endl;
+								cout << "CrazyDriver" << endl << "PilotoRapido" << endl << "PilotoSurpresa" << endl;
+								return "cria p";
 							}
 							else
 								contador += 1;
@@ -154,6 +156,11 @@ string Comandos::lerComandoModo1() {
 						if (contador == 2) {
 							getDgv()->novoPiloto(op2, op3);
 							contador = 0;
+							string l;
+							l.append(op2);
+							l.append(" criado: ");
+							l.append(op3);
+							getLog()->addLog(l);
 							return "cria p";
 							
 						}
