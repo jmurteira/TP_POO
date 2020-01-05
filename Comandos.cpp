@@ -292,12 +292,14 @@ string Comandos::lerComandoModo1() {
 					l.append("Autodromo: ");
 					l.append(op2);
 					l.append(" adicionado ao Campeonato\n");
+					getLog()->addLog(l);
 					while (is >> op2) {
 						getCamp()->setCorrida(getDga()->procuraAutodromo(op2));
 						string l;
 						l.append("Autodromo: ");
 						l.append(op2);
 						l.append(" adicionado ao Campeonato\n");
+						getLog()->addLog(l);
 					}
 					if (getCamp()->addParticipantes() == true) {
 						string l;
