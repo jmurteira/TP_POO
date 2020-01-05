@@ -30,12 +30,6 @@ public:
 
 	string descricaoAutodromo() const;
 
-	Carro* novoCarro(string marc, string mod, char ident);
-	Piloto* novoPiloto(string n, int t);
-
-	Carro* procuraCarro(char ident) const;
-	Piloto* procuraPiloto(string nome) const;
-
 	//so para verificar que nesta meta só existe um autodromo
 	int getDgaSize()const;
 
