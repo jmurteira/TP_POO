@@ -86,6 +86,7 @@ void Autodromo::setIniciada(bool inic) {
 		it++) {
 		(*it)->setAtualizado(false);
 		(*it)->getCarro()->setPosicao(0);
+		(*it)->getCarro()->setVelocidade(0);
 		(*it)->getCarro()->BotaoSOS(false);
 		(*it)->getCarro()->setStop(false);
 		(*it)->setAtualizado(false);

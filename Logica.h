@@ -10,14 +10,10 @@ class Autodromo;
 
 class Logica
 {
-	Dga* dga;
-	/*Dgv* dgv;*/
 	Comandos* comando;
 
-
-
 public:
-	Logica(/*Dgv* d,*/ Dga* da, Comandos* com);
+	Logica(Comandos* com);
 
 	//funcao para correr o simulador
 	void Simulador();
