@@ -347,7 +347,7 @@ string Comandos::lerComandoModo2() {
 					getCamp()->passatempo(op2);
 					string l;
 					l.append("Utilizador -> passatempo ");
-					l.append(1,op2);
+					l.append(to_string(op2));
 					l.append(" segundos");
 					getLog()->addLog(l);
 					return op1;
@@ -384,7 +384,7 @@ string Comandos::lerComandoModo2() {
 						l.append("Utilizador -> Carregar bateria do carro \"");
 						l.append(1, ch1);
 						l.append("\" com ");
-						l.append(1,flt1);
+						l.append(to_string(flt1));
 						l.append("mAh");
 						getLog()->addLog(l);
 					}
