@@ -382,34 +382,59 @@ void Comandos::atribuiDgv(Dgv* d) {
 void Comandos::alteraDgv(string id) {
 	for (vector<Dgv*>::const_iterator it = vectorDGVS.cbegin();
 		it != vectorDGVS.cend();
-		it++)
-		if ((*it) != nullptr && (*it)->getDgvId() == id)
-			atribuiDgv((*it));
+		it++) {
+		if ((*it) != nullptr && (*it)->getDgvId() == id) {
+			atribuiDgv(*it);
+			cout << "DGV com o nome \"" << id << "\" passou a ativa!" << endl;
+			return;
+		}
+	}
+	cout << "Nao existe DGV com o nome \"" << id << "\"!" << endl <<
+		"Por favor altere o nome para poder efetuar a alteracao!" << endl;
 }
 
 void Comandos::saveDgv(string id) {
+	bool existe = false;
 	for (vector<Dgv*>::const_iterator it = vectorDGVS.cbegin();
 		it != vectorDGVS.cend();
 		it++)
 		if ((*it) != nullptr && (*it)->getDgvId() == id)
-			return;
-	vectorDGVS.push_back(&(Dgv(id, *getDgv())));
+			existe = true;
+	if (existe == false) {
+		vectorDGVS.push_back(new Dgv(id, *dgv));
+		cout << "DGV gravada com o nome \"" << id << "\"!" << endl;
+	}
+	else
+		cout << "Ja existe uma DGV gravada com o nome \"" << id << "\"!" << endl <<
+		"Por favor altere o nome para poder efetuar a gravacao!" << endl;
+
 }
 
 void Comandos::delDgv(string id) {
+	bool existe = false;
+
 	if (vectorDGVS.size() > 1) {
 		for (vector<Dgv*>::const_iterator it = vectorDGVS.cbegin();
 			it != vectorDGVS.cend();) {
 			if ((*it) != nullptr && (*it)->getDgvId() == id) {
-				if ((*it) == getDgv())
+				if ((*it) == getDgv()) {
+					cout << "DGV com o nome \"" << id << "\" nao pode ser apagada uma vez que e a DGV ativa!" << endl <<
+						"Por favor altere o nome para poder apagar a gravacao!" << endl;
 					return;
-				else if ((*it) != getDgv())
+				}
+				else if ((*it) != getDgv()) {
+					existe = true;
 					it = vectorDGVS.erase(it);
+					cout << "DGV com o nome \"" << id << "\" foi apagada com sucesso!" << endl;
+				}
 			}
 			else
 				it++;
 		}
 	}
+	if (existe == false)
+		cout << "Nao existe DGV com o nome \"" << id << "\"!" << endl <<
+		"Por favor altere o nome para poder apagar a gravacao!" << endl;
 }
 
 void Comandos::atribuiDga(Dga* da) {

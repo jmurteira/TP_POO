@@ -56,7 +56,7 @@ public:
 	bool iniciaCamp();
 
 	Dgv* getDgv()const;
-	void setDgv(Dgv* d);
+	void setDgv(Dgv * d);
 
 	bool getIniciada()const;
 

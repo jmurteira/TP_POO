@@ -23,6 +23,7 @@ bool Campeonato::iniciaCamp() {
 			carregaTudo();
 			return true;
 		}
+		return false;
 	}
 	else
 		return false;
@@ -104,7 +105,7 @@ int Campeonato::getAutorizados() const {
 
 //melhorar a funcao depois
 bool Campeonato::addParticipantes() {
-	int n_pista, n_garagem;
+	int n_pista;// n_garagem;
 	string nome_piloto;
 	char ident_carro;
 	//do {
@@ -228,6 +229,10 @@ Dgv* Campeonato::getDgv()const{
 	return dgv;
 }
 void Campeonato::setDgv(Dgv* d) {
+	if (d == nullptr) {
+		cout << "nullptr";
+		return;
+	}
 	dgv = d;
 }
 
