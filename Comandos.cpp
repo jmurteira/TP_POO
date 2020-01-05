@@ -6,11 +6,12 @@
 #include "Dgv.h"
 #include "Dga.h"
 #include "Consola.h"
+#include "Log.h"
 #include <sstream>
 #include <iostream>
 #include <vector>
 
-Comandos::Comandos():dga(nullptr), dgv(nullptr), camp(nullptr) {}
+Comandos::Comandos():dga(nullptr), dgv(nullptr), camp(nullptr), log(nullptr) {}
 
 
 string Comandos::lerComandoModo1() {
@@ -27,6 +28,11 @@ string Comandos::lerComandoModo1() {
 
 	int contador = 0; //para verificar se o numero de parametros do comando está certo
 	//do {
+	if (getLog()->getLogs().size() == 0) {
+		string l;
+		l.append("Modo 1 iniciado\n");
+		getLog()->addLog(l);
+	}
 		cout << "\nIntroduza comando: ";
 		getline(cin, comando);
 		istringstream is(comando);
@@ -34,6 +40,10 @@ string Comandos::lerComandoModo1() {
 			if (op1 == "carregaP") {
 				if (is >> op2){
 					getDgv()->carregaP(op2);
+					string l;
+					l.append("Ficheiro de Pilotos carregado: ");
+					l.append(op2);
+					getLog()->addLog(l);
 					return op1;
 				}
 				else 
@@ -42,6 +52,10 @@ string Comandos::lerComandoModo1() {
 			else if (op1 == "carregaC") {
 				if (is >> op2){
 					getDgv()->carregaC(op2);
+					string l;
+					l.append("Ficheiro de Carros carregado: ");
+					l.append(op2);
+					getLog()->addLog(l);
 					return op1;
 				}
 				else
@@ -50,6 +64,10 @@ string Comandos::lerComandoModo1() {
 			else if (op1 == "carregaA") {
 				if (is >> op2){
 					getDga()->carregaA(op2);
+					string l;
+					l.append("Ficheiro de Autodromos carregado: ");
+					l.append(op2);
+					getLog()->addLog(l);
 					return op1;
 				}
 				else
@@ -58,6 +76,10 @@ string Comandos::lerComandoModo1() {
 			else if (op1 == "savedgv") {
 				if (is >> op2) {
 					saveDgv(op2);
+					string l;
+					l.append("Dgv gravada com o nome: ");
+					l.append(op2);
+					getLog()->addLog(l);
 					return op1;
 				}
 				else
@@ -66,6 +88,10 @@ string Comandos::lerComandoModo1() {
 			else if (op1 == "loaddgv") {
 				if (is >> op2) {
 					alteraDgv(op2);
+					string l;
+					l.append("Dgv carregada com o nome: ");
+					l.append(op2);
+					getLog()->addLog(l);
 					return op1;
 				}
 				else
@@ -74,6 +100,10 @@ string Comandos::lerComandoModo1() {
 			else if (op1 == "deldgv") {
 				if (is >> op2) {
 					delDgv(op2);
+					string l;
+					l.append("Dgv apagada com o nome: ");
+					l.append(op2);
+					getLog()->addLog(l);
 					return op1;
 				}
 				else
@@ -94,6 +124,12 @@ string Comandos::lerComandoModo1() {
 						if (contador == 4) {
 							getDgv()->novoCarro(num1, num2, op2, op3);
 							contador = 0;
+							string l;
+							l.append("Carro criado: ");
+							l.append(op2);
+							l.append(" ");
+							l.append(op3);
+							getLog()->addLog(l);
 							return "cria c";
 						}
 						else if (contador != 4) {
@@ -137,7 +173,10 @@ string Comandos::lerComandoModo1() {
 						if (contador == 3) {
 							if (getDga()->getDgaSize() == 0){
 								getDga()->novoAutodromo(num1, num2, op2);
-								//getDga()->procuraAutodromo(op2)->setDgv(getDgv());
+								string l;
+								l.append("Autodromo criado: ");
+								l.append(op2);
+								getLog()->addLog(l);
 								return "cria a";
 							}
 							else
@@ -161,18 +200,30 @@ string Comandos::lerComandoModo1() {
 					if (op4 == "c") {
 						if (is >> op5){
 							getDgv()->apagaCarro(op5);
+							string l;
+							l.append("Carro apagado com identificador: ");
+							l.append(1,op5);
+							getLog()->addLog(l);
 							return "apaga c";
 						}
 					}
 					else if (op4 == "p") {
 						if (is >> op2){
 							getDgv()->apagaPiloto(op2);
+							string l;
+							l.append("Piloto apagado: ");
+							l.append(op2);
+							getLog()->addLog(l);
 							return "apaga p";
 						}
 					}
 					else if (op4 == "a") { //falta isto! ver se os carros também são destruidos
 						if (is >> op2) {
 							getDga()->apagaAutodromo(op2);
+							string l;
+							l.append("Autodromo apagado: ");
+							l.append(op2);
+							getLog()->addLog(l);
 							return "apaga a";
 						}
 					}
@@ -180,11 +231,16 @@ string Comandos::lerComandoModo1() {
 						cout << "parametro errado. apaga <letraTipo> identificador (c - carro, p - piloto, a - autodromo)" << endl;
 				}
 			}
-
 			else if (op1 == "entranocarro") {
 				if (is >> op5){
 					if (is >> op2){
 						getDgv()->entraNoCarro(op5, op2);
+						string l;
+						l.append("Piloto: ");
+						l.append(op2);
+						l.append(" entrou no carro ");
+						l.append(1, op5);
+						getLog()->addLog(l);
 						return op1;
 					}
 					else
@@ -196,6 +252,11 @@ string Comandos::lerComandoModo1() {
 			else if (op1 == "saidocarro") {
 				if (is >> op5){
 					getDgv()->saiDoCarro(op5);
+					string l;
+					l.append("O Piloto do carro ");
+					l.append(1,op5);
+					l.append(" saiu do carro");
+					getLog()->addLog(l);
 					return op1;
 				}
 				else
@@ -206,6 +267,13 @@ string Comandos::lerComandoModo1() {
 				cout << getDgv()->descricaoCarro();
 				cout << getDgv()->descricaoPiloto();
 				cout << getDga()->descricaoAutodromo();
+				return op1;
+			}
+			else if (op1 == "log") {
+				mostraLog();
+				string l;
+				l.append("Utilizador -> Mostrar logs");
+				getLog()->addLog(l);
 				return op1;
 			}
 			else if (op1 == "sair") {
@@ -220,11 +288,26 @@ string Comandos::lerComandoModo1() {
 					setCamp(&(Campeonato()));
 					getCamp()->setDgv(dgv);
 					getCamp()->setCorrida(getDga()->procuraAutodromo(op2));
+					string l;
+					l.append("Autodromo: ");
+					l.append(op2);
+					l.append(" adicionado ao Campeonato\n");
 					while (is >> op2) {
 						getCamp()->setCorrida(getDga()->procuraAutodromo(op2));
+						string l;
+						l.append("Autodromo: ");
+						l.append(op2);
+						l.append(" adicionado ao Campeonato\n");
 					}
-					if (getCamp()->addParticipantes() == true)
+					if (getCamp()->addParticipantes() == true) {
+						string l;
+						l.append("Campeonato iniciado com sucesso");
+						getLog()->addLog(l);
+						string m;
+						m.append("\nModo 2 iniciado");
+						getLog()->addLog(m);
 						return op1;
+					}
 					else
 						return " ";
 				}
@@ -260,24 +343,36 @@ string Comandos::lerComandoModo2() {
 		if (op1 == "passatempo") {
 			if (is >> op2) {
 				//cout << getCamp()->getCorridaAtiva()->getNome() << endl;
-				if(getCamp()->getCorridaAtiva() != nullptr)
+				if (getCamp()->getCorridaAtiva() != nullptr) {
 					getCamp()->passatempo(op2);
-				return op1;
+					string l;
+					l.append("Utilizador -> passatempo ");
+					l.append(1,op2);
+					l.append(" segundos");
+					getLog()->addLog(l);
+					return op1;
+				}
 			}
 			else
 				cout << "numero de parametros errado. passatempo <n>" << endl;
 		}
 		else if (op1 == "corrida") {
-			getCamp()->proximaCorrida();
+			if (getCamp()->proximaCorrida() == true) {
+				string l;
+				l.append("Proxima corrida iniciada com sucesso");
+				getLog()->addLog(l);
+			}
 			return op1;
 		}
 		else if (op1 == "listacarros") {
 			if (getCamp()->getCorridaAtiva() != nullptr) {
 				Consola::gotoxy(75, 20);
 				cout << getCamp()->getCorridaAtiva()->listacarros();
+				string l;
+				l.append("Ultilizador -> listacarros");
+				getLog()->addLog(l);
 				cin.get();
 			}
-			//cout << "ListarCarros";
 			return op1;
 		}
 		else if (op1 == "carregabat") {
@@ -285,6 +380,13 @@ string Comandos::lerComandoModo2() {
 				if (is >> flt1) {
 					if (getCamp()->getCorridaAtiva() != nullptr) {
 						getCamp()->carregabat(ch1, flt1);
+						string l;
+						l.append("Utilizador -> Carregar bateria do carro \"");
+						l.append(1, ch1);
+						l.append("\" com ");
+						l.append(1,flt1);
+						l.append("mAh");
+						getLog()->addLog(l);
 					}
 					return op1;
 				}
@@ -295,15 +397,22 @@ string Comandos::lerComandoModo2() {
 				cout << "numero de parametros errado. carregabat <letraCarro> <Q>";
 		}
 		else if (op1 == "carregatudo") {
-			if (getCamp()->getCorridaAtiva() != nullptr)
+			if (getCamp()->getCorridaAtiva() != nullptr) {
 				getCamp()->carregaTudo();
+				string l;
+				l.append("Utilizador -> Carregar bateria de todos os carros");
+				getLog()->addLog(l);
+			}
 			return op1;
 		}
 		else if (op1 == "acidente") {
 			if (is >> ch1) {
 				if (getCamp()->getCorridaAtiva() != nullptr) {
 					getCamp()->acidente(ch1);
-					cout << "Acidente no carro " << ch1;
+						string l;
+						l.append("Utilizador -> Acidente no carro ");
+						l.append(1, ch1);
+						getLog()->addLog(l);
 				}
 				return op1;
 			}
@@ -312,8 +421,14 @@ string Comandos::lerComandoModo2() {
 		}
 		else if (op1 == "stop") {
 			if (is >> op2) {
-				if (getCamp()->getCorridaAtiva() != nullptr)
+				if (getCamp()->getCorridaAtiva() != nullptr) {
 					getCamp()->stop(str1);
+					string l;
+					l.append("Utilizador -> Ordem para o Piloto ");
+					l.append(str1);
+					l.append(" parar de correr");
+					getLog()->addLog(l);
+				}
 				return op1;
 			}
 			else
@@ -324,6 +439,10 @@ string Comandos::lerComandoModo2() {
 				if (getCamp()->getCorridaAtiva() != nullptr) {
 					getCamp()->destroiCarro(ch1);
 					getDgv()->apagaCarro(ch1);
+					string l;
+					l.append("Utilizador -> Ordem para o Destruir carro com identificador ");
+					l.append(1,ch1);
+					getLog()->addLog(l);
 				}
 				return op1;
 			}
@@ -331,10 +450,21 @@ string Comandos::lerComandoModo2() {
 				cout << "numero de parametros errado. destroi <letraCarro> <Q>";
 		}
 		else if (op1 == "log") {
-			cout << "log";
+			Consola::gotoxy(75, 20);
+			mostraLog();
+			string l;
+			l.append("Utilizador -> Mostrar logs");
+			getLog()->addLog(l);
+			cin.get();
 			return op1;
 		}
 		else if (op1 == "modo1") {
+			string l;
+			l.append("Utilizador -> Voltar ao modo 1");
+			getLog()->addLog(l);
+			string m;
+			m.append("\nModo 1 iniciado\n");
+			getLog()->addLog(m);
 			return op1;
 		}
 		else
@@ -439,6 +569,24 @@ void Comandos::delDgv(string id) {
 
 void Comandos::atribuiDga(Dga* da) {
 	dga = da;
+}
+
+void Comandos::atribuiLog(Log* l) {
+	log = l;
+}
+
+Log* Comandos::getLog() {
+	return Comandos::log;
+}
+
+void Comandos::mostraLog(){
+	if (getLog()->getLogs().size() > 0) {
+		cout << endl;
+		for (int i = 0; i < getLog()->getLogs().size(); i++)
+			cout << getLog()->getLogs()[i] << endl;
+	}
+	else
+		cout << "Nao ha registos no Log" << endl;
 }
 
 string Comandos::getStringListaComandos()const {

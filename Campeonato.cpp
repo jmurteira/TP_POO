@@ -287,6 +287,7 @@ void Campeonato::acidente(char ident) {
 	if (getCorridaAtiva() == nullptr) {
 		cout << "Nenhuma corrida a decorrer!";
 		cin.get();
+		return;
 	}
 	else{
 		for (vector<Autodromo*>::const_iterator it = corridas.begin();
@@ -294,7 +295,7 @@ void Campeonato::acidente(char ident) {
 			it++){
 			if (it == (corridas.end() - 1))
 				flag = 1;
-			(*it)->acidente(ident, flag);
+			 (*it)->acidente(ident, flag);
 			}
 	}
 }
@@ -390,7 +391,7 @@ void Campeonato::apresentaVencedores() const {
 	}
 }
 
-void Campeonato::proximaCorrida() {
+bool Campeonato::proximaCorrida() {
 	if (getCorridas().size() > realizadas) {
 		
 		if (getCorridas()[getRealizadas()]->getIniciada() == false) {
@@ -398,19 +399,20 @@ void Campeonato::proximaCorrida() {
 			Consola::gotoxy(75, 20);
 			cout << "Proxima Corrida: " << getCorridaAtiva()->getNome();
 			cin.get();
-			return;
+			return true;
 		}
 		else if (getCorridas()[getRealizadas()]->getIniciada() == true && getCorridas()[getRealizadas()]->getFinalizada() == false) {
 			Consola::gotoxy(75, 20);
 			cout << "Corrida ainda em andamento!";
 			cin.get();
-			return;
+			return false;
 		}
 	}
 	else {
 		Consola::gotoxy(75, 20);
 		cout << "Ja estao concluidas todas as corridas!";
 		cin.get();
+		return false;
 	}
 }
 

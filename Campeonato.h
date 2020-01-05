@@ -67,5 +67,5 @@ public:
 	int getRealizadas();
 	void setRealizadas(int n);
 	
-	void proximaCorrida();
+	bool proximaCorrida();
 };

@@ -125,6 +125,7 @@
     <ClCompile Include="Dga.cpp" />
     <ClCompile Include="Dgv.cpp" />
     <ClCompile Include="Interface.cpp" />
+    <ClCompile Include="Log.cpp" />
     <ClCompile Include="Logica.cpp" />
     <ClCompile Include="Piloto.cpp" />
     <ClCompile Include="PilotoRapido.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Dga.h" />
     <ClInclude Include="Dgv.h" />
     <ClInclude Include="Interface.h" />
+    <ClInclude Include="Log.h" />
     <ClInclude Include="Logica.h" />
     <ClInclude Include="Piloto.h" />
     <ClInclude Include="PilotoRapido.h" />

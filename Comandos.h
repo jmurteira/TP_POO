@@ -8,11 +8,12 @@ class Dgv;
 class Dga;
 class Campeonato;
 class Autodromo;
+class Log;
 
 using namespace std;
 class Comandos
 {
-	
+	Log* log;
 	Dgv * dgv;
 	Dga* dga;
 	Campeonato * camp;
@@ -29,7 +30,6 @@ public:
 	Dga* getDga();
 	Campeonato* getCamp();
 	void setCamp(Campeonato * c);
-	//vector<Dgv*> getVectorDgvs() const;
 	void atribuiDgv(Dgv * d);
 	void atribuiDga(Dga* da);
 	string getStringListaComandos()const;
@@ -39,5 +39,9 @@ public:
 	void alteraDgv(string id);
 	void saveDgv(string id);
 	void delDgv(string id);
+
+	Log* getLog();
+	void atribuiLog(Log* l);
+	void mostraLog();
 };
 
